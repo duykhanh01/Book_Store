@@ -98,4 +98,31 @@ $(document).ready(function() {
             },
         });
     });
+    //ajax select num row
+    $("#select_num_row").change(function() {
+        var value = $("#select_num_row").find(":selected")[0].value;
+        $.ajax({
+            url: "core/select_row.php",
+            type: "POST",
+            data: { id: value },
+            success: function(data) {
+                $("#body-table").html(data);
+            },
+        });
+    });
+
+    //ajax select status
+    $("#select_status").change(function() {
+        var value = $("#select_status").find(":selected")[0].value;
+        $.ajax({
+            url: "core/select_status.php",
+            type: "POST",
+            data: { id: value },
+            success: function(data) {
+                $("#body-table").html(data);
+            },
+        });
+
+
+    });
 });

@@ -3,15 +3,15 @@
 include('../config/db_connect.php');
 if (isset($_POST)) {
     $id =  $_POST['id'];
-    if ($id != 0) {
-        $sql = "SELECT  category.c_name as c_name, pr_id,pr_code, pr_name, pr_category, pr_status,pr_date, pr_price from products, category where category.c_id = pr_category and pr_category = '$id'";
+    if ($id == "1" or $id=="0") {
+        $sql = "SELECT  category.c_name as c_name, pr_id,pr_code, pr_name, pr_category, pr_status,pr_date, pr_price from products, category where category.c_id = pr_category and pr_status = '$id'";
     } else {
-        $sql = "SELECT  category.c_name as c_name, pr_id, pr_code, pr_name, pr_category, pr_status,pr_date, pr_price from products, category where category.c_id = pr_category";
+        $sql = "SELECT  category.c_name as c_name, pr_id,pr_code, pr_name, pr_category, pr_status,pr_date, pr_price from products, category where category.c_id = pr_category";
     }
     $res = mysqli_query($conn, $sql);
-    $books = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    $book_status = mysqli_fetch_all($res, MYSQLI_ASSOC);
     $ouput = "";
-    foreach ($books as $i => $book) {
+    foreach ($book_status as $i => $book) {
         $count = $i + 1;
         $class = $book['pr_status'] == 0  ? 'color-red' :  'color-green';
         $status = $book['pr_status'] == 0  ? 'Deleted' :  'Published';

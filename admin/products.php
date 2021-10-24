@@ -911,16 +911,21 @@ include('../config/db_connect.php');
                         <div class="toolbox__left col-12 col-lg">
                             <div class="toolbox__left-row row row--xs gutter-bottom-xs">
                                 <div class="form-group form-group--inline col-12 col-sm-auto">
-                                    <label class="form-label">Show</label>
+                                    <label class="form-label">Hiển thị</label>
                                     <div class="input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="10" size="1" data-toggle="dropdown" readonly><span class="input-group__arrow">
+                                        <select id="select_num_row" class="input js-input-select" data-placeholder="">    
+                                        <option value="10" selected="selected">10
+                                            </option>
+                                            <option value="20" >20
+                                            </option>
+                                            <option value="30">30
+                                            </option>
+                                            <option value="40">40
+                                            </option>
+                                        </select><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
                                             </svg></span>
-                                        <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                            <a class="dropdown-menu__item active" href="#" tabindex="0" data-value="10">10</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="15">15</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="20">20</a>
-                                            <a class="dropdown-menu__item" href="#" tabindex="0" data-value="25">25</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="50">50</a>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group form-group--inline col col-sm-auto">
@@ -943,18 +948,19 @@ include('../config/db_connect.php');
                                             </svg></span>
                                     </div>
                                 </div>
-                                <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
-                                    <div class="toolbox__status input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="All status" data-toggle="dropdown" readonly><span class="input-group__arrow">
+                                <div class="form-group form-group--inline col-12 col-sm-auto">
+                                    <div class="input-group input-group--white input-group--append">
+                                        <select id="select_status" class="input js-input-select" data-placeholder="">    
+                                        <option value="2" selected="selected">All status
+                                            </option>
+                                            <option value="1" >Publishing
+                                            </option>
+                                            <option value="0">Deleted
+                                            </option>
+                                        </select><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
                                             </svg></span>
-                                        <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                            <a class="dropdown-menu__item active" href="#" tabindex="0" data-value="All status"><span class="marker-item"></span> All status</a>
-                                            <a class="dropdown-menu__item" href="#" tabindex="0" data-value="Published"><span class="marker-item color-green"></span>
-                                                Published</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="Deleted"><span class="marker-item color-red"></span>
-                                                Deleted</a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1020,7 +1026,7 @@ include('../config/db_connect.php');
 
                             <tbody id="body-table">
                                 <?php
-                                $sl_product = "SELECT * FROM products, category where products.pr_category = category.c_id";
+                                $sl_product = "SELECT * FROM products, category where products.pr_category = category.c_id limit 10";
                                 $res_product = mysqli_query($conn, $sl_product);
                                 $count = 1;
                                 while ($row = mysqli_fetch_assoc($res_product)) {
