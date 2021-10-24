@@ -1,6 +1,6 @@
 <?php
 
-require_once("../config/db_connect.php");
+include('../config/db_connect.php');
 $sql = "SELECT count FROM books";
 $res = mysqli_query($conn, $sql);
 
