@@ -492,13 +492,13 @@
                                             </label>
                                         </div>
                                         <div class="auth-panel__submit">
-                                            <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.html'"><span class="button__text">Create account</span>
+                                            <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.php'"><span class="button__text">Create account</span>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="auth-panel__footer">
-                                    <div class="auth-panel__sign">Already have account? <a class="text-blue" href="auth-login-v3.html">Login</a>
+                                    <div class="auth-panel__sign">Already have account? <a class="text-blue" href="auth-login-v3.php">Login</a>
                                     </div>
                                 </div>
                             </div>

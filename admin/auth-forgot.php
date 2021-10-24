@@ -464,10 +464,10 @@
                                     </div>
                                 </div>
                                 <div class="auth-md-card__submit">
-                                    <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.html'"><span class="button__text">Reset Password</span>
+                                    <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.php'"><span class="button__text">Reset Password</span>
                                     </button>
                                 </div>
-                                <p class="auth-md-card__link"><a class="text-blue" href="auth-login.html">Go back to login</a>
+                                <p class="auth-md-card__link"><a class="text-blue" href="auth-login.php">Go back to login</a>
                                 </p>
                             </div>
                         </form>

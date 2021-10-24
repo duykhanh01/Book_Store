@@ -492,17 +492,17 @@
                                         </div>
                                     </div>
                                     <div class="col-auto">
-                                        <div class="form-group"><a class="text-blue" href="auth-forgot.html">Forgot Password?</a>
+                                        <div class="form-group"><a class="text-blue" href="auth-forgot.php">Forgot Password?</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="auth-card__bottom">
                                 <div class="auth-card__buttons">
-                                    <div class="auth-card__button"><a class="button button--secondary button--block" href="auth-create.html"><span class="button__text">Sign Up</span></a>
+                                    <div class="auth-card__button"><a class="button button--secondary button--block" href="auth-create.php"><span class="button__text">Sign Up</span></a>
                                     </div>
                                     <div class="auth-card__button">
-                                        <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.html'"><span class="button__text">Login</span>
+                                        <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.php'"><span class="button__text">Login</span>
                                         </button>
                                     </div>
                                 </div>

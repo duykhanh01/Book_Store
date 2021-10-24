@@ -503,10 +503,10 @@
                                     </div>
                                 </div>
                                 <div class="auth-md-card__submit">
-                                    <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.html'"><span class="button__text">Unlock</span>
+                                    <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.php'"><span class="button__text">Unlock</span>
                                     </button>
                                 </div>
-                                <p class="auth-md-card__link"><a class="text-blue" href="auth-create.html">Are you not Felecia Burke?</a>
+                                <p class="auth-md-card__link"><a class="text-blue" href="auth-create.php">Are you not Felecia Burke?</a>
                                 </p>
                             </div>
                         </form>
