@@ -2010,7 +2010,7 @@
                 <div class="modal__content">
                     <div class="modal__header">
                         <div class="modal__container">
-                            <h2 class="modal__title">Add Product</h2>
+                            <h2 class="modal__title">Thêm sản phẩm</h2>
                         </div>
                     </div>
                     <div class="modal__body">
@@ -2018,10 +2018,31 @@
                             <form method="POST" action="../core/add_product.php" enctype="multipart/form-data">
                                 <div class="row row--md">
                                     <div class="col-12 form-group form-group--lg">
-                                        <label class="form-label">Product Name</label>
+                                        <label class="form-label">Tên sách</label>
                                         <div class="input-group">
-                                            <input class="input" type="text" placeholder="" value="Apple Watch Series 4"
+                                            <input class="input" type="text" placeholder=""
                                                 required name ="namebook">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 form-group form-group--lg">
+                                        <label class="form-label">Tên tác giả</label>
+                                        <div class="input-group">
+                                            <input class="input" type="text" 
+                                                required name ="nameauthor">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 form-group form-group--lg">
+                                        <label class="form-label">Nhà xuất bản</label>
+                                        <div class="input-group">
+                                            <input class="input" type="text"
+                                                required name ="namepub">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 form-group form-group--lg">
+                                        <label class="form-label">Mã sản phẩm</label>
+                                        <div class="input-group">
+                                            <input class="input" type="text"
+                                                required name ="prcode">
                                         </div>
                                     </div>
                                     <div class="col-12 form-group form-group--lg">
