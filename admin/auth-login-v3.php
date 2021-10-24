@@ -487,12 +487,12 @@
                                                 </div>
                                             </div>
                                             <div class="col-auto">
-                                                <div class="form-group"><a class="text-blue" href="auth-forgot-v3.html">Forgot Password?</a>
+                                                <div class="form-group"><a class="text-blue" href="auth-forgot-v3.php">Forgot Password?</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="auth-panel__submit">
-                                            <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.html'"><span class="button__text">Login</span>
+                                            <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.php'"><span class="button__text">Login</span>
                                             </button>
                                         </div>
                                         <div class="auth-panel__divider">OR</div>
@@ -513,7 +513,7 @@
                                     </div>
                                 </div>
                                 <div class="auth-panel__footer">
-                                    <div class="auth-panel__sign">Don't have an account? <a class="text-blue" href="auth-create-v3.html">Sign Up</a>
+                                    <div class="auth-panel__sign">Don't have an account? <a class="text-blue" href="auth-create-v3.php">Sign Up</a>
                                     </div>
                                 </div>
                             </div>

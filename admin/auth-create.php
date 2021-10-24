@@ -501,12 +501,12 @@
                                     </label>
                                 </div>
                                 <div class="auth-card__submit">
-                                    <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.html'"><span class="button__text">Create account</span>
+                                    <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.php'"><span class="button__text">Create account</span>
                                     </button>
                                 </div>
                             </div>
                             <div class="auth-card__bottom">
-                                <div class="auth-card__sign">Already have account? <a class="text-blue" href="auth-login.html">Login</a>
+                                <div class="auth-card__sign">Already have account? <a class="text-blue" href="auth-login.php">Login</a>
                                 </div>
                             </div>
                         </form>

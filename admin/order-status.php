@@ -829,37 +829,37 @@
                     <div class="order-tabs__list-wrapper swiper-container">
                         <div class="order-tabs__list swiper-wrapper">
                             <div class="order-tabs__item swiper-slide">
-                                <a class="order-tabs__link" href="order-details.html">
+                                <a class="order-tabs__link" href="order-details.php">
                                     <svg class="icon-icon-details">
                                         <use xlink:href="#icon-details"></use>
                                     </svg>Details</a>
                             </div>
                             <div class="order-tabs__item swiper-slide">
-                                <a class="order-tabs__link" href="order-invoice.html">
+                                <a class="order-tabs__link" href="order-invoice.php">
                                     <svg class="icon-icon-invoice">
                                         <use xlink:href="#icon-invoice"></use>
                                     </svg>Invoice</a>
                             </div>
                             <div class="order-tabs__item swiper-slide">
-                                <a class="order-tabs__link order-tabs__link--active" href="order-status.html">
+                                <a class="order-tabs__link order-tabs__link--active" href="order-status.php">
                                     <svg class="icon-icon-status">
                                         <use xlink:href="#icon-status"></use>
                                     </svg>Status</a>
                             </div>
                             <div class="order-tabs__item swiper-slide">
-                                <a class="order-tabs__link" href="order-history.html">
+                                <a class="order-tabs__link" href="order-history.php">
                                     <svg class="icon-icon-back-time">
                                         <use xlink:href="#icon-back-time"></use>
                                     </svg>History</a>
                             </div>
                             <div class="order-tabs__item swiper-slide">
-                                <a class="order-tabs__link" href="order-notes.html">
+                                <a class="order-tabs__link" href="order-notes.php">
                                     <svg class="icon-icon-task-notes">
                                         <use xlink:href="#icon-task-notes"></use>
                                     </svg>Notes</a>
                             </div>
                             <div class="order-tabs__item swiper-slide">
-                                <a class="order-tabs__link" href="order-messages.html">
+                                <a class="order-tabs__link" href="order-messages.php">
                                     <svg class="icon-icon-chat-messages">
                                         <use xlink:href="#icon-chat-messages"></use>
                                     </svg>Messages</a>
@@ -874,7 +874,7 @@
             <div class="sidebar__container">
                 <div class="sidebar__top">
                     <div class="container container--sm">
-                        <a class="sidebar__logo" href="index.html">
+                        <a class="sidebar__logo" href="index.php">
                             <img class="sidebar__logo-icon" src="img/content/logotype.svg" alt="#" width="44" />
                             <div class="sidebar__logo-text">arion</div>
                         </a>
@@ -883,12 +883,12 @@
                 <div class="sidebar__content" data-simplebar="data-simplebar">
                     <nav class="sidebar__nav">
                         <ul class="sidebar__menu">
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="index.html" aria-expanded="false"><span class="sidebar__link-icon">
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="index.php" aria-expanded="false"><span class="sidebar__link-icon">
                       <svg class="icon-icon-dashboard">
                         <use xlink:href="#icon-dashboard"></use>
                       </svg></span><span class="sidebar__link-text">Dashboard</span></a>
                             </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link active" href="products.html" data-toggle="collapse" data-target="#E-Commerce" aria-expanded="true"><span class="sidebar__link-icon">
+                            <li class="sidebar__menu-item"><a class="sidebar__link active" href="products.php" data-toggle="collapse" data-target="#E-Commerce" aria-expanded="true"><span class="sidebar__link-icon">
                       <svg class="icon-icon-cart">
                         <use xlink:href="#icon-cart"></use>
                       </svg></span><span class="sidebar__link-text">E-Commerce</span><span class="sidebar__link-arrow">
@@ -897,72 +897,72 @@
                       </svg></span></a>
                                 <div class="collapse show" id="E-Commerce">
                                     <ul class="sidebar__collapse-menu">
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="products.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Products</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="products.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Products</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="product-add.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Add Product</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="product-add.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Add Product</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="orders.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Orders</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="orders.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Orders</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-details.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Details</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-details.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Details</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-invoice.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Invoice</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-invoice.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Invoice</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link active" href="order-status.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Status</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link active" href="order-status.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Status</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-history.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order History</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-history.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order History</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-history-v2.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order History V.2</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-history-v2.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order History V.2</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-notes.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Notes</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-notes.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Notes</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-messages.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Messages</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-messages.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Messages</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-messages-v2.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Messages V.2</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-messages-v2.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Messages V.2</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customers.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customers.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customer-account.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Account</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customer-account.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Account</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customer-account-v2.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Account V.2</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customer-account-v2.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Account V.2</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customer-wishlist.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Wish List</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customer-wishlist.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Wish List</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="reviews.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Reviews</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="reviews.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Reviews</span></a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="calendar.html" aria-expanded="false"><span class="sidebar__link-icon">
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="calendar.php" aria-expanded="false"><span class="sidebar__link-icon">
                       <svg class="icon-icon-calendar">
                         <use xlink:href="#icon-calendar"></use>
                       </svg></span><span class="sidebar__link-text">Calendar</span></a>
                             </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="mail.html" aria-expanded="false"><span class="sidebar__link-icon">
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="mail.php" aria-expanded="false"><span class="sidebar__link-icon">
                       <svg class="icon-icon-email">
                         <use xlink:href="#icon-email"></use>
                       </svg></span><span class="sidebar__link-text">Mail</span><span class="badge badge--red">20</span></a>
                             </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="chat.html" aria-expanded="false"><span class="sidebar__link-icon">
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="chat.php" aria-expanded="false"><span class="sidebar__link-icon">
                       <svg class="icon-icon-chat">
                         <use xlink:href="#icon-chat"></use>
                       </svg></span><span class="sidebar__link-text">Chat</span></a>
                             </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="contacts.html" aria-expanded="false"><span class="sidebar__link-icon">
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="contacts.php" aria-expanded="false"><span class="sidebar__link-icon">
                       <svg class="icon-icon-contacts">
                         <use xlink:href="#icon-contacts"></use>
                       </svg></span><span class="sidebar__link-text">Contacts</span></a>
                             </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="todo.html" aria-expanded="false"><span class="sidebar__link-icon">
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="todo.php" aria-expanded="false"><span class="sidebar__link-icon">
                       <svg class="icon-icon-todo">
                         <use xlink:href="#icon-todo"></use>
                       </svg></span><span class="sidebar__link-text">ToDo</span></a>
                             </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="file-manager.html" aria-expanded="false"><span class="sidebar__link-icon">
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="file-manager.php" aria-expanded="false"><span class="sidebar__link-icon">
                       <svg class="icon-icon-folder">
                         <use xlink:href="#icon-folder"></use>
                       </svg></span><span class="sidebar__link-text">File Manager</span></a>
                             </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="timeline.html" aria-expanded="false"><span class="sidebar__link-icon">
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="timeline.php" aria-expanded="false"><span class="sidebar__link-icon">
                       <svg class="icon-icon-clock">
                         <use xlink:href="#icon-clock"></use>
                       </svg></span><span class="sidebar__link-text">Timeline</span></a>
@@ -976,36 +976,36 @@
                       </svg></span></a>
                                 <div class="collapse" id="Auth">
                                     <ul class="sidebar__collapse-menu">
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-login.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Login</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-login.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Login</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-login-v2.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Login V.2</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-login-v2.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Login V.2</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-login-v3.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Login V.3</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-login-v3.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Login V.3</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-create.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Create Account</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-create.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Create Account</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-create-v2.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Create Account V.2</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-create-v2.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Create Account V.2</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-create-v3.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Create Account V.3</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-create-v3.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Create Account V.3</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-lock.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Lock</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-lock.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Lock</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-lock-v2.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Lock V.2</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-lock-v2.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Lock V.2</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-lock-v3.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Lock V.3</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-lock-v3.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Lock V.3</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-forgot.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Forgot</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-forgot.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Forgot</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-forgot-v2.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Forgot V.2</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-forgot-v2.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Forgot V.2</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-forgot-v3.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Forgot V.3</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-forgot-v3.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Forgot V.3</span></a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="404.html" aria-expanded="false"><span class="sidebar__link-icon"></span><span class="sidebar__link-text">404</span></a>
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="404.php" aria-expanded="false"><span class="sidebar__link-icon"></span><span class="sidebar__link-text">404</span></a>
                             </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="ui-kit.html" aria-expanded="false"><span class="sidebar__link-icon">
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="ui-kit.php" aria-expanded="false"><span class="sidebar__link-icon">
                       <svg class="icon-icon-settings">
                         <use xlink:href="#icon-settings"></use>
                       </svg></span><span class="sidebar__link-text">UI Kit</span></a>
@@ -1027,7 +1027,7 @@
                             <div class="breadcrumbs__container">
                                 <ol class="breadcrumbs__list">
                                     <li class="breadcrumbs__item">
-                                        <a class="breadcrumbs__link" href="index.html">
+                                        <a class="breadcrumbs__link" href="index.php">
                                             <svg class="icon-icon-home breadcrumbs__icon">
                                                 <use xlink:href="#icon-home"></use>
                                             </svg>
@@ -1041,7 +1041,7 @@
                           <use xlink:href="#icon-keyboard-right"></use>
                         </svg></a>
                                     </li>
-                                    <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="orders.html"><span>Orders</span>
+                                    <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="orders.php"><span>Orders</span>
                         <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                           <use xlink:href="#icon-keyboard-right"></use>
                         </svg></a>
@@ -1080,11 +1080,11 @@
                                 </colgroup>
                                 <thead class="table__header">
                                     <tr>
-                                        <th class="text-center"><span>Date Added</span>
+                                        <th class="text-center"><span>Thời gian đặt hàng</span>
                                         </th>
-                                        <th class="text-center"><span>Status</span>
+                                        <th class="text-center"><span>Trạng thái</span>
                                         </th>
-                                        <th class="text-center"><span>Customer Notified</span>
+                                        <th class="text-center"><span>Người xử lí</span>
                                         </th>
                                     </tr>
                                 </thead>
@@ -1095,7 +1095,7 @@
                                             <div class="d-inline-block text-nowrap"><span class="marker-item color-blue"></span><span>Pending</span>
                                             </div>
                                         </td>
-                                        <td class="table__td text-center">Yes</td>
+                                        <td class="table__td text-center">Tên người xử lí</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1108,11 +1108,13 @@
                                             <label class="form-label">Order Status:</label>
                                             <div class="input-group input-group--append">
                                                 <select class="input js-input-select input--fluid" data-placeholder="">
-                                                    <option value="1" selected="selected">Pending
+                                                    <option value="1" selected="selected">Chờ xử lí
                                                     </option>
-                                                    <option value="2">Complete
+                                                    <option value="2">Đã xử lí
                                                     </option>
-                                                    <option value="3">Processing
+                                                    <option value="3">Đang giao
+                                                    </option>
+                                                    <option value="3">Giao hàng thành công
                                                     </option>
                                                 </select><span class="input-group__arrow">
                             <svg class="icon-icon-keyboard-down">
@@ -1121,46 +1123,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="order-status__checkboxes row gutter-bottom-xl no-gutters">
-                                            <div class="order-status__checkbox-column col-12 col-sm-auto">
-                                                <div class="form-group form-group--inline">
-                                                    <label class="form-label">Notify Customer:</label>
-                                                    <div class="input-group">
-                                                        <label class="checkbox-toggle is-active">
-                                                            <input type="checkbox" checked><span class="checkbox-toggle__range"></span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="order-status__checkbox-column col-12 col-sm-auto">
-                                                <div class="form-group form-group--inline">
-                                                    <label class="form-label">Append Comments:</label>
-                                                    <div class="input-group">
-                                                        <label class="checkbox-toggle">
-                                                            <input type="checkbox"><span class="checkbox-toggle__range"></span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="order-status__form-group form-group form-group--inline">
-                                            <label class="form-label">Comment:</label>
-                                            <div class="input-group">
-                                                <textarea class="input" rows="8" placeholder="Write a Comment..."></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="order-status__submit">
                                     <div class="row row--md justify-content-center">
                                         <div class="col-auto">
-                                            <button class="button button--primary" type="submit"><span class="button__text">Add Order History</span>
+                                            <button class="button button--primary" type="submit"><span class="button__text">Cập nhật trạng thái</span>
                                             </button>
                                         </div>
-                                        <div class="col-auto"><a class="button button--secondary" href="orders.html"><span class="button__text">Cancel</span></a>
+                                        <div class="col-auto"><a class="button button--secondary" href="orders.php"><span class="button__text">Cancel</span></a>
                                         </div>
                                     </div>
                                 </div>
