@@ -1168,18 +1168,12 @@
                                 <div class="form-group form-group--inline col col-sm-auto">
                                     <div class="input-group input-group--white input-group--append">
                                         <select class="input js-input-select" data-placeholder="">
+                                            <?php
+                                                
+                                            ?>
                                             <option value="1" selected="selected">All Categories
                                             </option>
-                                            <option value="2">MacBook
-                                            </option>
-                                            <option value="3">Apple Watch
-                                            </option>
-                                            <option value="4">AirPods
-                                            </option>
-                                            <option value="5">iPhone
-                                            </option>
-                                            <option value="6">IPad
-                                            </option>
+                                            
                                         </select><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
@@ -1327,20 +1321,6 @@
                                                         <li class="dropdown-items__item"><a
                                                                 class="dropdown-items__link"><span
                                                                     class="dropdown-items__link-icon">
-                                                                    <svg class="icon-icon-duplicate">
-                                                                        <use xlink:href="#icon-duplicate"></use>
-                                                                    </svg></span>Duplicate</a>
-                                                        </li>
-                                                        <li class="dropdown-items__item"><a
-                                                                class="dropdown-items__link"><span
-                                                                    class="dropdown-items__link-icon">
-                                                                    <svg class="icon-icon-archive">
-                                                                        <use xlink:href="#icon-archive"></use>
-                                                                    </svg></span>Archive</a>
-                                                        </li>
-                                                        <li class="dropdown-items__item"><a
-                                                                class="dropdown-items__link"><span
-                                                                    class="dropdown-items__link-icon">
                                                                     <svg class="icon-icon-trash">
                                                                         <use xlink:href="#icon-trash"></use>
                                                                     </svg></span>Delete</a>
@@ -1351,7 +1331,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="table__row">
+                                <!-- <tr class="table__row">
                                     <td class="table__td">
                                         <div class="table__checkbox table__checkbox--all">
                                             <label class="checkbox">
@@ -1980,7 +1960,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -2035,39 +2015,40 @@
                     </div>
                     <div class="modal__body">
                         <div class="modal__container">
-                            <form method="POST">
+                            <form method="POST" action="../core/add_product.php" enctype="multipart/form-data">
                                 <div class="row row--md">
                                     <div class="col-12 form-group form-group--lg">
                                         <label class="form-label">Product Name</label>
                                         <div class="input-group">
                                             <input class="input" type="text" placeholder="" value="Apple Watch Series 4"
-                                                required>
+                                                required name ="namebook">
                                         </div>
                                     </div>
                                     <div class="col-12 form-group form-group--lg">
                                         <label class="form-label">Description</label>
                                         <div class="input-editor">
-                                            <div class="js-description-editor">Fundamentally redesigned and
+                                            <!-- <div class="js-description-editor" name = "desc">Fundamentally redesigned and
                                                 reengineered. The largest Apple Watch display yet. Built-in electrical
                                                 heart sensor. New Digital Crown with haptic feedback. Low and high heart
                                                 rate notifications. Fall detection
-                                                and Emergency SOS.</div>
+                                                and Emergency SOS.</div> -->
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" row=3  name="desc"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12 form-group form-group--lg">
                                         <label class="form-label">Category</label>
                                         <div class="input-group input-group--append">
-                                            <select class="input js-input-select input--fluid" data-placeholder="">
-                                                <option value="1" selected="selected">MacBook
-                                                </option>
-                                                <option value="2">Apple Watch
-                                                </option>
-                                                <option value="3">AirPods
-                                                </option>
-                                                <option value="4">iPhone
-                                                </option>
-                                                <option value="5">IPad
-                                                </option>
+                                            <select class="input js-input-select input--fluid" data-placeholder="" name="cate">
+                                                <?php
+                                                    include('../config/db_connect.php');
+                                                    $sl_Category = "SELECT * FROM `category`";
+                                                    $res_Category = mysqli_query($conn, $sl_Category);
+                                                    while($row = mysqli_fetch_assoc($res_Category))
+                                                    {?>
+                                                        <option value="<?php echo $row['c_id'];?>"><?php echo $row['c_name'] ?></option>
+                                                   <?php }
+                                                ?>
+                                               
                                             </select><span class="input-group__arrow">
                                                 <svg class="icon-icon-keyboard-down">
                                                     <use xlink:href="#icon-keyboard-down"></use>
@@ -2080,7 +2061,7 @@
                                             <div class="input-group__prepend"><span class="input-group__symbol">$</span>
                                             </div>
                                             <input class="input" type="number" min="0" max="999999999" placeholder=""
-                                                value="399" required>
+                                                value="399" name="price" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6 form-group form-group--lg">
@@ -2089,14 +2070,14 @@
                                             <div class="input-group__prepend"><span class="input-group__symbol">%</span>
                                             </div>
                                             <input class="input" type="number" min="0" max="100" placeholder=""
-                                                value="10" required>
+                                                value="10" name="discount" required>
                                         </div>
                                     </div>
                                     <div class="col-12 form-group form-group--lg">
                                         <label class="form-label">Product Images</label>
                                         <div class="image-upload">
                                             <div class="image-upload__drop">
-                                                <input class="image-upload__input" type="file" name="file_upload"
+                                                <input class="image-upload__input" type="file" id="image-upload__input" name="file_upload"
                                                     multiple="multiple" accept="image/png, image/jpeg" />
                                                 <div class="image-upload__drop-text">
                                                     <svg class="icon-icon-upload">
@@ -2173,7 +2154,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </form>
+                            <!-- </form> -->
                         </div>
                     </div>
                     <div class="modal__footer">
@@ -2181,8 +2162,8 @@
                             <div class="modal__footer-buttons">
                                 <div class="modal__footer-button">
                                     <button class="button button--primary button--block" data-dismiss="modal"
-                                        data-modal="#addProductSuccess"><span class="button__text">Create</span>
-                                    </button>
+                                        data-modal="" type="submit" ><span class="button__text">Create</span>
+                                    </button> 
                                 </div>
                                 <div class="modal__footer-button">
                                     <button class="button button--secondary button--block" data-dismiss="modal"><span
@@ -2192,6 +2173,7 @@
                             </div>
                         </div>
                     </div>
+            </form>
                 </div>
             </div>
         </div>
