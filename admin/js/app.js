@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  // ajax chart
+
   $.ajax({
     url: "core/chart.php",
     type: "POST",
@@ -77,14 +79,28 @@ $(document).ready(function () {
     },
     error: function (data) {},
   });
+  window.chartColors = {
+    red: "rgb(255, 99, 132)",
+    orange: "rgb(255, 159, 64)",
+    yellow: "rgb(255, 205, 86)",
+    green: "rgb(75, 192, 192)",
+    blue: "rgb(54, 162, 235)",
+    purple: "rgb(153, 102, 255)",
+    gold: "rgb(248,193,28)",
+    grey: "rgb(201, 203, 207)",
+  };
+
+  // ajax filter category
+  $("#select_category").change(function () {
+    alert("a");
+    var value = $("#select_category").find(":selected")[0].value;
+    $.ajax({
+      url: "core/filter_cate.php",
+      type: "POST",
+      data: { id: value },
+      success: function (data) {
+        $("#body-table").html(data);
+      },
+    });
+  });
 });
-window.chartColors = {
-  red: "rgb(255, 99, 132)",
-  orange: "rgb(255, 159, 64)",
-  yellow: "rgb(255, 205, 86)",
-  green: "rgb(75, 192, 192)",
-  blue: "rgb(54, 162, 235)",
-  purple: "rgb(153, 102, 255)",
-  gold: "rgb(248,193,28)",
-  grey: "rgb(201, 203, 207)",
-};
