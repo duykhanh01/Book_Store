@@ -158,20 +158,29 @@
 										<tr>
 											<th class="pro-remove"></th>
 											<th class="pro-thumbnail">Image</th>
-											<th class="pro-title">Product</th>
-											<th class="pro-price">Price</th>
-											<th class="pro-quantity">Quantity</th>
-											<th class="pro-subtotal">Total</th>
+											<th class="pro-title">Tên</th>
+											<th class="pro-price">Giá</th>
+											<th class="pro-quantity">Số lượng</th>
+											<th class="pro-subtotal">Thành tiền</th>
 										</tr>
 									</thead>
 									<tbody>
 										<!-- Product Row -->
+										<?php 
+											include('config/db_connect.php');
+											$sl_cart = "SELECT * FROM carts, products pr where carts.cus_id = 1 and carts.pr_id = pr.pr_id ";
+											
+											$res_cart = mysqli_query($conn, $sl_cart);
+											while($row_cart = mysqli_fetch_assoc($res_cart))
+											{ ?>
+											
+											
 										<tr>
 											<td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a>
 											</td>
 											<td class="pro-thumbnail"><a href="#"><img src="image/products/product-1.jpg" alt="Product"></a></td>
-											<td class="pro-title"><a href="#">Rinosin Glasses</a></td>
-											<td class="pro-price"><span>$395.00</span></td>
+											<td class="pro-title"><a href="#"><?php echo $row_cart['pr_name']; ?></a></td>
+											<td class="pro-price"><span><?php echo $row_cart['pr_price']-$row_cart['pr_discount']; ?></span></td>
 											<td class="pro-quantity">
 												<div class="pro-qty">
 													<div class="count-input-block">
@@ -179,39 +188,17 @@
 													</div>
 												</div>
 											</td>
-											<td class="pro-subtotal"><span>$395.00</span></td>
+											<td class="pro-subtotal"><span><?php echo ($row_cart['pr_price']-$row_cart['pr_discount'])*$row_cart['cart_quatity']; ?></span></td>
 										</tr>
+										<?php }
+										?>
 										<!-- Product Row -->
-										<tr>
-											<td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a>
-											</td>
-											<td class="pro-thumbnail"><a href="#"><img src="image/products/product-2.jpg" alt="Product"></a></td>
-											<td class="pro-title"><a href="#">Rinosin Glasses</a></td>
-											<td class="pro-price"><span>$395.00</span></td>
-											<td class="pro-quantity">
-												<div class="pro-qty">
-													<div class="count-input-block">
-														<input type="number" class="form-control text-center" value="1">
-													</div>
-												</div>
-											</td>
-											<td class="pro-subtotal"><span>$395.00</span></td>
-										</tr>
 										<!-- Discount Row  -->
 										<tr>
 											<td colspan="6" class="actions">
-												<div class="coupon-block">
-													<div class="coupon-text">
-														<label for="coupon_code">Coupon:</label>
-														<input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code">
-													</div>
-													<div class="coupon-btn">
-														<input type="submit" class="btn btn-outlined" name="apply_coupon" value="Apply coupon">
-													</div>
-												</div>
 												<div class="update-block text-right">
-													<input type="submit" class="btn btn-outlined" name="update_cart" value="Update cart">
-													<input type="hidden" id="_wpnonce" name="_wpnonce" value="05741b501f"><input type="hidden" name="_wp_http_referer" value="/petmark/cart/">
+													<input type="submit" class="btn btn-outlined" name="update_cart" value="Đặt hàng">
+													
 												</div>
 											</td>
 										</tr>

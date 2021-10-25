@@ -247,6 +247,7 @@ include('../config/db_connect.php');
                         <h2 class="modal__title">Thêm sản phẩm</h2>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div class="modal__body">
                     <div class="modal__container">
                         <form method="POST" action="../core/add_product.php" enctype="multipart/form-data">
@@ -261,6 +262,28 @@ include('../config/db_connect.php');
                                     <label class="form-label">Tên tác giả</label>
                                     <div class="input-group">
                                         <input class="input" type="text" required name="nameauthor">
+=======
+                <div class="toolbox">
+                    <div class="toolbox__row row gutter-bottom-xs">
+                        <div class="toolbox__left col-12 col-lg">
+                            <div class="toolbox__left-row row row--xs gutter-bottom-xs">
+                                <div class="form-group form-group--inline col-12 col-sm-auto">
+                                    <label class="form-label">Hiển thị</label>
+                                    <div class="input-group input-group--white input-group--append">
+                                        <select id="select_num_row" class="input js-input-select" data-placeholder="">    
+                                        <option value="10" selected="selected">10
+                                            </option>
+                                            <option value="20" >20
+                                            </option>
+                                            <option value="30">30
+                                            </option>
+                                            <option value="40">40
+                                            </option>
+                                        </select><span class="input-group__arrow">
+                                            <svg class="icon-icon-keyboard-down">
+                                                <use xlink:href="#icon-keyboard-down"></use>
+                                            </svg></span>
+>>>>>>> 8143bcde757a5baa0894125896f1b0eb7d66ff53
                                     </div>
                                 </div>
                                 <div class="col-12 form-group form-group--lg">
@@ -307,12 +330,28 @@ include('../config/db_connect.php');
                                             </svg></span>
                                     </div>
                                 </div>
+<<<<<<< HEAD
                                 <div class="col-12 col-md-6 form-group form-group--lg">
                                     <label class="form-label">Price</label>
                                     <div class="input-group input-group--prepend">
                                         <div class="input-group__prepend"><span class="input-group__symbol">$</span>
                                         </div>
                                         <input class="input" type="number" min="0" max="999999999" placeholder="" value="399" name="price" required>
+=======
+                                <div class="form-group form-group--inline col-12 col-sm-auto">
+                                    <div class="input-group input-group--white input-group--append">
+                                        <select id="select_status" class="input js-input-select" data-placeholder="">    
+                                        <option value="2" selected="selected">All status
+                                            </option>
+                                            <option value="1" >Publishing
+                                            </option>
+                                            <option value="0">Deleted
+                                            </option>
+                                        </select><span class="input-group__arrow">
+                                            <svg class="icon-icon-keyboard-down">
+                                                <use xlink:href="#icon-keyboard-down"></use>
+                                            </svg></span>
+>>>>>>> 8143bcde757a5baa0894125896f1b0eb7d66ff53
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 form-group form-group--lg">
@@ -405,12 +444,114 @@ include('../config/db_connect.php');
                             <!-- </form> -->
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div class="modal__footer">
                     <div class="modal__container">
                         <div class="modal__footer-buttons">
                             <div class="modal__footer-button">
                                 <button class="button button--primary button--block" data-dismiss="modal" data-modal="" type="submit"><span class="button__text">Create</span>
                                 </button>
+=======
+                <div class="table-wrapper">
+                    <div class="table-wrapper__content table-collapse scrollbar-thin scrollbar-visible" data-simplebar>
+                        <table class="table table--lines">
+                            <colgroup>
+                                <col width="90px">
+                                <col width="100px">
+                                <col width="350px">
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                                <col>
+                            </colgroup>
+                            <thead class="table__header">
+                                <tr class="table__header-row">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th class="d-none d-lg-table-cell"><span>ID</span>
+                                    </th>
+                                    <th class="table__th-sort"><span class="align-middle">Product Name</span><span class="sort sort--down"></span>
+                                    </th>
+                                    <th class="table__th-sort"><span class="align-middle">Category</span><span class="sort sort--down"></span>
+                                    </th>
+                                    <th class="table__th-sort"><span class="align-middle">Price</span><span class="sort sort--down"></span>
+                                    </th>
+                                    <th class="table__th-sort d-none d-lg-table-cell"><span class="align-middle">Date</span><span class="sort sort--down"></span>
+                                    </th>
+                                    <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Status</span><span class="sort sort--down"></span>
+                                    </th>
+                                    <th class="table__actions"></th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="body-table">
+                                <?php
+                                $sl_product = "SELECT * FROM products, category where products.pr_category = category.c_id limit 10";
+                                $res_product = mysqli_query($conn, $sl_product);
+                                $count = 1;
+                                while ($row = mysqli_fetch_assoc($res_product)) {
+                                ?>
+                                    <tr class="table__row">
+
+
+                                        <td class="table__td">
+                                            <?php echo $count; ?>
+                                        </td>
+                                        <td class="d-none d-lg-table-cell table__td"><?php echo $row['pr_code']; ?><span class="text-grey"></span>
+                                        </td>
+                                        <td class="table__td"><?php echo $row['pr_name']; ?></td>
+                                        <td class="table__td"><span class="text-grey"><?php echo $row['c_name']; ?></span>
+                                        </td>
+                                        <td class="table__td"><span><?php echo $row['pr_price']; ?></span>
+                                        </td>
+                                        <td class="d-none d-lg-table-cell table__td"><span class="text-grey"><?php echo $row['pr_date']; ?></span>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell table__td">
+                                            <div class="table__status"><span class="table__status-icon <?php if ($row['pr_status'] == 0)  echo "color-red";
+                                                                                                        else echo "color-green" ?>"></span>
+                                                <?php if ($row['pr_status'] == 0)  echo "Deleted";
+                                                else echo "Published" ?></div>
+                                        </td>
+                                        <td class="table__td table__actions">
+                                            <div class="items-more">
+                                                <button class="items-more__button">
+                                                    <svg class="icon-icon-more">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-items dropdown-items--right">
+                                                    <div class="dropdown-items__container">
+                                                        <ul class="dropdown-items__list">
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                                                        <svg class="icon-icon-view">
+                                                                            <use xlink:href="#icon-view"></use>
+                                                                        </svg></span>Details</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                                                        <svg class="icon-icon-trash">
+                                                                            <use xlink:href="#icon-trash"></use>
+                                                                        </svg></span>Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                <?php
+                                    $count++;
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-wrapper__footer">
+                        <div class="row">
+                            <div class="table-wrapper__show-result col text-grey"><span class="d-none d-sm-inline-block">Showing</span> 1 to 10 <span class="d-none d-sm-inline-block">of 50 items</span>
+>>>>>>> 8143bcde757a5baa0894125896f1b0eb7d66ff53
                             </div>
                             <div class="modal__footer-button">
                                 <button class="button button--secondary button--block" data-dismiss="modal"><span class="button__text">Cancel</span>

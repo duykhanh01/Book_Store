@@ -3,12 +3,8 @@
 include('../config/db_connect.php');
 if (isset($_POST)) {
     $id =  $_POST['id'];
-    if ($id != 0) {
-        $sql = "SELECT  category.c_name as c_name, pr_id,pr_code, pr_name, pr_category, pr_status,pr_date, pr_price from products, category where category.c_id = pr_category and pr_category = '$id'";
-    } else {
-        $sql = "SELECT  category.c_name as c_name, pr_id, pr_code, pr_name, pr_category, pr_status,pr_date, pr_price from products, category where category.c_id = pr_category";
-    }
-    $res = mysqli_query($conn, $sql);
+    $sl_product = "SELECT * FROM products, category where products.pr_category = category.c_id limit $id";
+    $res = mysqli_query($conn, $sl_product);
     $books = mysqli_fetch_all($res, MYSQLI_ASSOC);
     $ouput = "";
     foreach ($books as $i => $book) {
@@ -31,7 +27,9 @@ if (isset($_POST)) {
                                     <td class='d-none d-lg-table-cell table__td'><span class='text-grey'>" . $book['pr_date'] . "</span>
                                     </td>
                                    <td class='d-none d-sm-table-cell table__td'>
-                                        <div class='table__status'><span class='table__status-icon " . $class . "'></span>
+                                        <div class='table__status'><span class='table__status-icon " . $class . "'>
+                                        
+                                        </span>
                                             " . $status . "</div>
                                     </td>
                                     <td class='table__td table__actions'>

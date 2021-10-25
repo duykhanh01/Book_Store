@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 class Database
 {
@@ -34,3 +35,17 @@ class Database
 
 $db = new Database();
 $db->db_num("SELECT fields FROM YourTable");
+=======
+    include('config/db_connect.php');
+    $sl_cart = "SELECT * FROM carts, products pr where carts.cus_id = 1 and carts.pr_id = pr.pr_id ";
+	$res_cart = mysqli_query($conn, $sl_cart);
+    $res = mysqli_fetch_all($res_cart);
+    $sum = 0;
+    foreach($res as $i)
+    {
+        $sum += $i[3];
+    }
+    echo $sum;
+    
+?>
+>>>>>>> 8143bcde757a5baa0894125896f1b0eb7d66ff53
