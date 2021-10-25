@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+include('config/db_connect.php');
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <?php require_once("templates/header.php") ?>
@@ -80,49 +90,48 @@
                         {"breakpoint":320, "settings": {"slidesToShow": 1} }
                     ]'>
                 <?php
-                    include('config/db_connect.php');
-                    $sql = "SELECT  * FROM `products` limit 7";
-                    $res = mysqli_query($conn, $sql);
-                    while($row = mysqli_fetch_assoc($res))
-                    {?>
-                        <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="" class="author">
-                                Lpple
-                            </a>
-                            <h3><a href="product-details.php"><?php echo $row['pr_name']; ?></a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image/products/product-2.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.php" class="hover-image">
-                                        <img src="image/products/product-1.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.php" class="single-btn">
-                                            <i class="fas fa-cart-plus"></i>
+                include('config/db_connect.php');
+                $sql = "SELECT  * FROM `products` limit 7";
+                $res = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_assoc($res)) { ?>
+                    <div class="single-slide">
+                        <div class="product-card">
+                            <div class="product-header">
+                                <a href="" class="author">
+                                    Lpple
+                                </a>
+                                <h3><a href="product-details.php"><?php echo $row['pr_name']; ?></a></h3>
+                            </div>
+                            <div class="product-card--body">
+                                <div class="card-image">
+                                    <img src="image/products/product-2.jpg" alt="">
+                                    <div class="hover-contents">
+                                        <a href="product-details.php" class="hover-image">
+                                            <img src="image/products/product-1.jpg" alt="">
                                         </a>
+                                        <div class="hover-btns">
+                                            <a href="cart.php" class="single-btn">
+                                                <i class="fas fa-cart-plus"></i>
+                                            </a>
 
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
+                                            <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
+                                <div class="price-block">
+                                    <span class="price">£51.20</span>
+                                    <del class="price-old">£51.20</del>
+                                    <span class="price-discount">20%</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                  <?php  }
-                
+                <?php  }
+
                 ?>
-                
+
                 <!-- <div class="single-slide">
                     <div class="product-card">
                         <div class="product-header">

@@ -92,7 +92,6 @@ $(document).ready(function () {
 
   // ajax filter category
   $("#select_category").change(function () {
-    alert("a");
     var value = $("#select_category").find(":selected")[0].value;
     $.ajax({
       url: "core/filter_cate.php",

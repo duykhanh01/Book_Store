@@ -28,13 +28,23 @@
                 <ul class="header-top-list">
 
 
-                    <li class="dropdown-trigger language-dropdown"><a href=""><i class="icons-left fas fa-user"></i>
-                            My Account</a><i class="fas fa-chevron-down dropdown-arrow"></i>
-                        <ul class="dropdown-box">
-                            <li> <a href="">My Account</a></li>
-                            <li> <a href="">Order History</a></li>
+                    <li class="dropdown-trigger language-dropdown">
+                        <?php if (isset($_SESSION['name'])) : ?>
+                            <a href=""><i class="icons-left fas fa-user"></i>
+                                <?php echo $_SESSION['name'] ?>
+                            </a>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            <ul class="dropdown-box">
+                                <li> <a href="">My Account</a></li>
+                                <li> <a href="logout.php">Logout</a></li>
 
-                        </ul>
+
+                            </ul>
+                        <?php else : ?>
+                            <a href="login.php"><i class="icons-left fas fa-user"></i>
+                                My Account
+                            </a>
+                        <?php endif; ?>
                     </li>
                     <li><a href=""><i class="icons-left fas fa-phone"></i> Contact</a>
                     </li>
@@ -61,10 +71,13 @@
                 <div class="col-lg-4">
                     <div class="main-navigation flex-lg-right">
                         <div class="cart-widget">
-                            <div class="login-block">
-                                <a href="login-register.php" class="font-weight-bold">Login</a> <br>
-                                <span>or</span><a href="login-register.php">Register</a>
-                            </div>
+                            <?php if (!isset($_SESSION['name'])) : ?>
+
+                                <div class="login-block">
+                                    <a href="login.php" class="font-weight-bold">Login</a> <br>
+                                    <span>or</span><a href="register.php">Register</a>
+                                </div>
+                            <?php endif; ?>
                             <div class="cart-block">
                                 <div class="cart-total">
                                     <span class="text-number">
@@ -385,136 +398,34 @@
             </div>
             <!-- search box end -->
             <!-- mobile menu start -->
-            <div class="mobile-navigation">
-                <!-- mobile menu navigation start -->
-                <nav class="off-canvas-nav">
-                    <ul class="mobile-menu main-mobile-menu">
-                        <li class="menu-item-has-children">
-                            <a href="#">Home</a>
-                            <ul class="sub-menu">
-                                <li> <a href="index.php">Home One</a></li>
-                                <li> <a href="index-2.php">Home Two</a></li>
-                                <li> <a href="index-3.php">Home Three</a></li>
-                                <li> <a href="index-4.php">Home Four</a></li>
-                                <li> <a href="index-5.php">Home Five</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Blog</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item-has-children">
-                                    <a href="#">Blog Grid</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.php">Full Widh (Default)</a></li>
-                                        <li><a href="blog-left-sidebar.php">left Sidebar</a></li>
-                                        <li><a href="blog-right-sidebar.php">Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Blog List</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-list.php">Full Widh (Default)</a></li>
-                                        <li><a href="blog-list-left-sidebar.php">left Sidebar</a></li>
-                                        <li><a href="blog-list-right-sidebar.php">Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Blog Details</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-details.php">Image Format (Default)</a></li>
-                                        <li><a href="blog-details-gallery.php">Gallery Format</a></li>
-                                        <li><a href="blog-details-audio.php">Audio Format</a></li>
-                                        <li><a href="blog-details-video.php">Video Format</a></li>
-                                        <li><a href="blog-details-left-sidebar.php">left Sidebar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Shop</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item-has-children">
-                                    <a href="#">Shop Grid</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-grid.php">Fullwidth</a></li>
-                                        <li><a href="shop-grid-left-sidebar.php">left Sidebar</a></li>
-                                        <li><a href="shop-grid-right-sidebar.php">Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Shop List</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop-list.php">Fullwidth</a></li>
-                                        <li><a href="shop-list-left-sidebar.php">left Sidebar</a></li>
-                                        <li><a href="shop-list-right-sidebar.php">Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Product Details 1</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="product-details.php">Product Details Page</a></li>
-                                        <li><a href="product-details-affiliate.php">Product Details
-                                                Affiliate</a></li>
-                                        <li><a href="product-details-group.php">Product Details Group</a></li>
-                                        <li><a href="product-details-variable.php">Product Details
-                                                Variables</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Product Details 2</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="product-details-left-thumbnail.php">left Thumbnail</a>
-                                        </li>
-                                        <li><a href="product-details-right-thumbnail.php">Right Thumbnail</a>
-                                        </li>
-                                        <li><a href="product-details-left-gallery.php">Left Gallery</a></li>
-                                        <li><a href="product-details-right-gallery.php">Right Gallery</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Pages</a>
-                            <ul class="sub-menu">
-                                <li><a href="cart.php">Cart</a></li>
-                                <li><a href="checkout.php">Checkout</a></li>
-                                <li><a href="compare.php">Compare</a></li>
-                                <li><a href="wishlist.php">Wishlist</a></li>
-                                <li><a href="login-register.php">Login Register</a></li>
-                                <li><a href="my-account.php">My Account</a></li>
-                                <li><a href="order-complete.php">Order Complete</a></li>
-                                <li><a href="faq.php">Faq</a></li>
-                                <li><a href="contact-2.php">contact 02</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="contact.php">Contact</a></li>
-                    </ul>
-                </nav>
-                <!-- mobile menu navigation end -->
-            </div>
+
             <!-- mobile menu end -->
             <nav class="off-canvas-nav">
                 <ul class="mobile-menu menu-block-2">
                     <li class="menu-item-has-children">
-                        <a href="#">Currency - USD $ <i class="fas fa-angle-down"></i></a>
-                        <ul class="sub-menu">
+                        <ul class="sub-menu mt-2">
                             <li> <a href="cart.php">USD $</a></li>
                             <li> <a href="checkout.php">EUR €</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item-has-children">
-                        <a href="#">Lang - Eng<i class="fas fa-angle-down"></i></a>
-                        <ul class="sub-menu">
-                            <li>Eng</li>
-                            <li>Ban</li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="#">My Account <i class="fas fa-angle-down"></i></a>
-                        <ul class="sub-menu">
-                            <li><a href="">My Account</a></li>
-                            <li><a href="">Order History</a></li>
-                        </ul>
+
+                    <li class="menu-item-has-children mt-4">
+                        <?php if (isset($_SESSION['name'])) : ?>
+                            <a href="#"> <?php echo $_SESSION['name'] ?> <i class="fas fa-angle-down"></i></a>
+
+                            <ul class="sub-menu">
+                                <li><a href="#">My Account</a></li>
+
+                                <li><a href="logout.php">Logout</a></li>
+                            </ul>
+
+                        <?php else : ?>
+                            <a href="login.php"><i class="icons-left fas fa-user"></i>
+                                My Account
+                            </a>
+                        <?php endif; ?>
+
+
                     </li>
                 </ul>
             </nav>
