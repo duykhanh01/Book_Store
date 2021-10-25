@@ -1,9 +1,13 @@
 <?php
     include('config/db_connect.php');
-    echo mysqli_num_rows($res_Category);
-    while($row = mysqli_fetch_assoc($res_Category))
+    $sl_cart = "SELECT * FROM carts, products pr where carts.cus_id = 1 and carts.pr_id = pr.pr_id ";
+	$res_cart = mysqli_query($conn, $sl_cart);
+    $res = mysqli_fetch_all($res_cart);
+    $sum = 0;
+    foreach($res as $i)
     {
-        echo $row['id'];
-        echo $row['c_name'];
+        $sum += $i[3];
     }
+    echo $sum;
+    
 ?>
