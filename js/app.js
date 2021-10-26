@@ -11,6 +11,8 @@ $(document).ready(function() {
                 // $("#body-table").html(data);
                 if (data == "done")
                     alert('Đã thêm vào giỏ hàng');
+                else
+                    alert("Đăng nhập để thêm");
             },
         });
     });
