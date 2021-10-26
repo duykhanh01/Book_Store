@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="eng">
 
-<?php include("templates/header.php"); ?>
+<?php 
+session_start();
+include("templates/header.php"); 
+?>
 <div class="site-wrapper" id="top">
 
 
@@ -166,9 +169,12 @@
 									</thead>
 									<tbody>
 										<!-- Product Row -->
-										<?php 
+										<?php
+										if(isset($_SESSION['id']))
+										{ 
 											include('config/db_connect.php');
-											$sl_cart = "SELECT * FROM carts, products pr where carts.cus_id = 1 and carts.pr_id = pr.pr_id ";
+											$cus_id = $_SESSION['id'];
+											$sl_cart = "SELECT * FROM carts, products pr where carts.cus_id = '$cus_id' and carts.pr_id = pr.pr_id ";
 											
 											$res_cart = mysqli_query($conn, $sl_cart);
 											while($row_cart = mysqli_fetch_assoc($res_cart))
@@ -190,7 +196,7 @@
 											</td>
 											<td class="pro-subtotal"><span><?php echo ($row_cart['pr_price']-$row_cart['pr_discount'])*$row_cart['cart_quatity']; ?></span></td>
 										</tr>
-										<?php }
+										<?php }}
 										?>
 										<!-- Product Row -->
 										<!-- Discount Row  -->

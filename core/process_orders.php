@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     if(isset($_POST['sum_money']) && isset($_POST['money_ship']) && $_POST['sum_money']>0)
     {
         include('../config/db_connect.php');
@@ -7,14 +7,14 @@
         $or_ship = $_POST['money_ship'];
         $or_id = "";
         $or_id = '#'.rand(10000,10000000);
-        $cus_id = 1;//dang test mac dinh 1 sau lay o session
+        $cus_id = $_SESSION['id'];//dang test mac dinh 1 sau lay o session
         $or_pay = "ship code";
         $insert_order = "INSERT INTO `orders`(`or_id`, `cus_id`, `or_pay`, `or_total`, `or_ship`) 
         VALUES ('$or_id','$cus_id','$or_pay','$or_total','$or_ship')";
         mysqli_query($conn,$insert_order);
 
         //insert vào order detail
-        $sl_cart = "SELECT * FROM carts, products pr where carts.cus_id = 1 and carts.pr_id = pr.pr_id ";
+        $sl_cart = "SELECT * FROM carts, products pr where carts.cus_id = '$cus_id' and carts.pr_id = pr.pr_id ";
         $res_cart = mysqli_query($conn, $sl_cart);
 
         while($row_cart = mysqli_fetch_assoc($res_cart))

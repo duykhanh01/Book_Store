@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="eng">
 
-<?php include("templates/header.php") ?>
+<?php 
+session_start();
+include("templates/header.php") ?>
 
 <div class="site-wrapper" id="top">
 
@@ -246,12 +248,17 @@
 
                                                 <?php
 												//xử lí thêm vào order và order detail
+                                                $sum = 0;
+                                                $check = 0;
+                                                    if(isset($_SESSION['id']))
+                                                    {
 													include('config/db_connect.php');
-													$sl_cart = "SELECT * FROM carts, products pr where carts.cus_id = 1 and carts.pr_id = pr.pr_id ";
+                                                    $cus_id = $_SESSION['id'];
+													$sl_cart = "SELECT * FROM carts, products pr where carts.cus_id = '$cus_id' and carts.pr_id = pr.pr_id ";
 													$res_cart = mysqli_query($conn, $sl_cart);
 													$check = mysqli_num_rows($res_cart); //tạo biến check kiểm tra số lượng phần tử của carts
 													$res = mysqli_fetch_all($res_cart, MYSQLI_ASSOC);
-													$sum = 0;
+													
 													foreach($res as $i)
 													{
 														$sum += $i['cart_price']*$i['cart_quatity'];
@@ -263,7 +270,7 @@
                                                 		</li>
 
                                                 <?php		
-													}
+													} }
 													if($check !=0)
 														$money_ship = 20;
 													else
@@ -272,7 +279,7 @@
 												?>
                                             </ul>
                                             <?php
-	
+                                                
 											?>
                                             <p>Sub Total <span><?php echo $sum; ?></span></p>
                                             <p>Shipping Fee <span id="money_ship"><?php echo $money_ship; ?> </span></p>
