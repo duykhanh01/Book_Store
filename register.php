@@ -103,28 +103,28 @@ if (isset($_POST['register'])) {
                                         <div class="row">
                                             <div class="col-md-12 col-12 mb--15">
                                                 <label for="email">Full Name</label>
-                                                <input class="mb-0 form-control" value="<?php echo htmlspecialchars($name) ?>" name="name" type="text" id="name" placeholder="Họ và tên">
+                                                <input Required class="mb-0 form-control" value="<?php echo htmlspecialchars($name) ?>" name="name" type="text" id="name" placeholder="Họ và tên">
 
                                             </div>
                                             <div class="col-12 mb--20">
                                                 <label for="email">Email</label>
-                                                <input class="mb-0 form-control" value="<?php echo htmlspecialchars($email) ?>" name="email" type="email" id="email" placeholder="Email">
+                                                <input Required class="mb-0 form-control" value="<?php echo htmlspecialchars($email) ?>" name="email" type="email" id="email" placeholder="Email">
                                             </div>
                                             <div class="col-md-12 col-12 mb--15">
                                                 <label for="email">Số điện thoại</label>
-                                                <input class="mb-0 form-control" value="<?php echo htmlspecialchars($phone) ?>" name="phone" type="text" id="name" placeholder="Số điện thoại">
+                                                <input Required class="mb-0 form-control" value="<?php echo htmlspecialchars($phone) ?>" name="phone" type="text" id="name" placeholder="Số điện thoại">
                                             </div>
                                             <div class="col-md-12 col-12 mb--15">
                                                 <label for="email">Địa chỉ</label>
-                                                <input class="mb-0 form-control" value="<?php echo htmlspecialchars($location) ?>" name="location" type="text" id="name" placeholder="Địa chỉ">
+                                                <input Required class="mb-0 form-control" value="<?php echo htmlspecialchars($location) ?>" name="location" type="text" id="name" placeholder="Địa chỉ">
                                             </div>
                                             <div class="col-lg-6 mb--20">
                                                 <label for="password">Password</label>
-                                                <input class="mb-0 form-control" value="<?php echo htmlspecialchars($pass) ?>" name="password" type="password" id="password" placeholder="Mật khẩu">
+                                                <input Required class="mb-0 form-control" value="<?php echo htmlspecialchars($pass) ?>" name="password" type="password" id="password" placeholder="Mật khẩu">
                                             </div>
                                             <div class="col-lg-6 mb--20">
                                                 <label for="password">Repeat Password</label>
-                                                <input class="mb-0 form-control" name="cpassword" type="password" value="<?php echo htmlspecialchars($cpass) ?>" id="repeat-password" placeholder="Nhập lại mật khẩu">
+                                                <input Required class="mb-0 form-control" name="cpassword" type="password" value="<?php echo htmlspecialchars($cpass) ?>" id="repeat-password" placeholder="Nhập lại mật khẩu">
                                             </div>
                                             <div class="col-md-12">
                                                 <button name="register" class="btn btn-success">Register</button>

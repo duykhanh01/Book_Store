@@ -1,7 +1,7 @@
 <?php
 
-session_start();
 include('config/db_connect.php');
+session_start();
 
 
 ?>
