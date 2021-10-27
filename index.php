@@ -1,12 +1,6 @@
 <?php
 
 include('config/db_connect.php');
-<<<<<<< HEAD
-session_start();
-
-
-=======
->>>>>>> 7e4a6fa305f0505a85ca8aeb7d5ad78772769891
 ?>
 
 
