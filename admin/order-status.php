@@ -217,8 +217,8 @@
                         <div class="order-status__submit">
                             <div class="row row--md justify-content-center">
                                 <div class="col-auto">
-                                    <a class="button button--primary" id="update_status"><span class="button__text" href="orders.php">Cập nhật trạng thái</span>
-                                </a>
+                                    <button class="button button--primary" id="update_status"><span class="button__text">Cập nhật trạng thái</span>
+                                    </button>
                                 </div>
                                 <div class="col-auto"><a class="button button--secondary" href="orders.php"><span class="button__text">Cancel</span></a>
                                 </div>

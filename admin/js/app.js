@@ -128,7 +128,6 @@ $(document).ready(function() {
         var stt = $("#sl_status").find(":selected")[0].value;
         var id_or = $("#id_orders").html();
         var id_user = $('#id_user').val();
-        alert(stt);
         // alert(stt);
         $.ajax({
             url: "core/update_status.php",

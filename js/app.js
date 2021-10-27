@@ -33,5 +33,39 @@ $(document).ready(function() {
             },
         });
     });
-
+    $('#add_to_cart').click(function() {
+        var values = $(this).attr('value');
+        var number = $('#get_number').val();
+        $.ajax({
+            url: "core/add_to_cart.php",
+            type: "POST",
+            data: {
+                'id': values,
+                'quatity': number
+            },
+            success: function(data) {
+                // $("#body-table").html(data);
+                if (data == "done")
+                    alert('Đã thêm vào giỏ hàng');
+                else
+                // alert("Đăng nhập để thêm");
+                    alert(data);
+            },
+        });
+    });
+    $(".cart_quatity").change(function() {
+        var number = $(this).val();
+        var id = $(".pr_id").val();
+        $.ajax({
+            url: "core/update_number_product.php",
+            type: "POST",
+            data: {
+                'pr_id': id,
+                'number': number
+            },
+            success: function(data) {
+                location.reload();
+            },
+        });
+    });
 });

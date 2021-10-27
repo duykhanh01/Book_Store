@@ -1,5 +1,4 @@
 <?php
-echo 123;
     if(isset($_POST['stt']) && isset($_POST['id_or']))
     {
         include('../config/db_connect.php');
@@ -12,7 +11,7 @@ echo 123;
         $update_stt = "UPDATE orders SET or_status = '$stt', u_id = '$id_user' where or_id = '$id_or'";
         if(mysqli_query($conn, $update_stt))
         {
-         //   header('location: ../orders.php');
+            header('location: ../orders.php');
         }
         
     }

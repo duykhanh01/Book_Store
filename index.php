@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('config/db_connect.php');
 ?>
 
@@ -141,7 +141,7 @@ include('config/db_connect.php');
     <section class="section-margin">
         <div class="container">
             <div class="section-title section-title--bordered">
-                <h2>Tên loại</h2>
+                <h2>Truyện Tranh</h2>
             </div>
             <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
                         "autoplay": true,
@@ -157,32 +157,35 @@ include('config/db_connect.php');
                     ]'>
                 <!-- thêm các sách theo loại tình cảm -->
                 <?php
-                $sl_romance = "SELECT * from products, category where products.pr_category = category.c_id and products.pr_category = 1 limit 4";
+                $sl_romance = "SELECT * from products, category where products.pr_category = category.c_id and products.pr_category = 2 limit 8";
                 $res_romance = mysqli_query($conn, $sl_romance);
-                while ($row_romance = mysqli_fetch_assoc($res_romance)) { ?>
-
+                while ($row_romance = mysqli_fetch_assoc($res_romance)) {
+                //xử lí lấy ảnh ra
+                $name_img = explode(",",$row_romance['pr_img'])[0];
+               
+                    ?>
 
                     <div class="single-slide">
                         <div class="product-card">
                             <div class="product-header">
-                                <a href="" class="author">
+                                <a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>" class="author">
                                     <?php echo $row_romance['pr_author'] ?>
                                 </a>
-                                <h3><a href="product-details.php"><?php echo $row_romance['pr_name']; ?> </a></h3>
+                                <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
-                                    <img src="image/products/product-1.jpg" alt="">
+                                    <img src="admin/<?php echo $name_img;?>" alt="">
                                     <div class="hover-contents">
                                         <a href="product-details.php" class="hover-image">
-                                            <img src="image/products/product-1.jpg" alt="">
+                                            <img src="admin/<?php echo $name_img;?>" alt="">
                                         </a>
                                         <div class="hover-btns">
                                             <a href="#" class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
                                                 <i class="fas fa-cart-plus"></i>
                                             </a>
 
-                                            <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
+                                            <a  data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                         </div>
