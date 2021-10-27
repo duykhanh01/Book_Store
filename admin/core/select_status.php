@@ -3,7 +3,7 @@
 include('../config/db_connect.php');
 if (isset($_POST)) {
     $id =  $_POST['id'];
-    if ($id == "1" or $id=="0") {
+    if ($id == "1" or $id == "0") {
         $sql = "SELECT  category.c_name as c_name, pr_id,pr_code, pr_name, pr_category, pr_status,pr_date, pr_price from products, category where category.c_id = pr_category and pr_status = '$id'";
     } else {
         $sql = "SELECT  category.c_name as c_name, pr_id,pr_code, pr_name, pr_category, pr_status,pr_date, pr_price from products, category where category.c_id = pr_category";
@@ -14,7 +14,7 @@ if (isset($_POST)) {
     foreach ($book_status as $i => $book) {
         $count = $i + 1;
         $class = $book['pr_status'] == 0  ? 'color-red' :  'color-green';
-        $status = $book['pr_status'] == 0  ? 'Deleted' :  'Published';
+        $status = $book['pr_status'] == 0  ? 'Private' :  'Public';
         $ouput .= "
     
         <tr class='table__row'>
@@ -44,12 +44,12 @@ if (isset($_POST)) {
                                             <div class='dropdown-items dropdown-items--right'>
                                                 <div class='dropdown-items__container'>
                                                     <ul class='dropdown-items__list'>
-                                                        <li class='dropdown-items__item'><a class='dropdown-items__link'><span class='dropdown-items__link-icon'>
+                                                        <li class='dropdown-items__item'><a href='product-details.php?id=" . $book['pr_id'] . "' class='dropdown-items__link'><span class='dropdown-items__link-icon'>
                                                                     <svg class='icon-icon-view'>
                                                                         <use xlink:href='#icon-view'></use>
                                                                     </svg></span>Details</a>
                                                         </li>
-                                                        <li class='dropdown-items__item'><a class='dropdown-items__link'><span class='dropdown-items__link-icon'>
+                                                        <li class='dropdown-items__item'><a value=" . $book['pr_id'] . " class='dropdown-items__link delete-product'><span class='dropdown-items__link-icon'>
                                                                     <svg class='icon-icon-trash'>
                                                                         <use xlink:href='#icon-trash'></use>
                                                                     </svg></span>Delete</a>

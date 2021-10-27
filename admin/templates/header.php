@@ -25,7 +25,10 @@
     <link rel="stylesheet" href="css/filepond.min.css" />
     <link rel="stylesheet" href="css/filepond-plugin-image-preview.min.css" />
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/app.css" />
+
     <link rel="apple-touch-icon" sizes="57x57" href="img/content/favicons/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="img/content/favicons/apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="img/content/favicons/apple-icon-72x72.png" />
