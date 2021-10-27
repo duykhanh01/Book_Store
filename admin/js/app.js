@@ -122,20 +122,17 @@ $(document).ready(function() {
                 $("#body-table").html(data);
             },
         });
-
-
-<<<<<<< HEAD
-  // ajax filter category
-  $("#select_category").change(function () {
-    var value = $("#select_category").find(":selected")[0].value;
-    $.ajax({
-      url: "core/filter_cate.php",
-      type: "POST",
-      data: { id: value },
-      success: function (data) {
-        $("#body-table").html(data);
-      },
-=======
->>>>>>> 8143bcde757a5baa0894125896f1b0eb7d66ff53
+    });
+    $(document).on("click", "#update_status", function() {
+        var stt = $("#sl_status").find(":selected")[0].value;
+        var id_or = $("#id_orders").html();
+        var id_user = $('#id_user').val();
+        alert(stt);
+        // alert(stt);
+        $.ajax({
+            url: "core/update_status.php",
+            type: "POST",
+            data: { 'stt': stt, 'id_or': id_or, 'id_user': id_user }
+        });
     });
 });
