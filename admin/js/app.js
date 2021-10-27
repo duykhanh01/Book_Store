@@ -134,6 +134,7 @@ $(document).ready(function () {
 
     var pr_name = $("#pr_name").val();
     var pr_code = $("#pr_code").val();
+    console.log(pr_code);
     var auth_name = $("#auth_name").val();
     var pub_name = $("#pub_name").val();
     var pr_number = $("#pr_number").val();
@@ -142,6 +143,7 @@ $(document).ready(function () {
     var pr_price = $("#pr_price").val();
     var pr_discount = $("#pr_discount").val();
     var pr_images = $("#pr_images")[0].files;
+    var pr_status = $("#pr_status").find(":selected")[0].value;
     var check_file = false;
     for (var i = 0; i < pr_images.length; i++) {
       var type = pr_images[i] != null ? pr_images[i].type : null;
@@ -168,6 +170,8 @@ $(document).ready(function () {
       dataform.append("pr_price", pr_price);
       dataform.append("pr_discount", pr_discount);
       dataform.append("pr_images", pr_images);
+      dataform.append("pr_status", pr_status);
+
       $.ajax({
         url: "core/add-product.php",
         type: "POST",
@@ -177,13 +181,15 @@ $(document).ready(function () {
         contentType: false,
         processData: false,
         success: function (data) {
-          if ((data = "errors")) {
-            $(".modal-success__title").text("Thêm sản phẩm thất bại");
+          if (data == "errors") {
+            $(".modal-success__title").text("Vui lòng điền đầy đủ thông tin");
 
             $(".modal-success__icon").attr(
               "src",
               "img/content/checked-fail.png"
             );
+          } else {
+            $("#body-table").html(data);
           }
         },
       });
@@ -191,5 +197,19 @@ $(document).ready(function () {
       $(".modal-success__title").text("Vui lòng chọn file PNG, JPEG, JPG");
       $(".modal-success__icon").attr("src", "img/content/checked-fail.png");
     }
+  });
+
+  // --------------------- Delete Product -------------------------------------------------------
+
+  $(document).on("click", ".delete-product", function () {
+    var id = $(this).attr("value");
+    $.ajax({
+      url: "core/delete-product.php",
+      type: "POST",
+      data: { id: id },
+      success: function (data) {
+        $("#body-table").html(data);
+      },
+    });
   });
 });

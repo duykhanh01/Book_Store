@@ -1,3 +1,19 @@
+<?php
+
+include('../config/db_connect.php');
+if (!isset($_GET['pr_id'])) header("Loction: 404.php");
+$id =  $_GET['id'];
+$sql = "SELECT  category.c_name as c_name, pr_id, pr_code, pr_name,pr_author, pr_pub, pr_category, pr_status,pr_date, pr_number, pr_price, pr_discount, pr_img, pr_desc from products, category where category.c_id = pr_category AND pr_id = '$id'";
+$res = mysqli_query($conn, $sql);
+$book = mysqli_fetch_assoc($res);
+$images = explode(",", $book['pr_img']);
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html class="no-js" lang="en" data-theme="light">
 
@@ -45,8 +61,7 @@
                 <div class="card__container">
                     <form class="add-product__form">
                         <div class="d-flex justify-content-between">
-
-                            <div class="font-weight-bold">Mã sách:</div>
+                            <div class="font-weight-bold">Mã sách: <?php echo $book['pr_id'] ?> </div>
                             <button class="button-add button-add--blue" style="font-size: 20px" data-modal=" #addProduct">
                                 <i class="fas fa-pencil-alt"></i>
                             </button>
@@ -56,28 +71,12 @@
                                 <div class="add-product__thumbs">
                                     <div class="add-product__thumbs-slider swiper-container">
                                         <div class="swiper-wrapper">
-                                            <div class="add-product__thumb swiper-slide">
-                                                <img class="add-product__thumb-image swiper-lazy" src="img/content/product/thumb-1.jpg" srcset="img/content/product/thumb-1.jpg 2x" alt="#">
-                                                <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
-                                            </div>
-                                            <div class="add-product__thumb swiper-slide">
-                                                <img class="add-product__thumb-image swiper-lazy" src="img/content/product/thumb-2.jpg" srcset="img/content/product/thumb-2.jpg 2x" alt="#">
-                                                <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
-                                            </div>
-                                            <div class="add-product__thumb swiper-slide">
-                                                <img class="add-product__thumb-image swiper-lazy" src="img/content/product/thumb-3.jpg" srcset="img/content/product/thumb-3.jpg 2x" alt="#">
-                                                <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
-                                            </div>
-                                            <div class="add-product__thumb swiper-slide">
-                                                <img class="add-product__thumb-image swiper-lazy" src="img/content/product/thumb-4.jpg" srcset="img/content/product/thumb-4.jpg 2x" alt="#">
-                                                <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
-                                            </div>
-                                            <div class="add-product__thumb swiper-slide">
-                                                <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
-                                            </div>
-                                            <div class="add-product__thumb swiper-slide">
-                                                <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
-                                            </div>
+                                            <?php foreach ($images as $image) : ?>
+                                                <div class="add-product__thumb swiper-slide">
+                                                    <img class="add-product__thumb-image swiper-lazy" src="<?php echo $image; ?>" srcset="<?php echo $image; ?> 2x" alt="#">
+                                                    <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
+                                                </div>
+                                            <?php endforeach; ?>
                                         </div>
                                     </div>
                                     <div class="add-product__thumbs-prev">
@@ -98,28 +97,13 @@
                                 <div class="add-product__gallery">
                                     <div class="add-product__gallery-slider swiper-container">
                                         <div class="swiper-wrapper">
-                                            <div class="add-product__gallery-slide swiper-slide">
-                                                <img class="add-product__gallery-image swiper-lazy" src="img/content/product/item-1.jpg" srcset="img/content/product/item-1.jpg 2x" alt="#">
-                                                <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
-                                            </div>
-                                            <div class="add-product__gallery-slide swiper-slide">
-                                                <img class="add-product__gallery-image swiper-lazy" src="img/content/product/item-2.jpg" srcset="img/content/product/item-2.jpg 2x" alt="#">
-                                                <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
-                                            </div>
-                                            <div class="add-product__gallery-slide swiper-slide">
-                                                <img class="add-product__gallery-image swiper-lazy" src="img/content/product/item-3.jpg" srcset="img/content/product/item-3.jpg 2x" alt="#">
-                                                <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
-                                            </div>
-                                            <div class="add-product__gallery-slide swiper-slide">
-                                                <img class="add-product__gallery-image swiper-lazy" src="img/content/product/item-4.jpg" srcset="img/content/product/item-4.jpg 2x" alt="#">
-                                                <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
-                                            </div>
-                                            <div class="add-product__gallery-slide swiper-slide">
-                                                <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
-                                            </div>
-                                            <div class="add-product__gallery-slide swiper-slide">
-                                                <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
-                                            </div>
+                                            <?php foreach ($images as $image) : ?>
+                                                <div class="add-product__gallery-slide swiper-slide">
+
+                                                    <img class="add-product__gallery-image swiper-lazy" src="<?php echo $image; ?>" srcset="<?php echo $image; ?> 2x" alt="#">
+                                                    <div class="add-product__lazy-preloader swiper-lazy-preloader"></div>
+                                                </div>
+                                            <?php endforeach; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -131,39 +115,47 @@
                                     <div class="col-12 form-group form-group--lg">
                                         <label class="form-label ">Tên sách</label>
                                         <div class="input-group">
-                                            <input disabled class="input" type="text" placeholder="" value="Apple Watch Series 4" required>
+                                            <input disabled class="input" type="text" placeholder="" value="<?php echo $book['pr_name']; ?>" required>
                                         </div>
                                     </div>
 
                                     <div class="col-12 form-group form-group--lg">
                                         <label class="form-label">Tên tác giả</label>
                                         <div class="input-group">
-                                            <input disabled class="input" type="text" placeholder="" value="Apple Watch Series 4" required>
+                                            <input disabled class="input" type="text" placeholder="" value="<?php echo $book['pr_author']; ?>" required>
                                         </div>
                                     </div>
-                                    <div class="col-12 form-group form-group--lg">
+                                    <div class=" col-12 form-group form-group--lg">
                                         <label class="form-label">NXB</label>
                                         <div class="input-group">
-                                            <input disabled class="input" type="text" placeholder="" value="Apple Watch Series 4" required>
+                                            <input disabled class="input" type="text" placeholder="" value="<?php echo $book['pr_pub']; ?>" required>
                                         </div>
                                     </div>
 
                                     <div class="col-12 form-group form-group--lg">
                                         <label class="form-label">Thể loại</label>
                                         <div class="input-group">
-                                            <input disabled class="input" type="text" placeholder="" value="Apple Watch Series 4" required>
+                                            <input disabled class="input" type="text" placeholder="" value="<?php echo $book['c_name']; ?>" required>
                                         </div>
                                     </div>
                                     <div class="col-12 form-group form-group--lg">
                                         <label class="form-label">Mô tả chi tiết</label>
                                         <div class="input-editor">
-                                            <textarea disabled class="form-control" id="exampleFormControlTextarea1" row=3 name="desc"></textarea>
+                                            <textarea disabled class="form-control" id="exampleFormControlTextarea3" row=3 name="desc"><?php echo $book['pr_desc']; ?>
+                                            </textarea>
                                         </div>
                                     </div>
                                     <div class="col-12 form-group form-group--lg">
                                         <label class="form-label">Ngày đăng</label>
                                         <div class="input-group">
-                                            <input disabled class="input" type="text" placeholder="" value="Apple Watch Series 4" required>
+                                            <input disabled class="input" type="text" placeholder="" value="<?php echo $book['pr_date'] ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 form-group form-group--lg">
+                                        <label class="form-label">Trạng thái</label>
+                                        <div class="input-group">
+                                            <input disabled class="input" type="text" placeholder="" value="<?php if ($book['pr_status'] == 0)  echo "Private";
+                                                                                                            else echo "Public" ?>" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6 form-group form-group--lg">
@@ -171,7 +163,7 @@
                                         <div class="input-group input-group--prepend">
                                             <div class="input-group__prepend"><span class="input-group__symbol">$</span>
                                             </div>
-                                            <input disabled class="input" type="number" min="0" max="999999999" placeholder="" value="399" required>
+                                            <input disabled class="input" type="number" min="0" max="999999999" placeholder="" value="<?php echo $book['pr_price']; ?>" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6 form-group form-group--lg">
@@ -179,7 +171,7 @@
                                         <div class="input-group input-group--prepend">
                                             <div class="input-group__prepend"><span class="input-group__symbol">%</span>
                                             </div>
-                                            <input disabled class="input" type="number" min="0" max="100" placeholder="" value="10" required>
+                                            <input disabled class="input" type="number" min="0" max="100" placeholder="" value="<?php echo $book['pr_discount']; ?>" required>
                                         </div>
                                     </div>
 

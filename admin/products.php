@@ -31,16 +31,21 @@ include('../config/db_connect.php');
                 <div class="toolbox__left col-12 col-lg">
                     <div class="toolbox__left-row row row--xs gutter-bottom-xs">
                         <div class="form-group form-group--inline col-12 col-sm-auto">
-                            <label class="form-label">Show</label>
+                            <label class="form-label">Hiển thị</label>
                             <div class="input-group input-group--white input-group--append">
-                                <input class="input input--select" type="text" value="10" size="1" data-toggle="dropdown" readonly><span class="input-group__arrow">
+                                <select id="select_num_row" class="input js-input-select" data-placeholder="">
+                                    <option value="10" selected="selected">10
+                                    </option>
+                                    <option value="20">20
+                                    </option>
+                                    <option value="30">30
+                                    </option>
+                                    <option value="40">40
+                                    </option>
+                                </select><span class="input-group__arrow">
                                     <svg class="icon-icon-keyboard-down">
                                         <use xlink:href="#icon-keyboard-down"></use>
                                     </svg></span>
-                                <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                    <a class="dropdown-menu__item active" href="#" tabindex="0" data-value="10">10</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="15">15</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="20">20</a>
-                                    <a class="dropdown-menu__item" href="#" tabindex="0" data-value="25">25</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="50">50</a>
-                                </div>
                             </div>
                         </div>
                         <div class="form-group form-group--inline col col-sm-auto">
@@ -63,18 +68,19 @@ include('../config/db_connect.php');
                                     </svg></span>
                             </div>
                         </div>
-                        <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
-                            <div class="toolbox__status input-group input-group--white input-group--append">
-                                <input class="input input--select" type="text" value="All status" data-toggle="dropdown" readonly><span class="input-group__arrow">
+                        <div class="form-group form-group--inline col-12 col-sm-auto">
+                            <div class="input-group input-group--white input-group--append">
+                                <select id="select_status" class="input js-input-select" data-placeholder="">
+                                    <option value="2" selected="selected">All status
+                                    </option>
+                                    <option value="1">Public
+                                    </option>
+                                    <option value="0">Private
+                                    </option>
+                                </select><span class="input-group__arrow">
                                     <svg class="icon-icon-keyboard-down">
                                         <use xlink:href="#icon-keyboard-down"></use>
                                     </svg></span>
-                                <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                    <a class="dropdown-menu__item active" href="#" tabindex="0" data-value="All status"><span class="marker-item"></span> All status</a>
-                                    <a class="dropdown-menu__item" href="#" tabindex="0" data-value="Published"><span class="marker-item color-green"></span>
-                                        Published</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="Deleted"><span class="marker-item color-red"></span>
-                                        Deleted</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -124,15 +130,15 @@ include('../config/db_connect.php');
                             </th>
                             <th class="d-none d-lg-table-cell"><span>ID</span>
                             </th>
-                            <th class="table__th-sort"><span class="align-middle">Product Name</span><span class="sort sort--down"></span>
+                            <th class="table__th-sort"><span class="align-middle">Product Name</span>
                             </th>
-                            <th class="table__th-sort"><span class="align-middle">Category</span><span class="sort sort--down"></span>
+                            <th class="table__th-sort"><span class="align-middle">Category</span>
                             </th>
-                            <th class="table__th-sort"><span class="align-middle">Price</span><span class="sort sort--down"></span>
+                            <th class="table__th-sort"><span class="align-middle">Price</span>
                             </th>
-                            <th class="table__th-sort d-none d-lg-table-cell"><span class="align-middle">Date</span><span class="sort sort--down"></span>
+                            <th class="table__th-sort d-none d-lg-table-cell"><span class="align-middle">Date</span>
                             </th>
-                            <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Status</span><span class="sort sort--down"></span>
+                            <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Status</span>
                             </th>
                             <th class="table__actions"></th>
                         </tr>
@@ -140,7 +146,7 @@ include('../config/db_connect.php');
 
                     <tbody id="body-table">
                         <?php
-                        $sl_product = "SELECT * FROM products";
+                        $sl_product = "SELECT * FROM products, category where products.pr_category = category.c_id limit 10";
                         $res_product = mysqli_query($conn, $sl_product);
                         $count = 1;
                         while ($row = mysqli_fetch_assoc($res_product)) {
@@ -154,7 +160,7 @@ include('../config/db_connect.php');
                                 <td class="d-none d-lg-table-cell table__td"><?php echo $row['pr_code']; ?><span class="text-grey"></span>
                                 </td>
                                 <td class="table__td"><?php echo $row['pr_name']; ?></td>
-                                <td class="table__td"><span class="text-grey"><?php echo $row['pr_category']; ?></span>
+                                <td class="table__td"><span class="text-grey"><?php echo $row['c_name']; ?></span>
                                 </td>
                                 <td class="table__td"><span><?php echo $row['pr_price']; ?></span>
                                 </td>
@@ -163,8 +169,8 @@ include('../config/db_connect.php');
                                 <td class="d-none d-sm-table-cell table__td">
                                     <div class="table__status"><span class="table__status-icon <?php if ($row['pr_status'] == 0)  echo "color-red";
                                                                                                 else echo "color-green" ?>"></span>
-                                        <?php if ($row['pr_status'] == 0)  echo "Deleted";
-                                        else echo "Published" ?></div>
+                                        <?php if ($row['pr_status'] == 0)  echo "Private";
+                                        else echo "Public" ?></div>
                                 </td>
                                 <td class="table__td table__actions">
                                     <div class="items-more">
@@ -176,12 +182,12 @@ include('../config/db_connect.php');
                                         <div class="dropdown-items dropdown-items--right">
                                             <div class="dropdown-items__container">
                                                 <ul class="dropdown-items__list">
-                                                    <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                                    <li class="dropdown-items__item"><a href="product-details.php?id=<?php echo $row['pr_id'] ?>" class="dropdown-items__link"><span class="dropdown-items__link-icon">
                                                                 <svg class="icon-icon-view">
                                                                     <use xlink:href="#icon-view"></use>
                                                                 </svg></span>Details</a>
                                                     </li>
-                                                    <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                                    <li class="dropdown-items__item"><a value="<?php echo $row['pr_id'] ?>" class="dropdown-items__link delete-product"><span class="dropdown-items__link-icon">
                                                                 <svg class="icon-icon-trash">
                                                                     <use xlink:href="#icon-trash"></use>
                                                                 </svg></span>Delete</a>
@@ -293,6 +299,8 @@ include('../config/db_connect.php');
                                     <label class="form-label">Thể loại</label>
                                     <div class="input-group input-group--append">
                                         <select class="input js-input-select input--fluid" data-placeholder="" id="pr_category" name="pr_category">
+                                            <option value=""></option>
+
                                             <?php
                                             include('../config/db_connect.php');
                                             $sl_Category = "SELECT * FROM `category`";
@@ -310,6 +318,23 @@ include('../config/db_connect.php');
                                         </span>
                                     </div>
                                 </div>
+                                <div class="col-12 form-group form-group--lg">
+                                    <label class="form-label">Trạng thái sản phẩm</label>
+                                    <div class="input-group input-group--append">
+                                        <select id="pr_status" class="input js-input-select input--fluid" data-placeholder="">
+                                            <option value="" selected="selected">
+                                            </option>
+                                            <option value="1">Public
+                                            </option>
+                                            <option value="0">Private
+                                            </option>
+                                        </select><span class="input-group__arrow">
+                                            <svg class="icon-icon-keyboard-down">
+                                                <use xlink:href="#icon-keyboard-down"></use>
+                                            </svg></span>
+                                    </div>
+                                </div>
+
                                 <div class="col-12 col-md-6 form-group form-group--lg">
                                     <label class="form-label">Giá (VNĐ)</label>
                                     <div class="input-group input-group--prepend">
@@ -419,7 +444,7 @@ include('../config/db_connect.php');
                 <div class="modal__body">
                     <div class="modal__container">
                         <img class="modal-success__icon" src="img/content/checked-success.svg" alt="#">
-                        <h4 class="modal-success__title">Product was added</h4>
+                        <h4 class="modal-success__title">Thêm sản phẩm thành công</h4>
                     </div>
                 </div>
                 <div class="modal-compact__buttons">

@@ -10,7 +10,7 @@ if (isset($_POST)) {
     foreach ($books as $i => $book) {
         $count = $i + 1;
         $class = $book['pr_status'] == 0  ? 'color-red' :  'color-green';
-        $status = $book['pr_status'] == 0  ? 'Deleted' :  'Published';
+        $status = $book['pr_status'] == 0  ? 'Private' :  'Public';
         $ouput .= "
     
         <tr class='table__row'>
@@ -42,12 +42,12 @@ if (isset($_POST)) {
                                             <div class='dropdown-items dropdown-items--right'>
                                                 <div class='dropdown-items__container'>
                                                     <ul class='dropdown-items__list'>
-                                                        <li class='dropdown-items__item'><a class='dropdown-items__link'><span class='dropdown-items__link-icon'>
+                                                        <li class='dropdown-items__item'><a href='product-details.php?id=" . $book['pr_id'] . "' class='dropdown-items__link'><span class='dropdown-items__link-icon'>
                                                                     <svg class='icon-icon-view'>
                                                                         <use xlink:href='#icon-view'></use>
                                                                     </svg></span>Details</a>
                                                         </li>
-                                                        <li class='dropdown-items__item'><a class='dropdown-items__link'><span class='dropdown-items__link-icon'>
+                                                        <li class='dropdown-items__item'><a value=" . $book['pr_id'] . " class='dropdown-items__link delete-product'><span class='dropdown-items__link-icon'>
                                                                     <svg class='icon-icon-trash'>
                                                                         <use xlink:href='#icon-trash'></use>
                                                                     </svg></span>Delete</a>
