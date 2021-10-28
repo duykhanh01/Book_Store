@@ -223,56 +223,58 @@ $images = explode(",", $book['pr_img']);
                 </div>
                 <div class="modal__body">
                     <div class="modal__container">
-                        <form method="POST">
+                        <form method="POST" action="core/update-product.php?id=<?php echo $book['pr_id'] ?>">
                             <div class="row row--md">
                                 <div class="col-12 form-group form-group--lg">
                                     <label class="form-label">Tên sách</label>
                                     <div class="input-group">
-                                        <input class="input" type="text" placeholder="Nhập tên sách" required name="namebook">
+                                        <input class="input" type="text" value="<?php echo $book['pr_name']; ?>" placeholder="Nhập tên sách" required name="pr_name">
                                     </div>
                                 </div>
                                 <div class="col-12 form-group form-group--lg">
                                     <label class="form-label">Mã sách</label>
                                     <div class="input-group">
-                                        <input class="input" type="text" placeholder="Nhập mã sách" required name="prcode">
+                                        <input class="input" type="text" value="<?php echo $book['pr_code']; ?>" placeholder="Nhập mã sách" required name="pr_code">
                                     </div>
                                 </div>
                                 <div class="col-12 form-group form-group--lg">
                                     <label class="form-label">Tên tác giả</label>
                                     <div class="input-group">
-                                        <input class="input" type="text" placeholder="Nhập tên tác giả" required name="nameauthor">
+                                        <input class="input" type="text" value="<?php echo $book['pr_author']; ?>" placeholder="Nhập tên tác giả" required name="auth_name">
                                     </div>
                                 </div>
 
                                 <div class="col-12 form-group form-group--lg">
                                     <label class="form-label">Nhà xuất bản</label>
                                     <div class="input-group">
-                                        <input class="input" type="text" placeholder="Nhà xuất bản" required name="namepub">
+                                        <input class="input" type="text" value="<?php echo $book['pr_pub']; ?>" placeholder="Nhà xuất bản" required name="pub_name">
                                     </div>
                                 </div>
 
                                 <div class="col-12 form-group form-group--lg">
                                     <label class="form-label">Số lượng sách</label>
                                     <div class="input-group">
-                                        <input class="input" type="number" placeholder="Nhập số lượng" required name="prnumber">
+                                        <input class="input" type="number" value="<?php echo $book['pr_number']; ?>" placeholder="Nhập số lượng" required name="pr_number">
                                     </div>
                                 </div>
                                 <div class="col-12 form-group form-group--lg">
                                     <label class="form-label">Mô tả chi tiết</label>
                                     <div class="input-editor">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Nhập mô tả chi tiết sản phẩm" rows="5" name="desc"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" value="<?php echo $book['pr_desc']; ?>" placeholder="Nhập mô tả chi tiết sản phẩm" rows="5" name="pr_desc"><?php echo $book['pr_desc']; ?>
+                                        </textarea>
                                     </div>
                                 </div>
                                 <div class="col-12 form-group form-group--lg">
                                     <label class="form-label">Thể loại</label>
                                     <div class="input-group input-group--append">
-                                        <select class="input js-input-select input--fluid" data-placeholder="" name="cate">
+                                        <select class="input js-input-select input--fluid" data-placeholder="" name="pr_category">
+
                                             <?php
                                             include('../config/db_connect.php');
                                             $sl_Category = "SELECT * FROM `category`";
                                             $res_Category = mysqli_query($conn, $sl_Category);
                                             while ($row = mysqli_fetch_assoc($res_Category)) { ?>
-                                                <option value="<?php echo $row['c_id']; ?>"><?php echo $row['c_name'] ?></option>
+                                                <option <?php if ($book['pr_category'] == $row['c_id']) echo "selected" ?> value="<?php echo $row['c_id']; ?>"><?php echo $row['c_name'] ?></option>
                                             <?php }
                                             ?>
 
@@ -284,17 +286,32 @@ $images = explode(",", $book['pr_img']);
                                         </span>
                                     </div>
                                 </div>
+                                <div class="col-12 form-group form-group--lg">
+                                    <label class="form-label">Trạng thái sản phẩm</label>
+                                    <div class="input-group input-group--append">
+                                        <select name="pr_status" class="input js-input-select input--fluid" data-placeholder="">
+
+                                            <option <?php if ($book['pr_status'] == 1) echo 'selected' ?> value="1">Public
+                                            </option>
+                                            <option <?php if ($book['pr_status'] == 0) echo 'selected' ?> value="0">Private
+                                            </option>
+                                        </select><span class="input-group__arrow">
+                                            <svg class="icon-icon-keyboard-down">
+                                                <use xlink:href="#icon-keyboard-down"></use>
+                                            </svg></span>
+                                    </div>
+                                </div>
+
                                 <div class="col-12 col-md-6 form-group form-group--lg">
                                     <label class="form-label">Giá (VNĐ)</label>
                                     <div class="input-group input-group--prepend">
-                                        <input class="input" type="number" min="0" max="999999999" placeholder="VNĐ" value="" required>
-
+                                        <input class="input" type="number" min="0" max="999999999" value="<?php echo $book['pr_price']; ?>" placeholder="VNĐ" id="pr_price" name="pr_price" value="" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 form-group form-group--lg">
                                     <label class="form-label">Giảm giá (VNĐ)</label>
                                     <div class="input-group input-group--prepend">
-                                        <input class="input" type="number" min="0" max="999999999" placeholder="VN" value="" required>
+                                        <input class="input" type="number" min="0" max="999999999" placeholder="VN" value="<?php echo $book['pr_discount']; ?>" id="pr_discount" name="pr_discount" value="" required>
 
                                     </div>
                                 </div>
@@ -302,7 +319,7 @@ $images = explode(",", $book['pr_img']);
                                     <label class="form-label">Ảnh sản phẩm</label>
                                     <div class="image-upload">
                                         <div class="image-upload__drop">
-                                            <input class="image-upload__input" type="file" name="file_upload" multiple="multiple" accept="image/png, image/jpeg" />
+                                            <input class="image-upload__input" type="file" id="pr_images" name="pr_images" multiple="multiple" accept="image/png, image/jpeg" />
                                             <div class="image-upload__drop-text">
                                                 <svg class="icon-icon-upload">
                                                     <use xlink:href="#icon-upload"></use>
@@ -372,7 +389,7 @@ $images = explode(",", $book['pr_img']);
                     <div class="modal__container">
                         <div class="modal__footer-buttons">
                             <div class="modal__footer-button">
-                                <button class="button button--primary button--block" data-dismiss="modal" data-modal="#addProductSuccess"><span class="button__text">Create</span>
+                                <button type="submit" id="add-product" class="button button--primary button--block" data-dismiss="modal">Create
                                 </button>
                             </div>
                             <div class="modal__footer-button">
@@ -386,31 +403,7 @@ $images = explode(",", $book['pr_img']);
         </div>
     </div>
 </div>
-<div class="modal modal-compact modal-success scrollbar-thin" id="addProductSuccess" data-simplebar>
-    <div class="modal__overlay" data-dismiss="modal"></div>
-    <div class="modal__wrap">
-        <div class="modal__window">
-            <div class="modal__content">
-                <div class="modal__body">
-                    <div class="modal__container">
-                        <img class="modal-success__icon" src="img/content/checked-success.svg" alt="#">
-                        <h4 class="modal-success__title">Product was added</h4>
-                    </div>
-                </div>
-                <div class="modal-compact__buttons">
-                    <div class="modal-compact__button-item">
-                        <button class="modal-compact__button button" data-dismiss="modal" data-modal="#addProduct"><span class="button__text">Add new product</span>
-                        </button>
-                    </div>
-                    <div class="modal-compact__button-item">
-                        <button class="modal-compact__button button" data-dismiss="modal"><span class="button__text">Close</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <?php require_once("templates/footer.php") ?>
 
 </html>

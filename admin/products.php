@@ -344,7 +344,7 @@ include('../config/db_connect.php');
                                 <div class="col-12 col-md-6 form-group form-group--lg">
                                     <label class="form-label">Giảm giá (VNĐ)</label>
                                     <div class="input-group input-group--prepend">
-                                        <input class="input" type="number" min="0" max="999999999" placeholder="VN" id="pr_discount" name="pr_discount" value="" required>
+                                        <input class="input" type="number" min="0" max="999999999" placeholder="VNĐ" id="pr_discount" name="pr_discount" value="" required>
 
                                     </div>
                                 </div>

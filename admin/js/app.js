@@ -134,7 +134,6 @@ $(document).ready(function () {
 
     var pr_name = $("#pr_name").val();
     var pr_code = $("#pr_code").val();
-    console.log(pr_code);
     var auth_name = $("#auth_name").val();
     var pub_name = $("#pub_name").val();
     var pr_number = $("#pr_number").val();
@@ -190,6 +189,17 @@ $(document).ready(function () {
             );
           } else {
             $("#body-table").html(data);
+            // $("#pr_name").val("");
+            // $("#auth_name").val("");
+            // $("#pub_name").val("");
+            // $(".pr_desc").val("");
+            // $("#pr_category").val("");
+            // $("#pr_price").val("");
+            // $("#pr_discount").val("");
+            // $("#pr_images").val("");
+            // $("#pr_status").val("");
+            // $("#pr_code").val("");
+            // $("#pr_number").val("");
           }
         },
       });
