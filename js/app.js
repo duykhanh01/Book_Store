@@ -9,10 +9,10 @@ $(document).ready(function() {
             },
             success: function(data) {
                 // $("#body-table").html(data);
-                // if (data == "done")
-                //     alert('Đã thêm vào giỏ hàng');
-                // else
-                //     alert("Đăng nhập để thêm");
+                if (data == "done")
+                    alert('Đã thêm vào giỏ hàng');
+                else
+                    alert("Đăng nhập để thêm");
             },
         });
     });
