@@ -88,50 +88,49 @@ include('config/db_connect.php');
                         {"breakpoint":320, "settings": {"slidesToShow": 1} }
                     ]'>
                 <?php
-
-                $sql = "SELECT  * FROM `products` limit 7";
+                $sl_id = "SELECT  od.pr_id, count(od.or_id) FROM orderdetail od, orders ors 
+                where od.or_id = ors.or_id and DATEDIFF(CURDATE(), ors.or_date)<=7 
+                GROUP BY od.pr_id ORDER BY  count(od.or_id) DESC LIMIT 7";
+                $list_id = mysqli_query($conn, $sl_id);
+                while($row_id = mysqli_fetch_assoc($list_id))
+                {
+                    $products_id = $row_id['pr_id'];
+                
+                $sql = "SELECT  * FROM `products` where pr_id = $products_id limit 7";
                 $res = mysqli_query($conn, $sql);
-                while ($row = mysqli_fetch_assoc($res)) { ?>
+                while ($row_romance = mysqli_fetch_assoc($res)) {  
+                $name_img = explode(",",$row_romance['pr_img'])[0];?>
                     <div class="single-slide">
                         <div class="product-card">
-                            <div class="product-header">
-                                <a href="" class="author">
-                                    Lpple
-                                </a>
-                                <h3><a href="product-details.php"><?php echo $row['pr_name']; ?></a></h3>
-                            </div>
+                            
                             <div class="product-card--body">
                                 <div class="card-image">
-                                    <img src="image/products/product-2.jpg" alt="">
+                                    <img src="admin/<?php echo $name_img;?>" class="m-auto" style="width:190px; height:190px;" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details.php" class="hover-image">
-                                            <img src="image/products/product-1.jpg" alt="">
-                                        </a>
+                                        
                                         <div class="hover-btns">
-                                            <a href="cart.php" class="single-btn">
+                                            <a href="#" class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
                                                 <i class="fas fa-cart-plus"></i>
                                             </a>
-                                            <div class="hover-btns">
-                                                <a href="cart.php" class="single-btn">
-                                                    <i class="fas fa-cart-plus"></i>
-                                                </a>
 
-                                                <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
-                                            </div>
+                                            <a  data-toggle="modal" data-target="#quickModal" class="single-btn">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="price-block">
-                                        <span class="price">£51.20</span>
-                                        <del class="price-old">£51.20</del>
-                                        <span class="price-discount">20%</span>
-                                    </div>
+                                </div>
+                                <div class="product-header mt-2">
+                                    <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
+                                </div>
+                                <div class="price-block">
+                                    <span class="price"><?php echo $row_romance['pr_price'] - $row_romance['pr_discount']; ?></span>
+                                    <del class="price-old"><?php echo $row_romance['pr_price']; ?></del>
+                                    <span class="price-discount">20%</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <?php  } ?>
+                <?php  } } ?>
             </div>
         </div>
     </section>
@@ -167,19 +166,12 @@ include('config/db_connect.php');
 
                     <div class="single-slide">
                         <div class="product-card">
-                            <div class="product-header">
-                                <a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>" class="author">
-                                    <?php echo $row_romance['pr_author'] ?>
-                                </a>
-                                <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
-                            </div>
+                            
                             <div class="product-card--body">
                                 <div class="card-image">
-                                    <img src="admin/<?php echo $name_img;?>" alt="">
+                                    <img src="admin/<?php echo $name_img;?>" class="m-auto" style="width:190px; height:190px;" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details.php" class="hover-image">
-                                            <img src="admin/<?php echo $name_img;?>" alt="">
-                                        </a>
+                                        
                                         <div class="hover-btns">
                                             <a href="#" class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
                                                 <i class="fas fa-cart-plus"></i>
@@ -190,6 +182,9 @@ include('config/db_connect.php');
                                             </a>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="product-header mt-2">
+                                    <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
                                 </div>
                                 <div class="price-block">
                                     <span class="price"><?php echo $row_romance['pr_price'] - $row_romance['pr_discount']; ?></span>
@@ -209,11 +204,10 @@ include('config/db_connect.php');
     <!--=================================
     BIOGRAPHIES BOOKS
 ===================================== -->
-    <!-- ------------------------------------------------ Foreach Thể loại ------------------------------------------------------------------ -->
     <section class="section-margin">
         <div class="container">
             <div class="section-title section-title--bordered">
-                <h2>Thể loại sách 2</h2>
+                <h2>Kỹ năng sống</h2>
             </div>
             <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
                         "autoplay": true,
@@ -227,250 +221,121 @@ include('config/db_connect.php');
                         {"breakpoint":480, "settings": {"slidesToShow": 1} },
                         {"breakpoint":320, "settings": {"slidesToShow": 1} }
                     ]'>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="" class="author">
-                                Lpple
-                            </a>
-                            <h3><a href="product-details.php">Revolutionize Your BOOK With</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image/products/product-2.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.php" class="hover-image">
-                                        <img src="image/products/product-1.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.php" class="single-btn">
-                                            <i class="fas fa-cart-plus"></i>
-                                        </a>
+                <!-- thêm các sách theo loại tình cảm -->
+                <?php
+                $sl_romance = "SELECT * from products, category where products.pr_category = category.c_id and products.pr_category = 1 limit 8";
+                $res_romance = mysqli_query($conn, $sl_romance);
+                while ($row_romance = mysqli_fetch_assoc($res_romance)) {
+                //xử lí lấy ảnh ra
+                $name_img = explode(",",$row_romance['pr_img'])[0];
+               
+                    ?>
 
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
+                    <div class="single-slide">
+                        <div class="product-card">
+                            
+                            <div class="product-card--body">
+                                <div class="card-image">
+                                    <img src="admin/<?php echo $name_img;?>" class="m-auto" style="width:190px; height:190px;" alt="">
+                                    <div class="hover-contents">
+                                        
+                                        <div class="hover-btns">
+                                            <a href="#" class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
+                                                <i class="fas fa-cart-plus"></i>
+                                            </a>
+
+                                            <a  data-toggle="modal" data-target="#quickModal" class="single-btn">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
+                                <div class="product-header mt-2">
+                                    <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
+                                </div>
+                                <div class="price-block">
+                                    <span class="price"><?php echo $row_romance['pr_price'] - $row_romance['pr_discount']; ?></span>
+                                    <del class="price-old"><?php echo $row_romance['pr_price']; ?></del>
+                                    <span class="price-discount">20%</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="" class="author">
-                                Jpple
-                            </a>
-                            <h3><a href="product-details.php">Turn Your BOOK Into High Machine</a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image/products/product-2.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.php" class="hover-image">
-                                        <img src="image/products/product-1.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.php" class="single-btn">
-                                            <i class="fas fa-cart-plus"></i>
-                                        </a>
+                <?php
+                }
 
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="" class="author">
-                                Wpple
-                            </a>
-                            <h3><a href="product-details.php">3 Ways Create Better BOOK With</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image/products/product-3.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.php" class="hover-image">
-                                        <img src="image/products/product-2.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.php" class="single-btn">
-                                            <i class="fas fa-cart-plus"></i>
-                                        </a>
-
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="" class="author">
-                                Epple
-                            </a>
-                            <h3><a href="product-details.php">What You Can Learn From Bill Gates</a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image/products/product-5.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.php" class="hover-image">
-                                        <img src="image/products/product-4.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.php" class="single-btn">
-                                            <i class="fas fa-cart-plus"></i>
-                                        </a>
-
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="" class="author">
-                                Hpple
-                            </a>
-                            <h3><a href="product-details.php">a Half Very Simple Things You To</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image/products/product-6.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.php" class="hover-image">
-                                        <img src="image/products/product-4.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.php" class="single-btn">
-                                            <i class="fas fa-cart-plus"></i>
-                                        </a>
-
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="" class="author">
-                                Bpple
-                            </a>
-                            <h3><a href="product-details.php">Here Is A Quick Cure For Book</a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image/products/product-8.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.php" class="hover-image">
-                                        <img src="image/products/product-7.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.php" class="single-btn">
-                                            <i class="fas fa-cart-plus"></i>
-                                        </a>
-
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="" class="author">
-                                zpple
-                            </a>
-                            <h3><a href="product-details.php">BOOK: Do You Really Need It? This </a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="image/products/product-13.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.php" class="hover-image">
-                                        <img src="image/products/product-11.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.php" class="single-btn">
-                                            <i class="fas fa-cart-plus"></i>
-                                        </a>
-
-                                        <a href="#" data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ?>
             </div>
         </div>
     </section>
+
+    <section class="section-margin">
+        <div class="container">
+            <div class="section-title section-title--bordered">
+                <h2>Khoa học</h2>
+            </div>
+            <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
+                        "autoplay": true,
+                        "autoplaySpeed": 8000,
+                        "slidesToShow": 5,
+                        "dots":true
+                    }' data-slick-responsive='[
+                        {"breakpoint":1200, "settings": {"slidesToShow": 4} },
+                        {"breakpoint":992, "settings": {"slidesToShow": 3} },
+                        {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                        {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                        {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                    ]'>
+                <!-- thêm các sách theo loại tình cảm -->
+                <?php
+                $sl_romance = "SELECT * from products, category where products.pr_category = category.c_id and products.pr_category = 3 limit 8";
+                $res_romance = mysqli_query($conn, $sl_romance);
+                while ($row_romance = mysqli_fetch_assoc($res_romance)) {
+                //xử lí lấy ảnh ra
+                $name_img = explode(",",$row_romance['pr_img'])[0];
+               
+                    ?>
+
+                    <div class="single-slide">
+                        <div class="product-card">
+                            
+                            <div class="product-card--body">
+                                <div class="card-image">
+                                    <img src="admin/<?php echo $name_img;?>" class="m-auto" style="width:190px; height:190px;" alt="">
+                                    <div class="hover-contents">
+                                        
+                                        <div class="hover-btns">
+                                            <a href="#" class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
+                                                <i class="fas fa-cart-plus"></i>
+                                            </a>
+
+                                            <a  data-toggle="modal" data-target="#quickModal" class="single-btn">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-header mt-2">
+                                    <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
+                                </div>
+                                <div class="price-block">
+                                    <span class="price"><?php echo $row_romance['pr_price'] - $row_romance['pr_discount']; ?></span>
+                                    <del class="price-old"><?php echo $row_romance['pr_price']; ?></del>
+                                    <span class="price-discount">20%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                }
+
+                ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- ------------------------------------------------ Foreach Thể loại ------------------------------------------------------------------ -->
+  
     <!--=================================
         Home Features Section
     ===================================== -->

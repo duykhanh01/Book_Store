@@ -192,8 +192,7 @@ include("templates/header.php");
 											<td class="pro-quantity">
 												<div class="pro-qty">
 													<div class="count-input-block">
-														<input class="d-none pr_id" value="<?php echo $row_cart['pr_id'];?>">
-														<input type="number" class="form-control text-center cart_quatity" value="<?php echo $row_cart['cart_quatity'];?>">
+														<input type="number" class="form-control text-center cart_quatity" id_pr ="<?php echo $row_cart['pr_id'];?>" value="<?php echo $row_cart['cart_quatity'];?>">
 													</div>
 												</div>
 											</td>

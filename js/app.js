@@ -9,10 +9,10 @@ $(document).ready(function() {
             },
             success: function(data) {
                 // $("#body-table").html(data);
-                if (data == "done")
-                    alert('Đã thêm vào giỏ hàng');
-                else
-                    alert("Đăng nhập để thêm");
+                // if (data == "done")
+                //     alert('Đã thêm vào giỏ hàng');
+                // else
+                //     alert("Đăng nhập để thêm");
             },
         });
     });
@@ -55,7 +55,8 @@ $(document).ready(function() {
     });
     $(".cart_quatity").change(function() {
         var number = $(this).val();
-        var id = $(".pr_id").val();
+        var id = $(this).attr("id_pr");
+        //alert($(this).attr("id_pr"));
         $.ajax({
             url: "core/update_number_product.php",
             type: "POST",

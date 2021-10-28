@@ -266,7 +266,7 @@ session_start();
 <section class="section-margin">
         <div class="container">
             <div class="section-title section-title--bordered">
-                <h2>Truyện Tranh</h2>
+                <h2>Các sách cùng thể loại</h2>
             </div>
             <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
                         "autoplay": true,
@@ -282,7 +282,11 @@ session_start();
                     ]'>
                 <!-- thêm các sách theo loại tình cảm -->
                 <?php
-                $sl_romance = "SELECT * from products, category where products.pr_category = category.c_id and products.pr_category = 2 and products.pr_id != $pr_id limit 4";
+                $id_pr = $_GET['idsp'];
+                $sl_pr = "SELECT * FROM products where pr_id = '$id_pr'";
+                $res_pr = mysqli_fetch_assoc(mysqli_query($conn,$sl_pr));
+                $category = $res_pr['pr_category'];
+                $sl_romance = "SELECT * from products, category where products.pr_category = category.c_id and products.pr_category = '$category' and pr_id != '$pr_id'  limit 8";
                 $res_romance = mysqli_query($conn, $sl_romance);
                 while ($row_romance = mysqli_fetch_assoc($res_romance)) {
                 //xử lí lấy ảnh ra
@@ -292,19 +296,12 @@ session_start();
 
                     <div class="single-slide">
                         <div class="product-card">
-                            <div class="product-header">
-                                <a href="" class="author">
-                                    <?php echo $row_romance['pr_author'] ?>
-                                </a>
-                                <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
-                            </div>
+                            
                             <div class="product-card--body">
                                 <div class="card-image">
-                                    <img src="admin/<?php echo $name_img;?>" alt="">
+                                    <img src="admin/<?php echo $name_img;?>" class="m-auto" style="width:190px; height:190px;" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details.php" class="hover-image">
-                                            <img src="admin/<?php echo $name_img;?>" alt="">
-                                        </a>
+                                        
                                         <div class="hover-btns">
                                             <a href="#" class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
                                                 <i class="fas fa-cart-plus"></i>
@@ -315,6 +312,9 @@ session_start();
                                             </a>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="product-header mt-2">
+                                    <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
                                 </div>
                                 <div class="price-block">
                                     <span class="price"><?php echo $row_romance['pr_price'] - $row_romance['pr_discount']; ?></span>
@@ -331,9 +331,6 @@ session_start();
             </div>
         </div>
     </section>
-<!--=================================
-  Brands Slider
-===================================== -->
 <!--=================================
     Footer Area
 <?php require_once("templates/footer.php") ?>
