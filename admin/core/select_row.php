@@ -9,8 +9,8 @@ if (isset($_POST)) {
     $ouput = "";
     foreach ($books as $i => $book) {
         $count = $i + 1;
-        $class = $book['pr_status'] == 0  ? 'color-red' :  'color-green';
-        $status = $book['pr_status'] == 0  ? 'Private' :  'Public';
+        $class = $book['pr_status'] == 1  ? 'color-red' :  'color-green';
+        $status = $book['pr_status'] == 1  ? 'Private' :  'Public';
         $ouput .= "
     
         <tr class='table__row'>
@@ -24,7 +24,7 @@ if (isset($_POST)) {
                                     </td>
                                     <td class='table__td'><span>" . $book['pr_price'] . "</span>
                                     </td>
-                                    <td class='d-none d-lg-table-cell table__td'><span class='text-grey'>" . $book['pr_date'] . "</span>
+                                    <td class='d-none d-lg-table-cell table__td'><span class='text-grey'>" . $book['pr_number'] . "</span>
                                     </td>
                                    <td class='d-none d-sm-table-cell table__td'>
                                         <div class='table__status'><span class='table__status-icon " . $class . "'>

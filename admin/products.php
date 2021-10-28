@@ -57,7 +57,7 @@ include('../config/db_connect.php');
                                     $res = mysqli_query($conn, $sql);
                                     $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                     ?>
-                                    <option value="0" selected="selected">All Categories
+                                    <option value="0" selected="selected">Tất cả thể loại
                                     </option>
                                     <?php foreach ($categories as $category) :  ?>
                                         <option value="<?php echo $category['c_id'] ?>"><?php echo $category['c_name'] ?> </option>
@@ -71,7 +71,7 @@ include('../config/db_connect.php');
                         <div class="form-group form-group--inline col-12 col-sm-auto">
                             <div class="input-group input-group--white input-group--append">
                                 <select id="select_status" class="input js-input-select" data-placeholder="">
-                                    <option value="2" selected="selected">All status
+                                    <option value="2" selected="selected">Tất cả trạng thái
                                     </option>
                                     <option value="1">Public
                                     </option>
@@ -130,15 +130,15 @@ include('../config/db_connect.php');
                             </th>
                             <th class="d-none d-lg-table-cell"><span>ID</span>
                             </th>
-                            <th class="table__th-sort"><span class="align-middle">Product Name</span>
+                            <th class="table__th-sort"><span class="align-middle">Tên sách</span>
                             </th>
-                            <th class="table__th-sort"><span class="align-middle">Category</span>
+                            <th class="table__th-sort"><span class="align-middle">Thể loại</span>
                             </th>
-                            <th class="table__th-sort"><span class="align-middle">Price</span>
+                            <th class="table__th-sort"><span class="align-middle">Giá đã giảm</span>
                             </th>
-                            <th class="table__th-sort d-none d-lg-table-cell"><span class="align-middle">Date</span>
+                            <th class="table__th-sort d-none d-lg-table-cell"><span class="align-middle">Tồn kho</span>
                             </th>
-                            <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Status</span>
+                            <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Trạng thái</span>
                             </th>
                             <th class="table__actions"></th>
                         </tr>
@@ -162,14 +162,14 @@ include('../config/db_connect.php');
                                 <td class="table__td"><?php echo $row['pr_name']; ?></td>
                                 <td class="table__td"><span class="text-grey"><?php echo $row['c_name']; ?></span>
                                 </td>
-                                <td class="table__td"><span><?php echo $row['pr_price']; ?></span>
+                                <td class="table__td"><span><?php echo $row['pr_price'] - $row['pr_discount']; ?></span>
                                 </td>
-                                <td class="d-none d-lg-table-cell table__td"><span class="text-grey"><?php echo $row['pr_date']; ?></span>
+                                <td class="d-none d-lg-table-cell table__td"><span class="text-grey"><?php echo $row['pr_number']; ?></span>
                                 </td>
                                 <td class="d-none d-sm-table-cell table__td">
-                                    <div class="table__status"><span class="table__status-icon <?php if ($row['pr_status'] == 0)  echo "color-red";
+                                    <div class="table__status"><span class="table__status-icon <?php if ($row['pr_status'] == 1)  echo "color-red";
                                                                                                 else echo "color-green" ?>"></span>
-                                        <?php if ($row['pr_status'] == 0)  echo "Private";
+                                        <?php if ($row['pr_status'] == 1)  echo "Private";
                                         else echo "Public" ?></div>
                                 </td>
                                 <td class="table__td table__actions">
@@ -324,9 +324,9 @@ include('../config/db_connect.php');
                                         <select id="pr_status" class="input js-input-select input--fluid" data-placeholder="">
                                             <option value="" selected="selected">
                                             </option>
-                                            <option value="1">Public
+                                            <option value="2">Public
                                             </option>
-                                            <option value="0">Private
+                                            <option value="1">Private
                                             </option>
                                         </select><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
@@ -422,7 +422,7 @@ include('../config/db_connect.php');
                     <div class="modal__container">
                         <div class="modal__footer-buttons">
                             <div class="modal__footer-button">
-                                <button id="add-product" class="button button--primary button--block" data-dismiss="modal" data-modal="#addProductSuccess"><span class="button__text">Create</span>
+                                <button id="add-product" class="button button--primary button--block" data-dismiss="modal" data-modal="#addProductSuccess"><span class="button__text">Thêm</span>
                                 </button>
                             </div>
                             <div class="modal__footer-button">

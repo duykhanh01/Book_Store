@@ -222,4 +222,14 @@ $(document).ready(function () {
       },
     });
   });
+
+  // ---------------------- Update product ----------------------------------------------------
+  $("#update-product").click(function () {
+    $("#form-update").submit();
+  });
+
+  // Update images product
+  $("#update-images").click(function () {
+    $("#form-images").submit();
+  });
 });

@@ -4,17 +4,17 @@ include('../config/db_connect.php');
 if (isset($_POST)) {
     $id =  $_POST['id'];
     if ($id == "1" or $id == "0") {
-        $sql = "SELECT  category.c_name as c_name, pr_id,pr_code, pr_name, pr_category, pr_status,pr_date, pr_price from products, category where category.c_id = pr_category and pr_status = '$id'";
+        $sql = "SELECT  * from products, category where category.c_id = pr_category and pr_status = '$id'";
     } else {
-        $sql = "SELECT  category.c_name as c_name, pr_id,pr_code, pr_name, pr_category, pr_status,pr_date, pr_price from products, category where category.c_id = pr_category";
+        $sql = "SELECT  * from products, category where category.c_id = pr_category";
     }
     $res = mysqli_query($conn, $sql);
     $book_status = mysqli_fetch_all($res, MYSQLI_ASSOC);
     $ouput = "";
     foreach ($book_status as $i => $book) {
         $count = $i + 1;
-        $class = $book['pr_status'] == 0  ? 'color-red' :  'color-green';
-        $status = $book['pr_status'] == 0  ? 'Private' :  'Public';
+        $class = $book['pr_status'] == 1  ? 'color-red' :  'color-green';
+        $status = $book['pr_status'] == 1  ? 'Private' :  'Public';
         $ouput .= "
     
         <tr class='table__row'>
@@ -28,7 +28,7 @@ if (isset($_POST)) {
                                     </td>
                                     <td class='table__td'><span>" . $book['pr_price'] . "</span>
                                     </td>
-                                    <td class='d-none d-lg-table-cell table__td'><span class='text-grey'>" . $book['pr_date'] . "</span>
+                                    <td class='d-none d-lg-table-cell table__td'><span class='text-grey'>" . $book['pr_number'] . "</span>
                                     </td>
                                    <td class='d-none d-sm-table-cell table__td'>
                                         <div class='table__status'><span class='table__status-icon " . $class . "'></span>
