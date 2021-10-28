@@ -71,11 +71,11 @@ include('../config/db_connect.php');
                         <div class="form-group form-group--inline col-12 col-sm-auto">
                             <div class="input-group input-group--white input-group--append">
                                 <select id="select_status" class="input js-input-select" data-placeholder="">
-                                    <option value="2" selected="selected">Tất cả trạng thái
+                                    <option value="3" selected="selected">Tất cả trạng thái
                                     </option>
-                                    <option value="1">Public
+                                    <option value="2">Public
                                     </option>
-                                    <option value="0">Private
+                                    <option value="1">Private
                                     </option>
                                 </select><span class="input-group__arrow">
                                     <svg class="icon-icon-keyboard-down">

@@ -3,7 +3,7 @@
 include('../config/db_connect.php');
 if (isset($_POST)) {
     $id =  $_POST['id'];
-    if ($id == "1" or $id == "0") {
+    if ($id == "1" or $id == "2") {
         $sql = "SELECT  * from products, category where category.c_id = pr_category and pr_status = '$id'";
     } else {
         $sql = "SELECT  * from products, category where category.c_id = pr_category";

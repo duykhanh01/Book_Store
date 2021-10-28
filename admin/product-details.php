@@ -174,7 +174,7 @@ if (isset($_GET['id'])) {
                                     <div class="col-12 form-group form-group--lg">
                                         <label class="form-label">Trạng thái</label>
                                         <div class="input-group">
-                                            <input disabled class="input" type="text" placeholder="" value="<?php if ($book['pr_status'] == 0)  echo "Private";
+                                            <input disabled class="input" type="text" placeholder="" value="<?php if ($book['pr_status'] == 1)  echo "Private";
                                                                                                             else echo "Public" ?>" required>
                                         </div>
                                     </div>
@@ -313,9 +313,9 @@ if (isset($_GET['id'])) {
                                     <div class="input-group input-group--append">
                                         <select name="pr_status" class="input js-input-select input--fluid" data-placeholder="">
 
-                                            <option <?php if ($book['pr_status'] == 1) echo 'selected' ?> value="1">Public
+                                            <option <?php if ($book['pr_status'] == 1) echo 'selected' ?> value="2">Public
                                             </option>
-                                            <option <?php if ($book['pr_status'] == 0) echo 'selected' ?> value="0">Private
+                                            <option <?php if ($book['pr_status'] == 0) echo 'selected' ?> value="1">Private
                                             </option>
                                         </select><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
