@@ -129,6 +129,68 @@ include('config/db_connect.php');
             </div>
         </div>
     </section>
+    <section class="section-margin mt-5">
+        <div class="container">
+            <div class="section-title section-title--bordered">
+                <h2>Gợi ý cho bạn hôm nay</h2>
+            </div>
+            <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
+                        "autoplay": true,
+                        "autoplaySpeed": 8000,
+                        "slidesToShow": 5,
+                        "dots":true
+                    }' data-slick-responsive='[
+                        {"breakpoint":1200, "settings": {"slidesToShow": 4} },
+                        {"breakpoint":992, "settings": {"slidesToShow": 3} },
+                        {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                        {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                        {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                    ]'>
+                <?php
+                $sl_recommend = "SELECT *, COUNT(orderdetail.or_id) 
+                from orders, orderdetail, products 
+                where orders.or_id = orderdetail.or_id and  orderdetail.pr_id = products.pr_id 
+                GROUP BY orderdetail.or_id 
+                HAVING  datediff(date(curdate()), date(orders.or_date))<=3 
+                ORDER BY COUNT(orderdetail.or_id) DESC 
+                LIMIT 10;";
+                $res_recommend = mysqli_query($conn, $sl_recommend);
+                while ($row_recommend = mysqli_fetch_assoc($res_recommend)) {  
+                $name_img = explode(",",$row_recommend['pr_img'])[0];?>
+                    <div class="single-slide">
+                        <div class="product-card">
+                            
+                            <div class="product-card--body">
+                                <div class="card-image">
+                                    <img src="admin/<?php echo $name_img;?>" class="m-auto" style="width:190px; height:190px;" alt="">
+                                    <div class="hover-contents">
+                                        
+                                        <div class="hover-btns">
+                                            <a href="#" class="single-btn add_cart" value="<?php echo $row_recommend['pr_id']; ?>">
+                                                <i class="fas fa-cart-plus"></i>
+                                            </a>
+
+                                            <a  data-toggle="modal" data-target="#quickModal" class="single-btn">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-header mt-2">
+                                    <h3><a href="product-details.php?idsp=<?php echo $row_recommend['pr_id']; ?>"><?php echo $row_recommend['pr_name']; ?> </a></h3>
+                                </div>
+                                <div class="price-block">
+                                    <span class="price"><?php echo number_format($row_recommend['pr_price'] - $row_recommend['pr_discount'], 0, ',', '.'). " VNĐ"; ?></span>
+                                    <del class="price-old"><?php echo number_format($row_recommend['pr_price'], 0, ',', '.'). " VNĐ" ; ?></del>
+                                    <span class="price-discount"><?php echo CEIL(($row_recommend['pr_discount'])/($row_recommend['pr_price'])*100); ?>%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php  }  ?>
+            </div>
+        </div>
+    </section>
 <!-- in ra các thể loại -->
 <?php
     $sl_category = "SELECT * from category";
