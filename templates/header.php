@@ -85,7 +85,13 @@
                             <div class="cart-block">
                                 <div class="cart-total">
                                     <span class="text-number">
-                                        1
+                                    <?php include('admin/config/db_connect.php');
+                                            $idcus = $_SESSION['id'];
+                                            
+                                            $sl_numpr = "SELECT count(carts.pr_id) as num from carts where cus_id = '$idcus'";
+                                            $res_numpr = mysqli_fetch_assoc(mysqli_query($conn, $sl_numpr));
+                                            echo $res_numpr['num'];
+                                          ?>
                                     </span>
                                     <span class="text-item">
                                         Shopping Cart
@@ -98,21 +104,26 @@
                                 <div class="cart-dropdown-block">
                                     <div class=" single-cart-block ">
                                         <div class="cart-product">
-                                            <a href="product-details.php" class="image">
-                                                <img src="image/products/cart-product-1.jpg" alt="">
+                                        <?php 
+                                                $sl_cart_mini = "SELECT * from products pr, carts c where pr.pr_id = c.pr_id and c.cus_id = $idcus LIMIT 1";
+                                                $res_cart_mini = mysqli_fetch_assoc(mysqli_query($conn, $sl_cart_mini));
+                                                $img = $res_cart_mini['pr_img'];
+                                                $img = explode(',',$img)[0];
+                                            ?>
+                                            <a href="product-details.php?idsp=<?php echo $res_cart_mini['pr_id'];?>" class="image">
+                                                <img src="admin/<?php echo $img; ?>" alt="">
                                             </a>
                                             <div class="content">
-                                                <h3 class="title"><a href="product-details.php">Kodak PIXPRO
-                                                        Astro Zoom AZ421 16 MP</a></h3>
-                                                <p class="price"><span class="qty">1 ×</span> £87.34</p>
-                                                <button class="cross-btn"><i class="fas fa-times"></i></button>
+                                            
+                                                <h3 class="title"><a href="product-details.php?idsp=<?php echo $res_cart_mini['pr_id'];?>"><?php echo $res_cart_mini['pr_name']  ?></a></h3>
+                                                <p class="price"><span><?php echo $res_cart_mini['cart_quatity']; ?> ×</span><?php echo $res_cart_mini['cart_price'];?></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class=" single-cart-block ">
                                         <div class="btn-block">
-                                            <a href="cart.php" class="btn">View Cart <i class="fas fa-chevron-right"></i></a>
-                                            <a href="checkout.php" class="btn btn--primary">Check Out <i class="fas fa-chevron-right"></i></a>
+                                            <a href="cart.php" class="btn">Giỏ hàng <i class="fas fa-chevron-right"></i></a>
+                                            <a href="checkout.php" class="btn btn--primary">Đơn hàng <i class="fas fa-chevron-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
