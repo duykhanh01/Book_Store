@@ -31,5 +31,7 @@
 <script src="js/components.js"></script>
 <script src="js/common.js"></script>
 </body>
-
+<?php 
+#ob_end_flush();
+?>
 </html>

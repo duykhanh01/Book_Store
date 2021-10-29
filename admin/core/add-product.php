@@ -8,20 +8,6 @@ $imagePath = "";
 $imagePathTemp = "";
 
 if (isset($_POST)) {
-    // echo $pr_name =  $_POST['pr_name'] .  "<br />";
-    // echo  $pr_code = $_POST['pr_code'] . "<br />";
-
-    // echo $auth_name =  $_POST['auth_name'] . "<br />";
-    // echo $pub_name =  $_POST['pub_name'] . "<br />";
-    // echo $pr_number =  $_POST['pr_number'] . "<br />";
-    // echo $pr_desc =  $_POST['pr_desc'] . "<br />";
-    // echo $pr_category = $_POST['pr_category'] . "<br />";
-    // echo $pr_price = $_POST['pr_price'] . "<br />";
-    // echo $pr_discount = $_POST['pr_discount'] . "<br />";
-    // echo $pr_images = $_POST['pr_images'] . "<br />";
-    // echo $images = $_FILES["pr_images"] . "<br />";
-    // echo $pr_status = $_POST["pr_status"] . "<br />";
-    // exit;
 
     if (!empty($_POST['pr_name']) and !empty($_POST['pr_code'])  and !empty($_POST['auth_name']) and !empty($_POST['pub_name']) and !empty($_POST['pr_status']) and !empty($_POST['pr_number']) and !empty($_POST['pr_desc']) and !empty($_POST['pr_category']) and !empty($_POST['pr_price']) and !empty($_POST['pr_discount']) and !empty($_FILES['pr_images'])) {
 

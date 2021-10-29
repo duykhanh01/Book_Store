@@ -1,7 +1,26 @@
+<?php 
+include('config/db_connect.php');
+
+if(isset($_GET['or_id']))
+{
+    $or_id = $_GET['or_id'];
+    $sl_ors = "SELECT * from orders where or_id = '$or_id'";
+    $res_ors = mysqli_query($conn, $sl_ors);
+    if(mysqli_num_rows($res_ors)==0)
+    {
+        header('location: orders.php');
+    }
+}
+else
+{
+    header('location: orders.php');
+}
+
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en" data-theme="light">
+<?php require_once("templates/header.php"); ?>
 
-<?php require_once("templates/header.php") ?>
 
 <div class="order-tabs">
     <div class="order-tabs__container">
@@ -69,7 +88,7 @@
     <div class="container">
         <div class="page-header">
             <h3 class="page-header__subtitle d-lg-none">Order Details</h3>
-            <h1 class="page-header__title">Orders <span class="text-grey">#790841</span></h1>
+            <h1 class="page-header__title">Orders <span class="text-grey">#<?php echo $or_id; ?></span></h1>
         </div>
         <div class="page-tools">
             <div class="page-tools__breadcrumbs">
@@ -109,13 +128,6 @@
                                     <use xlink:href="#icon-print"></use>
                                 </svg></span></a>
                     </div>
-                    <div class="page-tools__right-item">
-                        <button class="button-icon" type="button"><span class="button-icon__icon">
-                                <svg class="icon-icon-trash">
-                                    <use xlink:href="#icon-trash"></use>
-                                </svg></span>
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -128,7 +140,19 @@
                                 <div class="col">
                                     <h3 class="card__title">Customer</h3>
                                 </div>
-                                <div class="col-auto"><span class="card__date">Placed on 12.07.2018 10:00</span>
+                                <?php 
+                                    //lấy thông tin của customer
+                                    $sl_orders = "SELECT * from orders where or_id = '$or_id'";
+                                    $res_order = mysqli_fetch_assoc(mysqli_query($conn, $sl_orders));
+                                    $cus_id = $res_order['cus_id'];
+                                    $or_total = $res_order['or_total'];
+                                    $sl_customer = "select * from customers where cus_id = '$cus_id'";
+                                    $res_customer = mysqli_fetch_assoc(mysqli_query($conn, $sl_customer));
+                                    $sl_orderdetail = "SELECT * from orderdetail od, products pr where or_id = '$or_id' and od.pr_id = pr.pr_id";
+                                    $res_orderdetail = mysqli_query($conn,$sl_orderdetail);
+                                    $sub_total = mysqli_fetch_assoc(mysqli_query($conn, "SELECT sum(od_total) as sub_total FROM `orderdetail` WHERE or_id = '$or_id'"));
+                                ?>
+                                <div class="col-auto"><span class="card__date">Thời gian đặt: <?php echo $res_order['or_date'];?></span>
                                 </div>
                             </div>
                         </div>
@@ -136,17 +160,17 @@
                             <li class="card-order__customer-item">
                                 <svg class="icon-icon-user">
                                     <use xlink:href="#icon-user"></use>
-                                </svg> <b>Name:</b> <span>Sophia Hale</span>
+                                </svg> <b>Name:</b> <span><?php echo $res_customer['cus_name'];?></span>
                             </li>
                             <li class="card-order__customer-item">
                                 <svg class="icon-icon-phone">
                                     <use xlink:href="#icon-phone"></use>
-                                </svg> <b>Phone:</b> <a href="tel:0701234567">070 123 4567</a>
+                                </svg> <b>Phone:</b> <a href="tel:0701234567"><?php echo $res_customer['cus_tel'];?></a>
                             </li>
                             <li class="card-order__customer-item">
                                 <svg class="icon-icon-email">
                                     <use xlink:href="#icon-email"></use>
-                                </svg> <b>Email:</b> <a href="mailto:example@mail.com">example@mail.com</a>
+                                </svg> <b>Email:</b> <a href="mailto:example@mail.com"><?php echo $res_customer['cus_mail'];?></a>
                             </li>
                         </ul>
                     </div>
@@ -159,9 +183,9 @@
                                 <h3>Shipping address</h3>
                                 <address class="card-order__address">
                                     <ul class="card-order__list">
-                                        <li><b>Họ và tên:</b> Sophia</li>
-                                        <li><b>Address:</b> 4898 Joanne Lane street</li>
-                                        <li><b>Phone:</b> <a href="+10701234567">+1 (070) 123-4567</a></li>
+                                        <li><b>Họ và tên:</b> <?php echo $res_customer['cus_name'];?></li>
+                                        <li><b>Address:</b> <?php echo $res_customer['cus_add'];?></li>
+                                        <li><b>Phone: </b><?php echo $res_customer['cus_tel'];?></li>
                                     </ul>
                                 </address>
                             </div>
@@ -187,89 +211,34 @@
                                 <th class="text-center"><span>QUANTITY</span>
                                 </th>
                                 <th><span>TOTAL</span>
-                                </th>
-                                <th class="table__actions"></th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                                while($row_od = mysqli_fetch_assoc($res_orderdetail))
+                                {?>
+
+                            
                             <tr class="table__row">
                                 <td class="table__td">
-                                    <div class="mw-200"><span class="text-light-theme">MacBook Pro 15” (Mid
-                                            2018)</span>
+                                    <div class="mw-200"><span class="text-light-theme"><?php echo $row_od['pr_name'];?> </span>
                                     </div>
                                 </td>
                                 <td class="table__td text-center text-dark-theme">
                                     <div class="d-inline-block">
                                         <div class="input-group input-group--prepend-xs">
-                                            <div class="input-group__prepend">$</div>
-                                            <div class="input input--edit" contenteditable="true">2500</div>
+                                            $<?php echo $row_od['od_price'];?>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="table__td text-center">
-                                    <input class="input input--edit text-center text-light-theme" type="number" value="10" min="0" max="999">
+                                <?php echo $row_od['od_quatity'];?>
                                 </td>
-                                <td class="table__td text-nowrap text-dark-theme">$25,000</td>
-                                <td class="table__td table__actions text-dark-theme">
-                                    <button class="table__remove" type="button">
-                                        <svg class="icon-icon-trash">
-                                            <use xlink:href="#icon-trash"></use>
-                                        </svg>
-                                    </button>
-                                </td>
+                                <td class="table__td text-nowrap text-dark-theme"><?php echo $row_od['od_total'];?></td>
                             </tr>
-                            <tr class="table__row">
-                                <td class="table__td">
-                                    <div class="mw-200"><span class="text-light-theme">MacBook Pro 15” (Mid
-                                            2018)</span>
-                                    </div>
-                                </td>
-                                <td class="table__td text-center text-dark-theme">
-                                    <div class="d-inline-block">
-                                        <div class="input-group input-group--prepend-xs">
-                                            <div class="input-group__prepend">$</div>
-                                            <div class="input input--edit" contenteditable="true">2500</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="table__td text-center">
-                                    <input class="input input--edit text-center text-light-theme" type="number" value="10" min="0" max="999">
-                                </td>
-                                <td class="table__td text-nowrap text-dark-theme">$25,000</td>
-                                <td class="table__td table__actions text-dark-theme">
-                                    <button class="table__remove" type="button">
-                                        <svg class="icon-icon-trash">
-                                            <use xlink:href="#icon-trash"></use>
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="table__row">
-                                <td class="table__td">
-                                    <div class="mw-200"><span class="text-light-theme">MacBook Pro 15” (Mid
-                                            2018)</span>
-                                    </div>
-                                </td>
-                                <td class="table__td text-center text-dark-theme">
-                                    <div class="d-inline-block">
-                                        <div class="input-group input-group--prepend-xs">
-                                            <div class="input-group__prepend">$</div>
-                                            <div class="input input--edit" contenteditable="true">2500</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="table__td text-center">
-                                    <input class="input input--edit text-center text-light-theme" type="number" value="10" min="0" max="999">
-                                </td>
-                                <td class="table__td text-nowrap text-dark-theme">$25,000</td>
-                                <td class="table__td table__actions text-dark-theme">
-                                    <button class="table__remove" type="button">
-                                        <svg class="icon-icon-trash">
-                                            <use xlink:href="#icon-trash"></use>
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
+                            <?php    }
+                            ?>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -280,8 +249,16 @@
                             <div class="col-auto">
                                 <ul class="card-order__total">
                                     <li class="card-order__total-item card-order__total-footer">
+                                        <div class="card-order__total-title">Sub total:</div>
+                                        <div class="card-order__total-value">$<?php echo $sub_total['sub_total'];?> </div>
+                                    </li>
+                                    <li class="card-order__total-item card-order__total-footer">
+                                        <div class="card-order__total-title">Ship:</div>
+                                        <div class="card-order__total-value">$<?php echo $res_order['or_ship'];?> </div>
+                                    </li>
+                                    <li class="card-order__total-item card-order__total-footer">
                                         <div class="card-order__total-title">total:</div>
-                                        <div class="card-order__total-value">$81,000</div>
+                                        <div class="card-order__total-value">$<?php echo $or_total;?> </div>
                                     </li>
                                 </ul>
                             </div>

@@ -6,7 +6,10 @@ if (isset($_GET['id'])) {
     $id =  $_GET['id'];
     $sql = "SELECT  category.c_name as c_name, pr_id, pr_code, pr_name,pr_author, pr_pub, pr_category, pr_status,pr_date, pr_number, pr_price, pr_discount, pr_img, pr_desc from products, category where category.c_id = pr_category AND pr_id = '$id'";
     $res = mysqli_query($conn, $sql);
-    if (!$res) header("Loction: 404.php");
+    if (!$res) header("Location: 404.php");
+    if (mysqli_num_rows($res) == "0") {
+        header("Location: 404.php");
+    }
     $book = mysqli_fetch_assoc($res);
     $images = explode(",", $book['pr_img']);
 } else {
@@ -313,9 +316,9 @@ if (isset($_GET['id'])) {
                                     <div class="input-group input-group--append">
                                         <select name="pr_status" class="input js-input-select input--fluid" data-placeholder="">
 
-                                            <option <?php if ($book['pr_status'] == 1) echo 'selected' ?> value="2">Public
+                                            <option <?php if ($book['pr_status'] == 2) echo 'selected' ?> value="2">Public
                                             </option>
-                                            <option <?php if ($book['pr_status'] == 0) echo 'selected' ?> value="1">Private
+                                            <option <?php if ($book['pr_status'] == 1) echo 'selected' ?> value="1">Private
                                             </option>
                                         </select><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">

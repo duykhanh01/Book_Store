@@ -167,7 +167,7 @@ include("templates/header.php");
 											<th class="pro-subtotal">Thành tiền</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id = "tb_bd">
 										<!-- Product Row -->
 										<?php
 										if(isset($_SESSION['id']))
@@ -178,19 +178,21 @@ include("templates/header.php");
 											
 											$res_cart = mysqli_query($conn, $sl_cart);
 											while($row_cart = mysqli_fetch_assoc($res_cart))
-											{ ?>
+											{
+												$name_img = explode(",",$row_cart['pr_img'])[0];
+											?>
 											
 											
 										<tr>
-											<td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a>
+											<td class="pro-remove"><a href="core/cart_delete_product.php?prid=<?php echo $row_cart['pr_id']; ?>"><i class="far fa-trash-alt"></i></a>
 											</td>
-											<td class="pro-thumbnail"><a href="#"><img src="image/products/product-1.jpg" alt="Product"></a></td>
+											<td class="pro-thumbnail"><a href="#"><img src="admin/<?php echo $name_img;?>" alt="Product"></a></td>
 											<td class="pro-title"><a href="#"><?php echo $row_cart['pr_name']; ?></a></td>
 											<td class="pro-price"><span><?php echo $row_cart['pr_price']-$row_cart['pr_discount']; ?></span></td>
 											<td class="pro-quantity">
 												<div class="pro-qty">
 													<div class="count-input-block">
-														<input type="number" class="form-control text-center" value="1">
+														<input type="number" class="form-control text-center cart_quatity" id_pr ="<?php echo $row_cart['pr_id'];?>" value="<?php echo $row_cart['cart_quatity'];?>">
 													</div>
 												</div>
 											</td>
@@ -200,10 +202,11 @@ include("templates/header.php");
 										?>
 										<!-- Product Row -->
 										<!-- Discount Row  -->
+										
 										<tr>
 											<td colspan="6" class="actions">
 												<div class="update-block text-right">
-													<input type="submit" class="btn btn-outlined" name="update_cart" value="Đặt hàng">
+													<a href="checkout.php" class="btn btn-outlined" name="update_cart">Đặt hàng</a>
 													
 												</div>
 											</td>

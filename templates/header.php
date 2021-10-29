@@ -13,6 +13,8 @@
     <!-- Use Minified Plugins Version For Fast Page Load -->
     <link rel="stylesheet" type="text/css" media="screen" href="css/plugins.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/app.css" />
+
     <link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico">
 </head>
 <div class="site-header header-3  d-none d-lg-block">
@@ -39,8 +41,10 @@
                             </a>
                             <i class="fas fa-chevron-down dropdown-arrow"></i>
                             <ul class="dropdown-box">
-                                <li> <a href="">My Account</a></li>
-                                <li> <a href="logout.php">Logout</a></li>
+                                <li> <a href="profile.php">Tài khoản</a></li>
+                                <li> <a href="customer-orders.php">Đơn hàng</a></li>
+                                <li> <a href="change-password.php">Đổi mật khẩu</a></li>
+                                <li> <a href="logout.php">Đăng xuất</a></li>
 
 
                             </ul>

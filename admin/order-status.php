@@ -1,3 +1,23 @@
+<?php
+   if(isset($_GET['or_id']))
+    {
+        include('config/db_connect.php');
+        $or_id = $_GET['or_id'];
+        $sl_ors = "SELECT * from orders where or_id = '$or_id'";
+        $res_ors = mysqli_query($conn, $sl_ors);
+        if(mysqli_num_rows($res_ors)==0)
+        {
+            header('location: orders.php');
+        }
+        $row_or = mysqli_fetch_assoc($res_ors);
+    }
+    else
+    {
+        header('location: orders.php');
+    }
+
+?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en" data-theme="light">
 
@@ -68,7 +88,7 @@
     <div class="container">
         <div class="page-header">
             <h3 class="page-header__subtitle d-lg-none">Order Details</h3>
-            <h1 class="page-header__title">Orders <span class="text-grey">#790841</span></h1>
+            <h1 class="page-header__title">Orders <span class="text-grey">#<span id="id_orders"><?php echo $or_id;?></span></span></h1>
         </div>
         <div class="page-tools">
             <div class="page-tools__breadcrumbs">
@@ -137,31 +157,52 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id = "tb_status">
                             <tr class="table__row">
-                                <td class="table__td text-center">12.07.2018 10:00 PM</td>
+                                <td class="table__td text-center"><?php echo $row_or['or_date'];?></td>
                                 <td class="table__td text-center">
-                                    <div class="d-inline-block text-nowrap"><span class="marker-item color-blue"></span><span>Pending</span>
+                                    <div class="d-inline-block text-nowrap"><span class="marker-item color-blue"></span><span>
+                                        
+                                    <?php 
+                                    $stt = "";
+                                    if($row_or['or_status']==0)
+                                    {
+                                        $stt = "Đang xử lí";
+                                    }
+                                    elseif($row_or['or_status']==1)
+                                    {
+                                        $stt = "Đã xử lí";
+                                    }
+                                    elseif($row_or['or_status']==2)
+                                    {
+                                        $stt = "Đang giao hàng";
+                                    }
+                                    elseif($row_or['or_status']==3)
+                                    {
+                                        $stt = "Giao hàng thành công";
+                                    }
+
+                                    echo $stt ?></span>
                                     </div>
                                 </td>
-                                <td class="table__td text-center">Tên người xử lí</td>
+                                <td class="table__td text-center"><span><input id="id_user" value="1" class="d-none">Tên người xử lí</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <form class="order-status__form" method="GET">
+                <form class="order-status__form" method = "GET" action="">
                     <div class="card__container">
                         <div class="row gutter-bottom-xl">
                             <div class="col-12">
                                 <div class="order-status__form-group form-group form-group--inline">
                                     <label class="form-label">Order Status:</label>
                                     <div class="input-group input-group--append">
-                                        <select class="input js-input-select input--fluid" data-placeholder="">
-                                            <option value="1" selected="selected">Chờ xử lí
+                                        <select class="input js-input-select input--fluid" id="sl_status" data-placeholder="">
+                                            <option value="0" selected="selected">Đang xử lý
                                             </option>
-                                            <option value="2">Đã xử lí
+                                            <option value="1">Đã xử lý
                                             </option>
-                                            <option value="3">Đang giao
+                                            <option value="2">Đang giao
                                             </option>
                                             <option value="3">Giao hàng thành công
                                             </option>
@@ -176,7 +217,7 @@
                         <div class="order-status__submit">
                             <div class="row row--md justify-content-center">
                                 <div class="col-auto">
-                                    <button class="button button--primary" type="submit"><span class="button__text">Cập nhật trạng thái</span>
+                                    <button class="button button--primary" id="update_status"><span class="button__text">Cập nhật trạng thái</span>
                                     </button>
                                 </div>
                                 <div class="col-auto"><a class="button button--secondary" href="orders.php"><span class="button__text">Cancel</span></a>

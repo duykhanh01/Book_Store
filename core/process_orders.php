@@ -6,7 +6,7 @@
         $or_total =  $_POST['sum_money'];
         $or_ship = $_POST['money_ship'];
         $or_id = "";
-        $or_id = '#'.rand(10000,10000000);
+        $or_id = rand(10000,10000000);
         $cus_id = $_SESSION['id'];//dang test mac dinh 1 sau lay o session
         $or_pay = "ship code";
         $insert_order = "INSERT INTO `orders`(`or_id`, `cus_id`, `or_pay`, `or_total`, `or_ship`) 

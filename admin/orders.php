@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en" data-theme="light">
 
-<?php require_once("templates/header.php") ?>
+<?php 
+include('config/db_connect.php');
+require_once("templates/header.php"); ?>
 <main class="page-content">
     <div class="container">
         <div class="page-header">
@@ -148,51 +150,82 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="table__row">
-                            <td class="table__td">
-                                1
-                            </td>
-                            <td class="d-none d-lg-table-cell table__td"><span class="text-grey">#790841</span>
-                            </td>
-                            <td class="table__td">Sophia Hale</td>
-                            <td class="d-none d-sm-table-cell table__td"><span class="text-grey">Credit
-                                    Card</span>
-                            </td>
-                            <td class="table__td"><span>$2500</span>
-                            </td>
-                            <td class="table__td text-nowrap"><span class="text-grey">12.07.2018</span> 10:00 PM
-                            </td>
-                            <td class="d-none d-sm-table-cell table__td">
-                                <div class="table__status"><span class="table__status-icon color-green"></span>
-                                    Complete</div>
-                            </td>
-                            <td class="table__td table__actions">
-                                <div class="items-more">
-                                    <button class="items-more__button">
-                                        <svg class="icon-icon-more">
-                                            <use xlink:href="#icon-more"></use>
-                                        </svg>
-                                    </button>
-                                    <div class="dropdown-items dropdown-items--right">
-                                        <div class="dropdown-items__container">
-                                            <ul class="dropdown-items__list">
-                                                <li class="dropdown-items__item"><a class="dropdown-items__link" href="order-details.php"><span class="dropdown-items__link-icon">
-                                                            <svg class="icon-icon-view">
-                                                                <use xlink:href="#icon-view"></use>
-                                                            </svg></span>Details</a>
-                                                </li>
+                        <?php
+                            $sl_orders = "SELECT * FROM orders, customers where orders.cus_id = customers.cus_id";
+                            $res_orders = mysqli_query($conn, $sl_orders); 
+                            $count = 1;
+                        while($row_or  = mysqli_fetch_assoc($res_orders))
+                        {?>
+                            <tr class="table__row">
+                                <td class="table__td">
+                                    <?php echo $count; ?>
+                                </td>
+                                <td class="d-none d-lg-table-cell table__td"><span class="text-grey"><?php echo $row_or['or_id']; ?></span>
+                                </td>
+                                <td class="table__td"><?php echo $row_or['cus_name']; ?></td>
+                                <td class="d-none d-sm-table-cell table__td"><span class="text-grey"><?php echo $row_or['or_pay'];?> </span>
+                                </td>
+                                <td class="table__td"><span><?php echo $row_or['or_total']; ?></span>
+                                </td>
+                                <td class="table__td text-nowrap"><span class="text-grey"><?php echo $row_or['or_date'];?> </span>
+                                </td>
+                                <td class="d-none d-sm-table-cell table__td">
+                                    <div class="table__status"><span class="table__status-icon color-green"></span>
+                                        <?php 
+                                            if($row_or['or_status']==0)
+                                            {
+                                                echo "Đang xử lý";
+                                            }
+                                            elseif($row_or['or_status']==1)
+                                            {
+                                                echo "Đã xử lý";
+                                            }
+                                            elseif($row_or['or_status']==2)
+                                            {
+                                                echo "Đang giao hàng";
+                                            }
+                                            elseif($row_or['or_status']==3)
+                                            {
+                                                echo "Giao hàng thành công";
+                                            }
+                                            
+                                        ?></div>
+                                </td>
+                                
+                                <td class="table__td table__actions">
+                                    <div class="items-more">
+                                        <button class="items-more__button">
+                                            <svg class="icon-icon-more">
+                                                <use xlink:href="#icon-more"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="dropdown-items dropdown-items--right">
+                                            <div class="dropdown-items__container">
+                                                <ul class="dropdown-items__list">
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link" href="order-details.php?or_id=<?php echo $row_or['or_id']; ?>"><span class="dropdown-items__link-icon">
+                                                                <svg class="icon-icon-view">
+                                                                    <use xlink:href="#icon-view"></use>
+                                                                </svg></span>Details</a>
+                                                    </li>
 
-                                                <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                                            <svg class="icon-icon-trash">
-                                                                <use xlink:href="#icon-trash"></use>
-                                                            </svg></span>Delete</a>
-                                                </li>
-                                            </ul>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link" href="core/delete_orders.php?or_id=<?php echo $row_or['or_id'];?>"><span class="dropdown-items__link-icon">
+                                                                <svg class="icon-icon-trash">
+                                                                    <use xlink:href="#icon-trash"></use>
+                                                                </svg></span>Delete</a>
+                                                    </li>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link" href="order-status.php?or_id=<?php echo $row_or['or_id'];?>"><span class="dropdown-items__link-icon">
+                                                                <svg class="icon-icon-trash">
+                                                                    <use xlink:href="#icon-trash"></use>
+                                                                </svg></span>Status</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        <?php   $count++; }
+                        ?>
                     </tbody>
                 </table>
             </div>
