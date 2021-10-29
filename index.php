@@ -27,7 +27,7 @@ include('config/db_connect.php');
 
             <!-- --------------------------------------------- Banner ---------------------------------------------------------------------------------- -->
 
-            <div class="single-slide bg-image  bg-overlay--dark" data-bg="image/bg-images/home-3-slider-1.jpg">
+            <div class="single-slide bg-image" data-bg="image/bg-images/banner3.png">
                 <div class="container">
                     <div class="home-content text-center">
                         <div class="row justify-content-end">
@@ -44,7 +44,8 @@ include('config/db_connect.php');
                     </div>
                 </div>
             </div>
-            <div class="single-slide bg-image  bg-overlay--dark" data-bg="image/bg-images/home-3-slider-2.jpg">
+            
+            <div class="single-slide bg-image" data-bg="image/bg-images/banner2.png">
                 <div class="container">
                     <div class="home-content pl--30">
                         <div class="row">
@@ -61,6 +62,7 @@ include('config/db_connect.php');
                     </div>
                 </div>
             </div>
+            
         </div>
     </section>
     <section class="section-margin mt-5">
@@ -184,9 +186,9 @@ include('config/db_connect.php');
                                     <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
                                 </div>
                                 <div class="price-block">
-                                    <span class="price"><?php echo $row_romance['pr_price'] - $row_romance['pr_discount']; ?></span>
-                                    <del class="price-old"><?php echo $row_romance['pr_price']; ?></del>
-                                    <span class="price-discount">20%</span>
+                                    <span class="price"><?php echo number_format($row_romance['pr_price'] - $row_romance['pr_discount'], 0, ',', '.'). " VNĐ"; ?></span>
+                                    <del class="price-old"><?php echo number_format($row_romance['pr_price'], 0, ',', '.'). " VNĐ"; ?></del>
+                                    <span class="price-discount"><?php echo ceil((($row_romance['pr_discount'])/($row_romance['pr_price'])*100));?> %</span>
                                 </div>
                             </div>
                         </div>

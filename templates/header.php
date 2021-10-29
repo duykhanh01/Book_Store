@@ -1,5 +1,8 @@
 <?php
-
+ob_start();
+include('admin/config/db_connect.php');
+$sl_category = "SELECT * FROM category";
+$res_category = mysqli_query($conn,$sl_category);
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +16,8 @@
     <!-- Use Minified Plugins Version For Fast Page Load -->
     <link rel="stylesheet" type="text/css" media="screen" href="css/plugins.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/app.css" />
+
     <link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico">
 </head>
 <div class="site-header header-3  d-none d-lg-block">
@@ -39,8 +44,10 @@
                             </a>
                             <i class="fas fa-chevron-down dropdown-arrow"></i>
                             <ul class="dropdown-box">
-                                <li> <a href="">My Account</a></li>
-                                <li> <a href="logout.php">Logout</a></li>
+                                <li> <a href="profile.php">Tài khoản</a></li>
+                                <li> <a href="customer-orders.php">Đơn hàng</a></li>
+                                <li> <a href="change-password.php">Đổi mật khẩu</a></li>
+                                <li> <a href="logout.php">Đăng xuất</a></li>
 
 
                             </ul>
@@ -85,13 +92,7 @@
                             <div class="cart-block">
                                 <div class="cart-total">
                                     <span class="text-number">
-                                    <?php include('admin/config/db_connect.php');
-                                            $idcus = $_SESSION['id'];
-                                            
-                                            $sl_numpr = "SELECT count(carts.pr_id) as num from carts where cus_id = '$idcus'";
-                                            $res_numpr = mysqli_fetch_assoc(mysqli_query($conn, $sl_numpr));
-                                            echo $res_numpr['num'];
-                                          ?>
+                                        1
                                     </span>
                                     <span class="text-item">
                                         Shopping Cart
@@ -104,26 +105,21 @@
                                 <div class="cart-dropdown-block">
                                     <div class=" single-cart-block ">
                                         <div class="cart-product">
-                                        <?php 
-                                                $sl_cart_mini = "SELECT * from products pr, carts c where pr.pr_id = c.pr_id and c.cus_id = $idcus LIMIT 1";
-                                                $res_cart_mini = mysqli_fetch_assoc(mysqli_query($conn, $sl_cart_mini));
-                                                $img = $res_cart_mini['pr_img'];
-                                                $img = explode(',',$img)[0];
-                                            ?>
-                                            <a href="product-details.php?idsp=<?php echo $res_cart_mini['pr_id'];?>" class="image">
-                                                <img src="admin/<?php echo $img; ?>" alt="">
+                                            <a href="product-details.php" class="image">
+                                                <img src="image/products/cart-product-1.jpg" alt="">
                                             </a>
                                             <div class="content">
-                                            
-                                                <h3 class="title"><a href="product-details.php?idsp=<?php echo $res_cart_mini['pr_id'];?>"><?php echo $res_cart_mini['pr_name']  ?></a></h3>
-                                                <p class="price"><span><?php echo $res_cart_mini['cart_quatity']; ?> ×</span><?php echo $res_cart_mini['cart_price'];?></p>
+                                                <h3 class="title"><a href="product-details.php">Kodak PIXPRO
+                                                        Astro Zoom AZ421 16 MP</a></h3>
+                                                <p class="price"><span class="qty">1 ×</span> £87.34</p>
+                                                <button class="cross-btn"><i class="fas fa-times"></i></button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class=" single-cart-block ">
                                         <div class="btn-block">
-                                            <a href="cart.php" class="btn">Giỏ hàng <i class="fas fa-chevron-right"></i></a>
-                                            <a href="checkout.php" class="btn btn--primary">Đơn hàng <i class="fas fa-chevron-right"></i></a>
+                                            <a href="cart.php" class="btn">View Cart <i class="fas fa-chevron-right"></i></a>
+                                            <a href="checkout.php" class="btn btn--primary">Check Out <i class="fas fa-chevron-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -141,109 +137,17 @@
                 <div class="col-lg-3">
                     <nav class="category-nav">
                         <div>
-                            <a href="javascript:void(0)" class="category-trigger"><i class="fa fa-bars"></i>Browse
-                                categories</a>
+                            <a href="javascript:void(0)" class="category-trigger"><i class="fa fa-bars"></i>Các thể loại sách</a>
                             <ul class="category-menu">
-                                <li class="cat-item has-children">
-                                    <a href="#">Arts & Photography</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="#">Bags & Cases</a></li>
-                                        <li><a href="#">Binoculars & Scopes</a></li>
-                                        <li><a href="#">Digital Cameras</a></li>
-                                        <li><a href="#">Film Photography</a></li>
-                                        <li><a href="#">Lighting & Studio</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children mega-menu"><a href="#">Biographies</a>
-                                    <ul class="sub-menu">
-                                        <li class="single-block">
-                                            <h3 class="title">WHEEL SIMULATORS</h3>
-                                            <ul>
-                                                <li><a href="#">Bags & Cases</a></li>
-                                                <li><a href="#">Binoculars & Scopes</a></li>
-                                                <li><a href="#">Digital Cameras</a></li>
-                                                <li><a href="#">Film Photography</a></li>
-                                                <li><a href="#">Lighting & Studio</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="single-block">
-                                            <h3 class="title">WHEEL SIMULATORS</h3>
-                                            <ul>
-                                                <li><a href="#">Bags & Cases</a></li>
-                                                <li><a href="#">Binoculars & Scopes</a></li>
-                                                <li><a href="#">Digital Cameras</a></li>
-                                                <li><a href="#">Film Photography</a></li>
-                                                <li><a href="#">Lighting & Studio</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="single-block">
-                                            <h3 class="title">WHEEL SIMULATORS</h3>
-                                            <ul>
-                                                <li><a href="#">Bags & Cases</a></li>
-                                                <li><a href="#">Binoculars & Scopes</a></li>
-                                                <li><a href="#">Digital Cameras</a></li>
-                                                <li><a href="#">Film Photography</a></li>
-                                                <li><a href="#">Lighting & Studio</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="single-block">
-                                            <h3 class="title">WHEEL SIMULATORS</h3>
-                                            <ul>
-                                                <li><a href="#">Bags & Cases</a></li>
-                                                <li><a href="#">Binoculars & Scopes</a></li>
-                                                <li><a href="#">Digital Cameras</a></li>
-                                                <li><a href="#">Film Photography</a></li>
-                                                <li><a href="#">Lighting & Studio</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children"><a href="#">Business & Money</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="">Brake Tools</a></li>
-                                        <li><a href="">Driveshafts</a></li>
-                                        <li><a href="">Emergency Brake</a></li>
-                                        <li><a href="">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children"><a href="#">Calendars</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="">Brake Tools</a></li>
-                                        <li><a href="">Driveshafts</a></li>
-                                        <li><a href="">Emergency Brake</a></li>
-                                        <li><a href="">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children"><a href="#">Children's Books</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="">Brake Tools</a></li>
-                                        <li><a href="">Driveshafts</a></li>
-                                        <li><a href="">Emergency Brake</a></li>
-                                        <li><a href="">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item has-children"><a href="#">Comics</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="">Brake Tools</a></li>
-                                        <li><a href="">Driveshafts</a></li>
-                                        <li><a href="">Emergency Brake</a></li>
-                                        <li><a href="">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item"><a href="#">Perfomance Filters</a></li>
-                                <li class="cat-item has-children"><a href="#">Cookbooks</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="">Brake Tools</a></li>
-                                        <li><a href="">Driveshafts</a></li>
-                                        <li><a href="">Emergency Brake</a></li>
-                                        <li><a href="">Spools</a></li>
-                                    </ul>
-                                </li>
-                                <li class="cat-item "><a href="#">Accessories</a></li>
-                                <li class="cat-item "><a href="#">Education</a></li>
-                                <li class="cat-item hidden-menu-item"><a href="#">Indoor Living</a></li>
-                                <li class="cat-item"><a href="#" class="js-expand-hidden-menu">More
-                                        Categories</a></li>
+                                <!-- thêm các thể loại -->
+                                <?php
+                                    while($row_category = mysqli_fetch_assoc($res_category))
+                                    {
+                                ?>
+                                <li class="cat-item"><a href="shop-grid.php?cid=<?php echo $row_category['c_id']?>"><?php echo $row_category['c_name'];  ?></a></li>
+                                <?php 
+                                    }
+                                ?>
                             </ul>
                         </div>
                     </nav>

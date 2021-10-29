@@ -86,6 +86,7 @@
   <script src="js/ajax-mail.js"></script>
   <script src="js/custom.js"></script>
   <script src="js/app.js"></script>
+  <?php ob_end_flush(); ?>
   </body>
 
   </html>
