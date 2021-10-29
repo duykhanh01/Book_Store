@@ -7,7 +7,7 @@ $id = $_SESSION['id'];
 $sql = "SELECT * from orders, orderdetail where  orders.or_id  = orderdetail.or_id and orders.cus_id = '$id' group by orders.or_id";
 $res = mysqli_query($conn, $sql);
 $rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
-
+if (!$res) header("location: 404.php");
 
 // echo '<pre>';
 // print_r($rows);
@@ -23,7 +23,19 @@ $rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
 <?php require_once("templates/header.php") ?>
 
-
+<section class="breadcrumb-section">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Đơn hàng</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
 <div class="site-wrapper" id="top">
 
     <div class="container d-block">

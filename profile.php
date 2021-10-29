@@ -3,10 +3,11 @@
 session_start();
 
 include("config/db_connect.php");
+if (!$_SESSION['id']) header("Location: login.php");
 $id = $_SESSION['id'];
-$sql = "SELECT * from products, orders, orderdetail where products.pr_id and orders.or_id  = orderdetail.or_id and orderdetail.pr_id = products.pr_id and orders.cus_id = '$id'";
+$sql = "SELECT * from  customers where cus_id = '$id'";
 $res = mysqli_query($conn, $sql);
-$rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
+$row = mysqli_fetch_assoc($res);
 
 
 
@@ -18,12 +19,24 @@ $rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
 <?php require_once("templates/header.php") ?>
 
-
-<div class="site-wrapper" id="top">
+<section class="breadcrumb-section">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thông tin</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<div class="site-wrapper mb-4 mt-3" id="top">
 
     <div class="container d-block">
 
-        <div class="row align-items-center">
+        <div class="row ">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
 
                 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
@@ -63,6 +76,40 @@ $rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
             </div>
             <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
                 <H4>THÔNG TIN TÀI KHOẢN</H4>
+                <form action="core/update-profile.php?id=<?php echo $id ?>" method="post">
+                    <div class="mb-3 row">
+                        <label for="inputname" class="col-sm-2 col-form-label">Họ và tên</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" value="<?php echo $row['cus_name'] ?>" class="form-control" id="inputname">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" value="<?php echo $row['cus_mail'] ?>" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="inputText1" class="col-sm-2 col-form-label">Số điện thoại</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="tel" value="<?php echo $row['cus_tel'] ?>" class="form-control" id="inputText1">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputText2" class="col-sm-2 col-form-label">Địa cshỉ</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="address" value="<?php echo $row['cus_add'] ?>" class="form-control" id="inputText2">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="m-auto">
+                            <button type="submit" name="update" class="btn btn-primary">
+                                Lưu thay đổi
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
