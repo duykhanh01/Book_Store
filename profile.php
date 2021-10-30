@@ -3,6 +3,8 @@
 session_start();
 
 include("config/db_connect.php");
+
+
 if (!$_SESSION['id']) header("Location: login.php");
 $id = $_SESSION['id'];
 $sql = "SELECT * from  customers where cus_id = '$id'";
@@ -75,8 +77,13 @@ $row = mysqli_fetch_assoc($res);
                 </div>
             </div>
             <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
-                <H4>THÔNG TIN TÀI KHOẢN</H4>
-                <form action="core/update-profile.php?id=<?php echo $id ?>" method="post">
+                <H4 class="mb-4 ml-4">THÔNG TIN TÀI KHOẢN</H4>
+                <?php if (isset($_GET['erros'])) : ?>
+                    <div class="alert alert-danger text-center" role="alert">
+                        <div> <?php echo "Vui lòng điền đầy đủ thông tin" ?> </div>
+                    </div>
+                <?php endif; ?>
+                <form class="ml-4" action="core/update-profile.php?id=<?php echo $id ?>" method="post">
                     <div class="mb-3 row">
                         <label for="inputname" class="col-sm-2 col-form-label">Họ và tên</label>
                         <div class="col-sm-10">
