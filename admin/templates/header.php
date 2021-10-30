@@ -752,12 +752,12 @@ ob_start();
             <div class="sidebar__content" data-simplebar="data-simplebar">
                 <nav class="sidebar__nav">
                     <ul class="sidebar__menu">
-                        <li class="sidebar__menu-item"><a class="sidebar__link" href="index.php" aria-expanded="false"><span class="sidebar__link-icon">
+                        <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "index.php") echo "active" ?>"" href=" index.php" aria-expanded="false"><span class="sidebar__link-icon">
                                     <svg class="icon-icon-dashboard">
                                         <use xlink:href="#icon-dashboard"></use>
                                     </svg></span><span class="sidebar__link-text">Dashboard</span></a>
                         </li>
-                        <li class="sidebar__menu-item"><a class="sidebar__link active" href="products.php" data-toggle="collapse" data-target="#E-Commerce" aria-expanded="true"><span class="sidebar__link-icon">
+                        <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "products.php") echo "active" ?>"" href=" products.php" data-toggle="collapse" data-target="#E-Commerce" aria-expanded="true"><span class="sidebar__link-icon">
                                     <svg class="icon-icon-cart">
                                         <use xlink:href="#icon-cart"></use>
                                     </svg></span><span class="sidebar__link-text">E-Commerce</span><span class="sidebar__link-arrow">
@@ -785,7 +785,7 @@ ob_start();
                             </div>
                         </li>
 
-                        <li class="sidebar__menu-item"><a class="sidebar__link" href="mail.php" aria-expanded="false"><span class="sidebar__link-icon">
+                        <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "mail.php") echo "active" ?>"" href=" mail.php" aria-expanded="false"><span class="sidebar__link-icon">
                                     <svg class="icon-icon-email">
                                         <use xlink:href="#icon-email"></use>
                                     </svg></span><span class="sidebar__link-text">Mail</span><span class="badge badge--red">20</span></a>

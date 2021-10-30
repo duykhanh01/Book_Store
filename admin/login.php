@@ -1,3 +1,43 @@
+<?php
+
+include('config/db_connect.php');
+if (isset($_POST['submit-login'])) {
+    $u_name = $_POST['username'];
+    $password = $_POST['password'];
+    if (empty($pass) or empty($u_name)) {
+        header("Location: login.php?errors=2");
+    }
+    $query = "SELECT * From users where u_name = '$u_name'";
+    $res = mysqli_query($conn, $query);
+    $row = mysqli_num_rows($res);
+
+    if ($row > 0) {
+        $user_logged = mysqli_fetch_assoc($res);
+        $pass_saved = $user_logged['password'];
+
+        if (password_verify($password, $pass_saved)) {
+
+            $_SESSION['user_name'] = $user_logged['u_name'];
+
+            $_SESSION['full_name'] = $user_logged['u_fullname'];
+            $_SESSION['u_id'] = $user_logged['u_id'];
+            header('Location: index.php');
+        } else {
+            header("Location: login.php?errors=1");
+            $email = $password  = "";
+        }
+    } else {
+        header("Location: login.php?errors=1");
+        $email = $password  = "";
+    }
+}
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html class="no-js" lang="en" data-theme="light">
 
@@ -333,20 +373,35 @@
                             <img class="auth-card__bg auth-bg-image-light" src="img/banner/login.jpg" alt="#">
                             <img class="auth-card__bg auth-bg-image-dark" src="img/content/auth-bg-dark.jpg" alt="#">
                         </div>
-                        <form class="auth-card__right" method="POST">
+                        <form class="auth-card__right" action="login.php" method="POST">
                             <div class="auth-card__top">
                                 <h1 class="auth-card__title">Welcome</h1>
                                 <p class="auth-card__text">Xin chào, vui lòng đăng nhập
                                     <br>vào tài khoản nếu bạn là admin.
                                 </p>
                             </div>
+                            <?php if (isset($_GET['errors'])) :
+                                $errors = "";
+                                switch ($_GET['errors']) {
+                                    case '1':
+                                        $errors = "Tên đăng nhập hoặc mật khẩu không chính xác";
+                                        break;
+                                    case '2':
+                                        $errors = "Vui lòng điền đầy đủ thông tin";
+                                        break;
+                                }
+                            ?>
+                                <div class="alert alert-danger text-center" role="alert">
+                                    <div> <?php echo $errors ?> </div>
+                                </div>
+                            <?php endif; ?>
                             <div class="auth-card__body">
-                                <div class="form-group">
+                                <div class="form-group mb-3">
                                     <div class="input-group input-group--prepend"><span class="input-group__prepend">
                                             <svg class="icon-icon-user">
                                                 <use xlink:href="#icon-user"></use>
                                             </svg></span>
-                                        <input class="input" placeholder="Nhập tên đăng nhập" type="text" required>
+                                        <input class="input" name="username" placeholder="Nhập tên đăng nhập" type="text" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -354,20 +409,16 @@
                                             <svg class="icon-icon-password">
                                                 <use xlink:href="#icon-password"></use>
                                             </svg></span>
-                                        <input class="input" placeholder="Nhập mật khẩu của bạn" type="password" required>
+                                        <input class="input" name="password" placeholder="Nhập mật khẩu của bạn" type="password" required>
                                     </div>
+                                </div>
+                                <div class="auth-card__button mt-5">
+                                    <button name="submit-login" class="button button--primary button--block" type="submit"><span class="button__text">Login</span>
+                                    </button>
                                 </div>
 
                             </div>
-                            <div class="auth-card__bottom">
-                                <div class="auth-card__buttons">
 
-                                    <div class="auth-card__button">
-                                        <button class="button button--primary button--block" type="button" onclick="javascript:location.href = 'index.html'"><span class="button__text">Login</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>
