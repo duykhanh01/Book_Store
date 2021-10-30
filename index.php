@@ -14,7 +14,7 @@ include('config/db_connect.php');
 
 
     <!--=================================
-        sách hot
+        banner sách hot
     ===================================== -->
     <section class="hero-area hero-slider-3">
         <div class="sb-slick-slider" data-slick-setting='{
@@ -65,6 +65,7 @@ include('config/db_connect.php');
             
         </div>
     </section>
+    <!-- sách hot -->
     <section class="section-margin mt-5">
         <div class="container">
             <div class="section-title section-title--bordered">
@@ -118,9 +119,9 @@ include('config/db_connect.php');
                                     <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
                                 </div>
                                 <div class="price-block">
-                                    <span class="price"><?php echo $row_romance['pr_price'] - $row_romance['pr_discount']; ?></span>
-                                    <del class="price-old"><?php echo $row_romance['pr_price']; ?></del>
-                                    <span class="price-discount">20%</span>
+                                    <span class="price"><?php echo number_format($row_romance['pr_price'] - $row_romance['pr_discount'], 0, ',', '.'). " VNĐ"; ?></span>
+                                    <del class="price-old"><?php echo number_format($row_romance['pr_price'], 0, ',', '.'). " VNĐ"; ?></del>
+                                    <span class="price-discount"><?php echo ceil(($row_romance['pr_discount'])/($row_romance['pr_price'])*100) ?>%</span>
                                 </div>
                             </div>
                         </div>
@@ -129,6 +130,8 @@ include('config/db_connect.php');
             </div>
         </div>
     </section>
+
+    <!-- gợi ý hôm nay -->
     <section class="section-margin mt-5">
         <div class="container">
             <div class="section-title section-title--bordered">
@@ -147,14 +150,28 @@ include('config/db_connect.php');
                         {"breakpoint":320, "settings": {"slidesToShow": 1} }
                     ]'>
                 <?php
-                $sl_recommend = "SELECT *, COUNT(orderdetail.or_id) 
+
+                //create table virtual
+                $create_table = "CREATE TEMPORARY TABLE productnew as 
+                ((SELECT  `pr_name`, `pr_author`, `pr_pub`, `pr_status`, `pr_category`, `pr_code`, `pr_number`, `pr_price`, `pr_discount`, `pr_img`, `pr_date`, `pr_desc`,orderdetail.or_id,orderdetail.pr_id,orders.or_date, COUNT(orderdetail.or_id) as number 
                 from orders, orderdetail, products 
                 where orders.or_id = orderdetail.or_id and  orderdetail.pr_id = products.pr_id 
-                GROUP BY orderdetail.or_id 
-                HAVING  datediff(date(curdate()), date(orders.or_date))<=3 
-                ORDER BY COUNT(orderdetail.or_id) DESC 
-                LIMIT 10;";
+                GROUP BY orderdetail.pr_id HAVING  datediff(date(curdate()), date(orders.or_date))<=3 
+                ORDER BY COUNT(orderdetail.or_id) DESC))";
+                mysqli_query($conn, $create_table);
+               
+                // $sl_recommend = "SELECT *, COUNT(orderdetail.or_id) 
+                // from orders, orderdetail, products 
+                // where orders.or_id = orderdetail.or_id and  orderdetail.pr_id = products.pr_id 
+                // GROUP BY orderdetail.or_id 
+                // HAVING  datediff(date(curdate()), date(orders.or_date))<=3 
+                // ORDER BY COUNT(orderdetail.or_id) DESC 
+                // LIMIT 10;";
+                $sl_recommend = "SELECT *, sum(productnew.number) as sum FROM productnew, category 
+                WHERE productnew.pr_category = category.c_id GROUP BY pr_id ORDER BY SUM(productnew.number) DESC LIMIT 10";
                 $res_recommend = mysqli_query($conn, $sl_recommend);
+                // echo mysqli_num_rows($res_recommend);
+                // exit;
                 while ($row_recommend = mysqli_fetch_assoc($res_recommend)) {  
                 $name_img = explode(",",$row_recommend['pr_img'])[0];?>
                     <div class="single-slide">
