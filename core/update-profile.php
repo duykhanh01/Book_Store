@@ -15,7 +15,7 @@ if (isset($_GET['id']) and isset($_POST['update'])) {
         $address = $_POST['address'];
         $tel = $_POST['tel'];
         if (empty($name) or empty($address) or empty($tel)) {
-            header("Location: ../profile.php?erros=1");
+            header("Location: ../profile.php?errors=1");
         } else {
             $query = "UPDATE customers set cus_name = '$name', cus_add = '$address', cus_tel = '$tel' where cus_id = '$id'";
             $result = mysqli_query($conn, $query);

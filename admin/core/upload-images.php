@@ -8,6 +8,11 @@ $images = $_FILES["pr_images"];
 $imagePath = "";
 $imagePathTemp = "";
 $pr_code = $_POST['pr_code'];
+// print_r($images);
+// print_r($images["tmp_name"]);
+// exit;
+
+
 
 foreach ($images["tmp_name"]  as $i => $tmp_name) {
     $ext = pathinfo($images['name'][$i], PATHINFO_EXTENSION);
@@ -22,7 +27,8 @@ foreach ($images["tmp_name"]  as $i => $tmp_name) {
         mkdir(dirname($imagePathTemp));
         move_uploaded_file($images['tmp_name'][$i], $imagePathTemp);
     } else {
-        echo $output = "errors";
+        echo header("Location: ../product-details.php?id=$id&errors=2");
+        exit;
     }
 }
 
@@ -35,7 +41,7 @@ $res = mysqli_query($conn, $sql);
 if ($res) {
     header("Location: ../product-details.php?id=$id");
 } else {
-    //header("Location: ../404.php");
+    header("Location: ../404.php");
 }
 
 

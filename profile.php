@@ -78,7 +78,7 @@ $row = mysqli_fetch_assoc($res);
             </div>
             <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
                 <H4 class="mb-4 ml-4">THÔNG TIN TÀI KHOẢN</H4>
-                <?php if (isset($_GET['erros'])) : ?>
+                <?php if (isset($_GET['errors'])) : ?>
                     <div class="alert alert-danger text-center" role="alert">
                         <div> <?php echo "Vui lòng điền đầy đủ thông tin" ?> </div>
                     </div>

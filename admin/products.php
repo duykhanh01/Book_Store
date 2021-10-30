@@ -11,6 +11,29 @@ include('../config/db_connect.php');
             <h1 class="page-header__title">Products</h1>
         </div>
         <div class="page-tools">
+            <div class="breadcrumbs">
+                <div class="breadcrumbs__container">
+                    <ol class="breadcrumbs__list">
+                        <li class="breadcrumbs__item">
+                            <a class="breadcrumbs__link" href="index.php">
+                                <svg class="icon-icon-home breadcrumbs__icon">
+                                    <use xlink:href="#icon-home"></use>
+                                </svg>
+                                <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
+                                    <use xlink:href="#icon-keyboard-right"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>Quản lý</span>
+                                <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
+                                    <use xlink:href="#icon-keyboard-right"></use>
+                                </svg></a>
+                        </li>
+                        <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Sản phẩm</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
             <div class="page-tools__right">
                 <div class="page-tools__right-row">
                     <div class="page-tools__right-item"><a class="button-icon" href="#"><span class="button-icon__icon">

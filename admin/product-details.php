@@ -67,13 +67,20 @@ if (isset($_GET['id'])) {
         <div class="card add-product card--content-center">
             <div class="card__wrapper">
                 <div class="card__container">
+                    <?php if (isset($_GET['errors'])) :
+                        $error = $_GET['errors'] == 1 ? "Vui lòng điền đầy đủ thông tin" : "Vui lòng chọn định dạng ảnh PNG, JPG, JPEG, GIF"
+                    ?>
+                        <div class="alert alert-danger text-center" role="alert">
+                            <div> <?php echo $error ?> </div>
+                        </div>
+                    <?php endif; ?>
                     <form class="add-product__form">
                         <div class="font-weight-bold">Mã sách: <?php echo $book['pr_code'] ?> </div>
 
                         <div class="d-flex justify-content-between mt-3">
                             <div class="d-flex ">
 
-                                <button class="btn btn-primary" data-modal=" #updateImages">
+                                <button class="btn btn-primary" data-modal="#updateImages">
                                     Chỉnh sửa ảnh
                                 </button>
                             </div>

@@ -27,4 +27,6 @@ if (!empty($_POST['pr_name']) and !empty($_POST['pr_code'])  and !empty($_POST['
     } else {
         header('Location: ../404.php');
     }
+} else {
+    header("Location: ../product-details.php?id=$id&errors=1");
 }
