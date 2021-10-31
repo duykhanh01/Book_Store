@@ -355,4 +355,36 @@ $(document).ready(function () {
       },
     });
   });
+
+  // ====================== Live search orders ======================================
+
+  $("#search-orders").keyup(function () {
+    var pr_key = $("#search-orders").val();
+    // var dataform = new FormData();
+    // dataform.append('pr_key', pr_key);
+    $.ajax({
+      url: "core/search-orders.php",
+      method: "POST",
+
+      // data: dataform,
+      data: { pr_key: pr_key },
+
+      success: function (response) {
+        $(".table-orders").html(response);
+      },
+    });
+  });
+
+  // ================= Select status orders =================================================
+  $("#select-status").change(function () {
+    var value = $("#select-status").find(":selected")[0].value;
+    $.ajax({
+      url: "core/select-status-orders.php",
+      type: "POST",
+      data: { or_key: value },
+      success: function (data) {
+        $(".table-orders").html(data);
+      },
+    });
+  });
 });

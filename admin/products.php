@@ -93,7 +93,7 @@ session_start();
                                     </svg></span>
                             </div>
                         </div>
-                        <div class="form-group form-group--inline col-12 col-sm-auto">
+                        <div div class="form-group form-group--inline col-12 col-sm-auto">
                             <div class="input-group input-group--white input-group--append">
                                 <select id="select_status" class="input js-input-select" data-placeholder="">
                                     <option value="3" selected="selected">Tất cả trạng thái
@@ -236,9 +236,8 @@ session_start();
             </div>
             <div class="table-wrapper__footer">
                 <div class="row">
-                    <div class="table-wrapper__show-result col text-grey"><span class="d-none d-sm-inline-block">Showing</span> 1 to 10 <span class="d-none d-sm-inline-block">of 50 items</span>
-                    </div>
-                    <div class="table-wrapper__pagination col-auto">
+
+                    <div class="table-wrapper__pagination m-auto col-auto">
                         <ol class="pagination">
                             <li class="pagination__item">
                                 <a class="pagination__arrow pagination__arrow--prev" href="#">

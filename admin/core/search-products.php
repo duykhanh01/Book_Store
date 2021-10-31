@@ -1,8 +1,6 @@
 <?php
 
-if (!isset($_SESSION['u_id'])) {
-    header('Location: login.php');
-}
+
 include('../config/db_connect.php');
 if (!isset($_POST['pr_key'])) {
     header("Location: manager.php");

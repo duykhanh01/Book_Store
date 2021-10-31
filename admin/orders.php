@@ -55,50 +55,27 @@ require_once("templates/header.php"); ?>
                 </div>
             </div>
         </div>
-        <div class="toolbox">
+        <div class="toolbox d-flex">
             <div class="toolbox__row row gutter-bottom-xs">
                 <div class="toolbox__left col-12 col-lg">
-                    <div class="toolbox__left-row row row--xs gutter-bottom-xs">
-                        <div class="form-group form-group--inline col-12 col-sm-auto">
-                            <label class="form-label">Show</label>
-                            <div class="input-group input-group--white input-group--append">
-                                <input class="input input--select" type="text" value="10" size="1" data-toggle="dropdown" readonly><span class="input-group__arrow">
-                                    <svg class="icon-icon-keyboard-down">
-                                        <use xlink:href="#icon-keyboard-down"></use>
-                                    </svg></span>
-                                <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                    <a class="dropdown-menu__item active" href="#" tabindex="0" data-value="10">10</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="15">15</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="20">20</a>
-                                    <a class="dropdown-menu__item" href="#" tabindex="0" data-value="25">25</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="50">50</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group form-group--inline col col-sm-auto">
-                            <div class="input-group input-group--white input-group--prepend input-group--append">
-                                <div class="input-group__prepend">
-                                    <svg class="icon-icon-calendar">
-                                        <use xlink:href="#icon-calendar"></use>
-                                    </svg>
-                                </div>
-                                <input class="input input--select" type="text" value="01.12.18 / 07.12.18" readonly><span class="input-group__arrow">
-                                    <svg class="icon-icon-keyboard-down">
-                                        <use xlink:href="#icon-keyboard-down"></use>
-                                    </svg></span>
-                            </div>
-                        </div>
-                        <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
-                            <div class="toolbox__status input-group input-group--white input-group--append">
-                                <input class="input input--select" type="text" value="All status" data-toggle="dropdown" readonly><span class="input-group__arrow">
-                                    <svg class="icon-icon-keyboard-down">
-                                        <use xlink:href="#icon-keyboard-down"></use>
-                                    </svg></span>
-                                <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                    <a class="dropdown-menu__item active" href="#" tabindex="0" data-value="All status"><span class="marker-item"></span> All status</a>
-                                    <a class="dropdown-menu__item" href="#" tabindex="0" data-value="Complete"><span class="marker-item color-green"></span>
-                                        Complete</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="Pending"><span class="marker-item color-blue"></span>
-                                        Pending</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="Processing"><span class="marker-item color-orange"></span>
-                                        Processing</a>
-                                </div>
-                            </div>
+                    <div div class="form-group form-group--inline ">
+                        <div class="input-group input-group--white input-group--append">
+                            <select id="select-status" class="input js-input-select" data-placeholder="">
+                                <option value="4" selected="selected">Tất cả trạng thái
+                                </option>
+                                <option value="3">Đã giao hàng
+                                </option>
+                                <option value=" 2">Đang giao hàng
+                                </option>
+                                <option value="1">Đã xử lý
+                                </option>
+                                <option value="0"> Đang xử lý
+                                </option>
+                            </select><span class="input-group__arrow">
+                                <svg class="icon-icon-keyboard-down">
+                                    <use xlink:href="#icon-keyboard-down"></use>
+                                </svg></span>
+
                         </div>
                     </div>
                 </div>
@@ -112,7 +89,7 @@ require_once("templates/header.php"); ?>
                                             <use xlink:href="#icon-search"></use>
                                         </svg>
                                     </div>
-                                    <input class="input" type="text" placeholder="Search orders">
+                                    <input id="search-orders" class="input" type="text" placeholder="Tìm kiếm">
                                 </div>
                             </form>
                         </div>
@@ -140,26 +117,43 @@ require_once("templates/header.php"); ?>
                             </th>
                             <th class="d-none d-lg-table-cell"><span>Order ID</span>
                             </th>
-                            <th class="table__th-sort"><span class="align-middle">Customer Name</span><span class="sort sort--down"></span>
+                            <th class="table__th-sort"><span class="align-middle">Customer Name</span>
                             </th>
                             <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Payment
-                                    Type</span><span class="sort sort--down"></span>
+                                    Type</span>
                             </th>
-                            <th class="table__th-sort"><span class="align-middle">Total</span><span class="sort sort--down"></span>
+                            <th class="table__th-sort"><span class="align-middle">Total</span>
                             </th>
-                            <th class="table__th-sort"><span class="align-middle">Date</span><span class="sort sort--down"></span>
+                            <th class="table__th-sort"><span class="align-middle">Date</span>
                             </th>
-                            <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Status</span><span class="sort sort--down"></span>
+                            <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Status</span>
                             </th>
                             <th class="table__actions"></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-orders">
                         <?php
                         $sl_orders = "SELECT * FROM orders, customers where orders.cus_id = customers.cus_id";
                         $res_orders = mysqli_query($conn, $sl_orders);
                         $count = 1;
-                        while ($row_or  = mysqli_fetch_assoc($res_orders)) { ?>
+                        while ($row_or  = mysqli_fetch_assoc($res_orders)) {
+
+                            switch ($row_or['or_status']) {
+                                case 0:
+                                    $color = "orange";
+                                    break;
+                                case 1:
+                                    $color = "blue";
+                                    break;
+                                case 2:
+                                    $color = "blue";
+                                    break;
+                                case 3:
+                                    $color = "green";
+                                    break;
+                            }
+
+                        ?>
                             <tr class="table__row">
                                 <td class="table__td">
                                     <?php echo $count; ?>
@@ -174,7 +168,7 @@ require_once("templates/header.php"); ?>
                                 <td class="table__td text-nowrap"><span class="text-grey"><?php echo $row_or['or_date']; ?> </span>
                                 </td>
                                 <td class="d-none d-sm-table-cell table__td">
-                                    <div class="table__status"><span class="table__status-icon color-green"></span>
+                                    <div class="table__status"><span class="table__status-icon color-<?php echo $color; ?>"></span>
                                         <?php
                                         if ($row_or['or_status'] == 0) {
                                             echo "Đang xử lý";
@@ -185,6 +179,7 @@ require_once("templates/header.php"); ?>
                                         } elseif ($row_or['or_status'] == 3) {
                                             echo "Giao hàng thành công";
                                         }
+
 
                                         ?></div>
                                 </td>
@@ -229,9 +224,8 @@ require_once("templates/header.php"); ?>
             </div>
             <div class="table-wrapper__footer">
                 <div class="row">
-                    <div class="table-wrapper__show-result col text-grey"><span class="d-none d-sm-inline-block">Showing</span> 1 to 10 <span class="d-none d-sm-inline-block">of 50 items</span>
-                    </div>
-                    <div class="table-wrapper__pagination col-auto">
+
+                    <div class="table-wrapper__pagination m-auto col-auto">
                         <ol class="pagination">
                             <li class="pagination__item">
                                 <a class="pagination__arrow pagination__arrow--prev" href="#">

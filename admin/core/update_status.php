@@ -1,8 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['u_id'])) {
-    header('Location: login.php');
-}
+
 if (isset($_POST['stt']) && isset($_POST['id_or'])) {
     include('../config/db_connect.php');
     $stt =  $_POST['stt'];
