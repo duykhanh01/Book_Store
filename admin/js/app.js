@@ -337,4 +337,22 @@ $(document).ready(function () {
       data: { id: u_id, pass: pass },
     });
   });
+
+  // ====================== Live search products ======================================
+  $("#search-products").keyup(function () {
+    var pr_key = $("#search-products").val();
+    // var dataform = new FormData();
+    // dataform.append('pr_key', pr_key);
+    $.ajax({
+      url: "core/search-products.php",
+      method: "POST",
+
+      // data: dataform,
+      data: { pr_key: pr_key },
+
+      success: function (response) {
+        $("#body-table").html(response);
+      },
+    });
+  });
 });

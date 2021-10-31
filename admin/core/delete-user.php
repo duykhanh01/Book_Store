@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['u_id'])) {
+    header('Location: login.php');
+}
 include('../config/db_connect.php');
 if (!isset($_GET['id'])) header("Location: ../404.php");
 $id = $_GET['id'];
@@ -10,5 +14,5 @@ if (mysqli_num_rows($res) == 0) {
     $sql = "DELETE from users where u_id = '$id'";
     $res = mysqli_query($conn, $sql);
     if (!$res) header("Location: ../404.php");
-    header("Location: ../manage-admins.php");
+    header("Location: ../manage-users.php");
 }

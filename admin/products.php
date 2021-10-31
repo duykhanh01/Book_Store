@@ -1,5 +1,7 @@
 <?php
 include('../config/db_connect.php');
+session_start();
+
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en" data-theme="light">
@@ -118,7 +120,7 @@ include('../config/db_connect.php');
                                             <use xlink:href="#icon-search"></use>
                                         </svg>
                                     </div>
-                                    <input class="input" type="text" placeholder="Search product">
+                                    <input class="input" id="search-products" type="text" placeholder="Tìm kiếm sản phẩm">
                                 </div>
                             </form>
                         </div>
@@ -135,99 +137,102 @@ include('../config/db_connect.php');
         </div>
         <div class="table-wrapper">
             <div class="table-wrapper__content table-collapse scrollbar-thin scrollbar-visible" data-simplebar>
-                <table class="table table--lines">
-                    <colgroup>
-                        <col width="90px">
-                        <col width="100px">
-                        <col width="350px">
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                        <col>
-                    </colgroup>
-                    <thead class="table__header">
-                        <tr class="table__header-row">
-                            <th>
-                                #
-                            </th>
-                            <th class="d-none d-lg-table-cell"><span>ID</span>
-                            </th>
-                            <th class="table__th-sort"><span class="align-middle">Tên sách</span>
-                            </th>
-                            <th class="table__th-sort"><span class="align-middle">Thể loại</span>
-                            </th>
-                            <th class="table__th-sort"><span class="align-middle">Giá đã giảm</span>
-                            </th>
-                            <th class="table__th-sort d-none d-lg-table-cell"><span class="align-middle">Tồn kho</span>
-                            </th>
-                            <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Trạng thái</span>
-                            </th>
-                            <th class="table__actions"></th>
-                        </tr>
-                    </thead>
+                <div class="table-responsive">
 
-                    <tbody id="body-table">
-                        <?php
-                        $sl_product = "SELECT * FROM products, category where products.pr_category = category.c_id limit 10";
-                        $res_product = mysqli_query($conn, $sl_product);
-                        $count = 1;
-                        while ($row = mysqli_fetch_assoc($res_product)) {
-                        ?>
-                            <tr class="table__row">
+                    <table class=" table table--lines">
+                        <colgroup>
+                            <col width="90px">
+                            <col width="100px">
+                            <col width="350px">
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                            <col>
+                        </colgroup>
+                        <thead class="table__header">
+                            <tr class="table__header-row">
+                                <th>
+                                    #
+                                </th>
+                                <th class=" d-lg-table-cell"><span>ID</span>
+                                </th>
+                                <th class="table__th-sort"><span class="align-middle">Tên sách</span>
+                                </th>
+                                <th class="table__th-sort"><span class="align-middle">Thể loại</span>
+                                </th>
+                                <th class="table__th-sort"><span class="align-middle">Giá đã giảm</span>
+                                </th>
+                                <th class="table__th-sort  d-lg-table-cell"><span class="align-middle">Tồn kho</span>
+                                </th>
+                                <th class="table__th-sort  d-sm-table-cell"><span class="align-middle">Trạng thái</span>
+                                </th>
+                                <th class="table__actions"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="body-table">
+                            <?php
+                            $sl_product = "SELECT * FROM products, category where products.pr_category = category.c_id limit 10";
+                            $res_product = mysqli_query($conn, $sl_product);
+                            $count = 1;
+                            while ($row = mysqli_fetch_assoc($res_product)) {
+                            ?>
+                                <tr class="table__row">
 
 
-                                <td class="table__td">
-                                    <?php echo $count; ?>
-                                </td>
-                                <td class="d-none d-lg-table-cell table__td"><?php echo $row['pr_code']; ?><span class="text-grey"></span>
-                                </td>
-                                <td class="table__td"><?php echo $row['pr_name']; ?></td>
-                                <td class="table__td"><span class="text-grey"><?php echo $row['c_name']; ?></span>
-                                </td>
-                                <td class="table__td"><span><?php echo $row['pr_price'] - $row['pr_discount']; ?></span>
-                                </td>
-                                <td class="d-none d-lg-table-cell table__td"><span class="text-grey"><?php echo $row['pr_number']; ?></span>
-                                </td>
-                                <td class="d-none d-sm-table-cell table__td">
-                                    <div class="table__status"><span class="table__status-icon <?php if ($row['pr_status'] == 1)  echo "color-red";
-                                                                                                else echo "color-green" ?>"></span>
-                                        <?php if ($row['pr_status'] == 1)  echo "Private";
-                                        else echo "Public" ?></div>
-                                </td>
-                                <td class="table__td table__actions">
-                                    <div class="items-more">
-                                        <button class="items-more__button">
-                                            <svg class="icon-icon-more">
-                                                <use xlink:href="#icon-more"></use>
-                                            </svg>
-                                        </button>
-                                        <div class="dropdown-items dropdown-items--right">
-                                            <div class="dropdown-items__container">
-                                                <ul class="dropdown-items__list">
-                                                    <li class="dropdown-items__item"><a href="product-details.php?id=<?php echo $row['pr_id'] ?>" class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                                                <svg class="icon-icon-view">
-                                                                    <use xlink:href="#icon-view"></use>
-                                                                </svg></span>Details</a>
-                                                    </li>
-                                                    <li class="dropdown-items__item"><a value="<?php echo $row['pr_id'] ?>" class="dropdown-items__link delete-product"><span class="dropdown-items__link-icon">
-                                                                <svg class="icon-icon-trash">
-                                                                    <use xlink:href="#icon-trash"></use>
-                                                                </svg></span>Delete</a>
-                                                    </li>
-                                                </ul>
+                                    <td class="table__td">
+                                        <?php echo $count; ?>
+                                    </td>
+                                    <td class="d-lg-table-cell table__td"><?php echo $row['pr_code']; ?><span class="text-grey"></span>
+                                    </td>
+                                    <td class="table__td"><?php echo $row['pr_name']; ?></td>
+                                    <td class="table__td"><span class="text-grey"><?php echo $row['c_name']; ?></span>
+                                    </td>
+                                    <td class="table__td"><span><?php echo $row['pr_price'] - $row['pr_discount']; ?></span>
+                                    </td>
+                                    <td class="d-lg-table-cell table__td"><span class="text-grey"><?php echo $row['pr_number']; ?></span>
+                                    </td>
+                                    <td class="d-sm-table-cell table__td">
+                                        <div class="table__status"><span class="table__status-icon <?php if ($row['pr_status'] == 1)  echo "color-red";
+                                                                                                    else echo "color-green" ?>"></span>
+                                            <?php if ($row['pr_status'] == 1)  echo "Private";
+                                            else echo "Public" ?></div>
+                                    </td>
+                                    <td class="table__td table__actions">
+                                        <div class="items-more">
+                                            <button class="items-more__button">
+                                                <svg class="icon-icon-more">
+                                                    <use xlink:href="#icon-more"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="dropdown-items dropdown-items--right">
+                                                <div class="dropdown-items__container">
+                                                    <ul class="dropdown-items__list">
+                                                        <li class="dropdown-items__item"><a href="product-details.php?id=<?php echo $row['pr_id'] ?>" class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                                                    <svg class="icon-icon-view">
+                                                                        <use xlink:href="#icon-view"></use>
+                                                                    </svg></span>Details</a>
+                                                        </li>
+                                                        <li class="dropdown-items__item"><a value="<?php echo $row['pr_id'] ?>" class="dropdown-items__link delete-product"><span class="dropdown-items__link-icon">
+                                                                    <svg class="icon-icon-trash">
+                                                                        <use xlink:href="#icon-trash"></use>
+                                                                    </svg></span>Delete</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
+                                    </td>
 
-                            </tr>
-                        <?php
-                            $count++;
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                                </tr>
+                            <?php
+                                $count++;
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="table-wrapper__footer">
                 <div class="row">

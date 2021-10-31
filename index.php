@@ -92,45 +92,46 @@ include('config/db_connect.php');
                 where od.or_id = ors.or_id and DATEDIFF(CURDATE(), ors.or_date)<=7 
                 GROUP BY od.pr_id ORDER BY  count(od.or_id) DESC LIMIT 7";
                 $list_id = mysqli_query($conn, $sl_id);
-                while($row_id = mysqli_fetch_assoc($list_id))
-                {
+                while ($row_id = mysqli_fetch_assoc($list_id)) {
                     $products_id = $row_id['pr_id'];
-                
-                $sql = "SELECT  * FROM `products` where pr_id = $products_id limit 7";
-                $res = mysqli_query($conn, $sql);
-                while ($row_romance = mysqli_fetch_assoc($res)) {  
-                $name_img = explode(",",$row_romance['pr_img'])[0];?>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            
-                            <div class="product-card--body">
-                                <div class="card-image">
-                                    <img src="admin/<?php echo $name_img;?>" class="m-auto" style="width:190px; height:190px;" alt="">
-                                    <div class="hover-contents">
-                                        
-                                        <div class="hover-btns">
-                                            <a href="#" class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
-                                                <i class="fas fa-cart-plus"></i>
-                                            </a>
 
-                                            <a  data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
+                    $sql = "SELECT  * FROM `products` where pr_id = $products_id limit 7";
+                    $res = mysqli_query($conn, $sql);
+                    while ($row_romance = mysqli_fetch_assoc($res)) {
+                        $name_img = explode(",", $row_romance['pr_img'])[0]; ?>
+                        <div class="single-slide">
+                            <div class="product-card">
+
+                                <div class="product-card--body">
+                                    <div class="card-image">
+
+                                        <img src="admin/<?php echo $name_img; ?>" class="m-auto" style="width:190px; height:190px;" alt="">
+                                        <div class="hover-contents">
+
+                                            <div class="hover-btns">
+                                                <a href="#" class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
+                                                    <i class="fas fa-cart-plus"></i>
+                                                </a>
+
+                                                <a data-toggle="modal" data-target="#quickModal" class="single-btn">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="product-header mt-2">
-                                    <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
-                                </div>
-                                <div class="price-block">
-                                    <span class="price"><?php echo $row_romance['pr_price'] - $row_romance['pr_discount']; ?></span>
-                                    <del class="price-old"><?php echo $row_romance['pr_price']; ?></del>
-                                    <span class="price-discount">20%</span>
+                                    <div class="product-header mt-2">
+                                        <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
+                                    </div>
+                                    <div class="price-block">
+                                        <span class="price"><?php echo $row_romance['pr_price'] - $row_romance['pr_discount']; ?></span>
+                                        <del class="price-old"><?php echo $row_romance['pr_price']; ?></del>
+                                        <span class="price-discount">20%</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php  } } ?>
+                <?php  }
+                } ?>
             </div>
         </div>
     </section>
@@ -159,25 +160,25 @@ include('config/db_connect.php');
                 $sl_romance = "SELECT * from products, category where products.pr_category = category.c_id and products.pr_category = 2 limit 8";
                 $res_romance = mysqli_query($conn, $sl_romance);
                 while ($row_romance = mysqli_fetch_assoc($res_romance)) {
-                //xử lí lấy ảnh ra
-                $name_img = explode(",",$row_romance['pr_img'])[0];
-               
-                    ?>
+                    //xử lí lấy ảnh ra
+                    $name_img = explode(",", $row_romance['pr_img'])[0];
+
+                ?>
 
                     <div class="single-slide">
                         <div class="product-card">
-                            
+
                             <div class="product-card--body">
                                 <div class="card-image">
-                                    <img src="admin/<?php echo $name_img;?>" class="m-auto" style="width:190px; height:190px;" alt="">
+                                    <img src="admin/<?php echo $name_img; ?>" class="m-auto" style="width:190px; height:190px;" alt="">
                                     <div class="hover-contents">
-                                        
+
                                         <div class="hover-btns">
                                             <a href="#" class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
                                                 <i class="fas fa-cart-plus"></i>
                                             </a>
 
-                                            <a  data-toggle="modal" data-target="#quickModal" class="single-btn">
+                                            <a data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                         </div>
@@ -226,25 +227,25 @@ include('config/db_connect.php');
                 $sl_romance = "SELECT * from products, category where products.pr_category = category.c_id and products.pr_category = 1 limit 8";
                 $res_romance = mysqli_query($conn, $sl_romance);
                 while ($row_romance = mysqli_fetch_assoc($res_romance)) {
-                //xử lí lấy ảnh ra
-                $name_img = explode(",",$row_romance['pr_img'])[0];
-               
-                    ?>
+                    //xử lí lấy ảnh ra
+                    $name_img = explode(",", $row_romance['pr_img'])[0];
+
+                ?>
 
                     <div class="single-slide">
                         <div class="product-card">
-                            
+
                             <div class="product-card--body">
                                 <div class="card-image">
-                                    <img src="admin/<?php echo $name_img;?>" class="m-auto" style="width:190px; height:190px;" alt="">
+                                    <img src="admin/<?php echo $name_img; ?>" class="m-auto" style="width:190px; height:190px;" alt="">
                                     <div class="hover-contents">
-                                        
+
                                         <div class="hover-btns">
                                             <a href="#" class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
                                                 <i class="fas fa-cart-plus"></i>
                                             </a>
 
-                                            <a  data-toggle="modal" data-target="#quickModal" class="single-btn">
+                                            <a data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                         </div>
@@ -291,25 +292,25 @@ include('config/db_connect.php');
                 $sl_romance = "SELECT * from products, category where products.pr_category = category.c_id and products.pr_category = 3 limit 8";
                 $res_romance = mysqli_query($conn, $sl_romance);
                 while ($row_romance = mysqli_fetch_assoc($res_romance)) {
-                //xử lí lấy ảnh ra
-                $name_img = explode(",",$row_romance['pr_img'])[0];
-               
-                    ?>
+                    //xử lí lấy ảnh ra
+                    $name_img = explode(",", $row_romance['pr_img'])[0];
+
+                ?>
 
                     <div class="single-slide">
                         <div class="product-card">
-                            
+
                             <div class="product-card--body">
                                 <div class="card-image">
-                                    <img src="admin/<?php echo $name_img;?>" class="m-auto" style="width:190px; height:190px;" alt="">
+                                    <img src="admin/<?php echo $name_img; ?>" class="m-auto" style="width:190px; height:190px;" alt="">
                                     <div class="hover-contents">
-                                        
+
                                         <div class="hover-btns">
                                             <a href="#" class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
                                                 <i class="fas fa-cart-plus"></i>
                                             </a>
 
-                                            <a  data-toggle="modal" data-target="#quickModal" class="single-btn">
+                                            <a data-toggle="modal" data-target="#quickModal" class="single-btn">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                         </div>
@@ -335,7 +336,7 @@ include('config/db_connect.php');
     </section>
 
     <!-- ------------------------------------------------ Foreach Thể loại ------------------------------------------------------------------ -->
-  
+
     <!--=================================
         Home Features Section
     ===================================== -->

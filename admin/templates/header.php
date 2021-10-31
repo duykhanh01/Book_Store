@@ -1,5 +1,8 @@
 <?php
 ob_start();
+if (!isset($_SESSION['u_id'])) {
+    header('Location: login.php');
+}
 ?>
 
 <head>
@@ -797,36 +800,21 @@ ob_start();
                         <li class="sidebar__menu-item"><a class="sidebar__link" href="#" data-toggle="collapse" data-target="#Auth" aria-expanded="false"><span class="sidebar__link-icon">
                                     <svg class="icon-icon-password">
                                         <use xlink:href="#icon-password"></use>
-                                    </svg></span><span class="sidebar__link-text">Authentication</span><span class="sidebar__link-arrow">
+                                    </svg></span><span class="sidebar__link-text">Quản lý tài khoản</span><span class="sidebar__link-arrow">
                                     <svg class="icon-icon-keyboard-down">
                                         <use xlink:href="#icon-keyboard-down"></use>
                                     </svg></span></a>
                             <div class="collapse" id="Auth">
                                 <ul class="sidebar__collapse-menu">
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-login.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Login</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "change-pass.php") echo "active" ?>" href="change-pass.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Đổi mật khẩu</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-login-v2.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Login V.2</span></a>
+                                    <?php if ($_SESSION['level'] == 2) : ?>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "manage-users.php") echo "active" ?>" href="manage-users.php.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Tài khoản admin</span></a>
+                                        </li>
+                                    <?php endif; ?>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="logout.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Đăng xuất</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-login-v3.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Login V.3</span></a>
-                                    </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-create.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Create Account</span></a>
-                                    </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-create-v2.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Create Account V.2</span></a>
-                                    </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-create-v3.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Create Account V.3</span></a>
-                                    </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-lock.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Lock</span></a>
-                                    </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-lock-v2.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Lock V.2</span></a>
-                                    </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-lock-v3.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Lock V.3</span></a>
-                                    </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-forgot.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Forgot</span></a>
-                                    </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-forgot-v2.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Forgot V.2</span></a>
-                                    </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-forgot-v3.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Forgot V.3</span></a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </li>

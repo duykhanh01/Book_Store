@@ -1,6 +1,14 @@
 <?php
+session_start();
+if (!isset($_SESSION['u_id'])) {
+    header('Location: login.php');
+}
+
 include('../config/db_connect.php');
-if (!isset($_GET['id']) or empty($_FILES['pr_images'])) header('Location: ../404.php');
+if (!isset($_GET['id']) or empty($_FILES['pr_images'])) {
+    header('Location: ../404.php');
+    exit;
+}
 $id = $_GET['id'];
 
 // $pr_images = $_POST['pr_images'];

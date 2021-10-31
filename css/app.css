@@ -28,6 +28,11 @@
     color: gray;
 }
 
+.product-header
+{
+    height: 80px;
+}
+
 footer{
     border-top: 1px solid #ccc;
 }

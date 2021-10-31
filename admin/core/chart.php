@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if (!isset($_SESSION['u_id'])) {
+    header('Location: login.php');
+}
 include('../config/db_connect.php');
 $sql = "SELECT count FROM books";
 $res = mysqli_query($conn, $sql);

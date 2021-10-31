@@ -1,20 +1,18 @@
 <?php
-   if(isset($_GET['or_id']))
-    {
-        include('config/db_connect.php');
-        $or_id = $_GET['or_id'];
-        $sl_ors = "SELECT * from orders where or_id = '$or_id'";
-        $res_ors = mysqli_query($conn, $sl_ors);
-        if(mysqli_num_rows($res_ors)==0)
-        {
-            header('location: orders.php');
-        }
-        $row_or = mysqli_fetch_assoc($res_ors);
-    }
-    else
-    {
+session_start();
+
+if (isset($_GET['or_id'])) {
+    include('config/db_connect.php');
+    $or_id = $_GET['or_id'];
+    $sl_ors = "SELECT * from orders where or_id = '$or_id'";
+    $res_ors = mysqli_query($conn, $sl_ors);
+    if (mysqli_num_rows($res_ors) == 0) {
         header('location: orders.php');
     }
+    $row_or = mysqli_fetch_assoc($res_ors);
+} else {
+    header('location: orders.php');
+}
 
 ?>
 
@@ -88,7 +86,7 @@
     <div class="container">
         <div class="page-header">
             <h3 class="page-header__subtitle d-lg-none">Order Details</h3>
-            <h1 class="page-header__title">Orders <span class="text-grey">#<span id="id_orders"><?php echo $or_id;?></span></span></h1>
+            <h1 class="page-header__title">Orders <span class="text-grey">#<span id="id_orders"><?php echo $or_id; ?></span></span></h1>
         </div>
         <div class="page-tools">
             <div class="page-tools__breadcrumbs">
@@ -157,32 +155,25 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody id = "tb_status">
+                        <tbody id="tb_status">
                             <tr class="table__row">
-                                <td class="table__td text-center"><?php echo $row_or['or_date'];?></td>
+                                <td class="table__td text-center"><?php echo $row_or['or_date']; ?></td>
                                 <td class="table__td text-center">
                                     <div class="d-inline-block text-nowrap"><span class="marker-item color-blue"></span><span>
-                                        
-                                    <?php 
-                                    $stt = "";
-                                    if($row_or['or_status']==0)
-                                    {
-                                        $stt = "Đang xử lí";
-                                    }
-                                    elseif($row_or['or_status']==1)
-                                    {
-                                        $stt = "Đã xử lí";
-                                    }
-                                    elseif($row_or['or_status']==2)
-                                    {
-                                        $stt = "Đang giao hàng";
-                                    }
-                                    elseif($row_or['or_status']==3)
-                                    {
-                                        $stt = "Giao hàng thành công";
-                                    }
 
-                                    echo $stt ?></span>
+                                            <?php
+                                            $stt = "";
+                                            if ($row_or['or_status'] == 0) {
+                                                $stt = "Đang xử lí";
+                                            } elseif ($row_or['or_status'] == 1) {
+                                                $stt = "Đã xử lí";
+                                            } elseif ($row_or['or_status'] == 2) {
+                                                $stt = "Đang giao hàng";
+                                            } elseif ($row_or['or_status'] == 3) {
+                                                $stt = "Giao hàng thành công";
+                                            }
+
+                                            echo $stt ?></span>
                                     </div>
                                 </td>
                                 <td class="table__td text-center"><span><input id="id_user" value="1" class="d-none">Tên người xử lí</span></td>
@@ -190,7 +181,7 @@
                         </tbody>
                     </table>
                 </div>
-                <form class="order-status__form" method = "GET" action="">
+                <form class="order-status__form" method="GET" action="">
                     <div class="card__container">
                         <div class="row gutter-bottom-xl">
                             <div class="col-12">

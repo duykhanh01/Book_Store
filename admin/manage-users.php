@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('config/db_connect.php');
 $sql = "SELECT * FROM users";
 $res = mysqli_query($conn, $sql);

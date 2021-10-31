@@ -1,7 +1,12 @@
+<?php
+session_start();
+
+
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en" data-theme="light">
 
-<?php 
+<?php
 include('config/db_connect.php');
 require_once("templates/header.php"); ?>
 <main class="page-content">
@@ -151,11 +156,10 @@ require_once("templates/header.php"); ?>
                     </thead>
                     <tbody>
                         <?php
-                            $sl_orders = "SELECT * FROM orders, customers where orders.cus_id = customers.cus_id";
-                            $res_orders = mysqli_query($conn, $sl_orders); 
-                            $count = 1;
-                        while($row_or  = mysqli_fetch_assoc($res_orders))
-                        {?>
+                        $sl_orders = "SELECT * FROM orders, customers where orders.cus_id = customers.cus_id";
+                        $res_orders = mysqli_query($conn, $sl_orders);
+                        $count = 1;
+                        while ($row_or  = mysqli_fetch_assoc($res_orders)) { ?>
                             <tr class="table__row">
                                 <td class="table__td">
                                     <?php echo $count; ?>
@@ -163,35 +167,28 @@ require_once("templates/header.php"); ?>
                                 <td class="d-none d-lg-table-cell table__td"><span class="text-grey"><?php echo $row_or['or_id']; ?></span>
                                 </td>
                                 <td class="table__td"><?php echo $row_or['cus_name']; ?></td>
-                                <td class="d-none d-sm-table-cell table__td"><span class="text-grey"><?php echo $row_or['or_pay'];?> </span>
+                                <td class="d-none d-sm-table-cell table__td"><span class="text-grey"><?php echo $row_or['or_pay']; ?> </span>
                                 </td>
                                 <td class="table__td"><span><?php echo $row_or['or_total']; ?></span>
                                 </td>
-                                <td class="table__td text-nowrap"><span class="text-grey"><?php echo $row_or['or_date'];?> </span>
+                                <td class="table__td text-nowrap"><span class="text-grey"><?php echo $row_or['or_date']; ?> </span>
                                 </td>
                                 <td class="d-none d-sm-table-cell table__td">
                                     <div class="table__status"><span class="table__status-icon color-green"></span>
-                                        <?php 
-                                            if($row_or['or_status']==0)
-                                            {
-                                                echo "Đang xử lý";
-                                            }
-                                            elseif($row_or['or_status']==1)
-                                            {
-                                                echo "Đã xử lý";
-                                            }
-                                            elseif($row_or['or_status']==2)
-                                            {
-                                                echo "Đang giao hàng";
-                                            }
-                                            elseif($row_or['or_status']==3)
-                                            {
-                                                echo "Giao hàng thành công";
-                                            }
-                                            
+                                        <?php
+                                        if ($row_or['or_status'] == 0) {
+                                            echo "Đang xử lý";
+                                        } elseif ($row_or['or_status'] == 1) {
+                                            echo "Đã xử lý";
+                                        } elseif ($row_or['or_status'] == 2) {
+                                            echo "Đang giao hàng";
+                                        } elseif ($row_or['or_status'] == 3) {
+                                            echo "Giao hàng thành công";
+                                        }
+
                                         ?></div>
                                 </td>
-                                
+
                                 <td class="table__td table__actions">
                                     <div class="items-more">
                                         <button class="items-more__button">
@@ -208,12 +205,12 @@ require_once("templates/header.php"); ?>
                                                                 </svg></span>Details</a>
                                                     </li>
 
-                                                    <li class="dropdown-items__item"><a class="dropdown-items__link" href="core/delete_orders.php?or_id=<?php echo $row_or['or_id'];?>"><span class="dropdown-items__link-icon">
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link" href="core/delete_orders.php?or_id=<?php echo $row_or['or_id']; ?>"><span class="dropdown-items__link-icon">
                                                                 <svg class="icon-icon-trash">
                                                                     <use xlink:href="#icon-trash"></use>
                                                                 </svg></span>Delete</a>
                                                     </li>
-                                                    <li class="dropdown-items__item"><a class="dropdown-items__link" href="order-status.php?or_id=<?php echo $row_or['or_id'];?>"><span class="dropdown-items__link-icon">
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link" href="order-status.php?or_id=<?php echo $row_or['or_id']; ?>"><span class="dropdown-items__link-icon">
                                                                 <svg class="icon-icon-trash">
                                                                     <use xlink:href="#icon-trash"></use>
                                                                 </svg></span>Status</a>
@@ -224,7 +221,8 @@ require_once("templates/header.php"); ?>
                                     </div>
                                 </td>
                             </tr>
-                        <?php   $count++; }
+                        <?php $count++;
+                        }
                         ?>
                     </tbody>
                 </table>

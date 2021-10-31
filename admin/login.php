@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('config/db_connect.php');
 if (isset($_POST['submit-login'])) {
     $u_name = $_POST['username'];
@@ -21,6 +21,8 @@ if (isset($_POST['submit-login'])) {
 
             $_SESSION['full_name'] = $user_logged['u_fullname'];
             $_SESSION['u_id'] = $user_logged['u_id'];
+            $_SESSION['level'] = $user_logged['level'];
+
             header('Location: index.php');
         } else {
             header("Location: login.php?errors=1");

@@ -1,6 +1,11 @@
 <?php
+session_start();
+if (!isset($_SESSION['u_id'])) {
+    header('Location: login.php');
+}
 include('../config/db_connect.php');
-if (!isset($_GET['id'])) header('Location: ../404.php');
+
+
 $id = $_GET['id'];
 if (!empty($_POST['pr_name']) and !empty($_POST['pr_code'])  and !empty($_POST['auth_name']) and !empty($_POST['pub_name']) and !empty($_POST['pr_status']) and !empty($_POST['pr_number']) and !empty($_POST['pr_desc']) and !empty($_POST['pr_category']) and !empty($_POST['pr_price']) and !empty($_POST['pr_discount'])) {
     $pr_name =  $_POST['pr_name'];

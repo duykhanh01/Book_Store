@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['u_id'])) {
+    header('Location: login.php');
+}
 error_reporting(E_ALL & ~E_WARNING);
 include('../config/db_connect.php');
 $errors = "";

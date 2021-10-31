@@ -1,14 +1,20 @@
 <?php
-session_start();
+
 if (!isset($_SESSION['u_id'])) {
     header('Location: login.php');
 }
 include('../config/db_connect.php');
-if (isset($_POST)) {
-    $id =  $_POST['id'];
-    $sl_product = "SELECT * FROM products, category where products.pr_category = category.c_id limit $id";
-    $res = mysqli_query($conn, $sl_product);
-    $books = mysqli_fetch_all($res, MYSQLI_ASSOC);
+if (!isset($_POST['pr_key'])) {
+    header("Location: manager.php");
+    exit;
+}
+
+$word = $_POST['pr_key'];
+$sql = "SELECT  * from products, category where category.c_id = pr_category and pr_name like '%$word%' or pr_code like '%$word%'";
+$res = mysqli_query($conn, $sql);
+$books = mysqli_fetch_all($res, MYSQLI_ASSOC);
+
+if (mysqli_num_rows($res) > 0) {
     $ouput = "";
     foreach ($books as $i => $book) {
         $count = $i + 1;
@@ -30,9 +36,7 @@ if (isset($_POST)) {
                                     <td class='d-lg-table-cell table__td'><span class='text-grey'>" . $book['pr_number'] . "</span>
                                     </td>
                                    <td class='d-sm-table-cell table__td'>
-                                        <div class='table__status'><span class='table__status-icon " . $class . "'>
-                                        
-                                        </span>
+                                        <div class='table__status'><span class='table__status-icon " . $class . "'></span>
                                             " . $status . "</div>
                                     </td>
                                     <td class='table__td table__actions'>
@@ -65,4 +69,4 @@ if (isset($_POST)) {
     ";
     }
     echo $ouput;
-}
+};

@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['u_id'])) {
+    header('Location: login.php');
+}
 
 include('../config/db_connect.php');
 if (isset($_POST)) {
@@ -21,16 +25,16 @@ if (isset($_POST)) {
                                     <td class='table__td'>
                                         " . $count . "
                                     </td>
-                                    <td class='d-none d-lg-table-cell table__td'><span class='text-grey'>" . $book['pr_code'] . "</span>
+                                    <td class='d-lg-table-cell table__td'><span class='text-grey'>" . $book['pr_code'] . "</span>
                                     </td>
                                     <td class='table__td'>" . $book['pr_name'] . "</td>
                                     <td class='table__td'><span class='text-grey'>" . $book['c_name'] . "</span>
                                     </td>
                                     <td class='table__td'><span>" . $book['pr_price'] . "</span>
                                     </td>
-                                    <td class='d-none d-lg-table-cell table__td'><span class='text-grey'>" . $book['pr_number'] . "</span>
+                                    <td class='d-lg-table-cell table__td'><span class='text-grey'>" . $book['pr_number'] . "</span>
                                     </td>
-                                   <td class='d-none d-sm-table-cell table__td'>
+                                   <td class='d-sm-table-cell table__td'>
                                         <div class='table__status'><span class='table__status-icon " . $class . "'></span>
                                             " . $status . "</div>
                                     </td>
