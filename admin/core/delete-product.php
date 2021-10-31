@@ -8,7 +8,6 @@ $id = $_POST['id'];
 $sql = "DELETE FROM products where pr_id = '$id'";
 $res = mysqli_query($conn, $sql);
 if ($res) {
-
     $output = "";
     $query = "SELECT  * from products, category where category.c_id = pr_category";
     $result = mysqli_query($conn, $query);

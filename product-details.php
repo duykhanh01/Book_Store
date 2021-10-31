@@ -307,8 +307,8 @@ session_start();
                                                 <i class="fas fa-cart-plus"></i>
                                             </a>
 
-                                            <a  data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                                <i class="fas fa-eye"></i>
+                                            <a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>" class="single-btn">
+                                                <i  class="fas fa-eye"></i>
                                             </a>
                                         </div>
                                     </div>

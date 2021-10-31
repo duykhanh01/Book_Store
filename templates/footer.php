@@ -1,5 +1,5 @@
 <footer class="site-footer">
-    <div class="container mt-4">
+    <div class="container">
         <div class="row justify-content-between  section-padding">
             <div class=" col-xl-3 col-lg-4 col-sm-6">
                 <div class="single-footer pb--40">
@@ -84,6 +84,7 @@
 <script src="js/ajax-mail.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/app.js"></script>
+<?php ob_end_flush(); ?>
 </body>
 
 </html>

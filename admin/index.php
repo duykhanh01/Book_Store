@@ -9,6 +9,42 @@ session_start();
 
 
 <?php require_once("templates/header.php") ?>
+<<<<<<< HEAD
+=======
+<?php
+include('config/db_connect.php');
+$sl_cus_new = "SELECT COUNT(cus_id) as new_cus FROM `customers` WHERE datediff(curdate(), cus_create)<7 and datediff(curdate(), cus_create) >= 0";
+$sl_cus_old = "SELECT COUNT(cus_id) as old_cus FROM `customers` WHERE datediff(date(curdate()-30),cus_create)<7 and datediff(date(curdate()-30),cus_create)>=0";
+$res_cus_new = mysqli_fetch_assoc(mysqli_query($conn,$sl_cus_new));
+$res_cus_old = mysqli_fetch_assoc(mysqli_query($conn,$sl_cus_old));
+$number_cus_new = $res_cus_new['new_cus'];
+$number_cus_old = $res_cus_old['old_cus'];
+if($number_cus_old==0)
+{
+    $percent_customer = 100;
+}
+else
+{
+    $percent_customer = $number_cus_new/$number_cus_old;
+}
+$sl_order_new = "SELECT count(or_id) as ordernew FROM orders where datediff(date(curdate()), date(or_date))<7";
+$sl_order_old = "SELECT count(or_id) as orderold  FROM orders where datediff(date(curdate())-7, date(or_date))<7  and datediff(date(curdate())-7, date(or_date))>=0";
+$res_order_new = mysqli_fetch_assoc(mysqli_query($conn,$sl_order_new));
+$res_order_old = mysqli_fetch_assoc(mysqli_query($conn,$sl_order_old));
+$number_order_new = $res_order_new['ordernew'];
+$number_order_old = $res_order_old['orderold'];
+if($number_cus_old==0)
+{
+    $percent_order = 100;
+}
+else
+{
+    $percent_order = $number_order_new/$number_order_old;
+}
+
+?>
+
+>>>>>>> 6d18e6bd84ef5c9dfa212035932b4e0181a539d4
 <main class="page-content">
     <div class="container">
         <div class="widgets">
@@ -18,23 +54,23 @@ session_start();
                         <div class="widget__wrapper">
                             <div class="widget__row">
                                 <div class="widget__left">
-                                    <h3 class="widget__title">Visits</h3>
+                                    <h3 class="widget__title">New customers</h3>
                                     <div class="widget__status-title text-grey">Total visits today</div>
-                                    <div class="widget__trade"><span class="widget__trade-count">4000</span><span class="trade-icon trade-icon--up">
+                                    <div class="widget__trade"><span class="widget__trade-count"><?php echo $number_cus_new; ?></span><span class="trade-icon trade-icon--up">
                                             <svg class="icon-icon-trade-up">
                                                 <use xlink:href="#icon-trade-up"></use>
-                                            </svg></span><span class="badge badge--sm badge--green">7%</span>
+                                            </svg></span><span class="badge badge--sm badge--green"><?php echo $percent_customer; ?>%</span>
                                     </div>
                                     <div class="widget__details"><a class="link-under text-grey" href="#">Detail</a>
                                     </div>
                                 </div>
                                 <div class="widget__chart">
                                     <div class="widget__chart-inner">
-                                        <div class="widget__chart-percentage">50<small>%</small>
+                                        <div class="widget__chart-percentage"><?php echo $percent_customer; ?><small>%</small>
                                         </div>
                                         <div class="widget__chart-caption">New Visits</div>
                                     </div>
-                                    <div class="widget__chart-canvas js-progress-circle" data-value="0.5" data-color="#22CCE2"></div>
+                                    <div class="widget__chart-canvas js-progress-circle" data-value="<?php echo $percent_customer/100; ?>" data-color="#22CCE2"></div>
                                 </div>
                             </div>
                         </div>
@@ -47,21 +83,21 @@ session_start();
                                 <div class="widget__left">
                                     <h3 class="widget__title">Orders</h3>
                                     <div class="widget__status-title text-grey">Total visits today</div>
-                                    <div class="widget__trade"><span class="widget__trade-count">1000</span><span class="trade-icon trade-icon--down">
+                                    <div class="widget__trade"><span class="widget__trade-count"><?php echo $number_order_new; ?></span><span class="trade-icon trade-icon--down">
                                             <svg class="icon-icon-trade-down">
                                                 <use xlink:href="#icon-trade-down"></use>
-                                            </svg></span><span class="badge badge--sm badge--red">3%</span>
+                                            </svg></span><span class="badge badge--sm badge--red"><?php echo $percent_order; ?>%</span>
                                     </div>
                                     <div class="widget__details"><a class="link-under text-grey" href="#">Detail</a>
                                     </div>
                                 </div>
                                 <div class="widget__chart">
                                     <div class="widget__chart-inner">
-                                        <div class="widget__chart-percentage">75<small>%</small>
+                                        <div class="widget__chart-percentage"><?php  echo $percent_order;?><small>%</small>
                                         </div>
                                         <div class="widget__chart-caption">New Orders</div>
                                     </div>
-                                    <div class="widget__chart-canvas js-progress-circle" data-value="0.75" data-color="#FDBF5E"></div>
+                                    <div class="widget__chart-canvas js-progress-circle" data-value="<?php echo $percent_order/100;?>" data-color="#FDBF5E"></div>
                                 </div>
                             </div>
                         </div>
