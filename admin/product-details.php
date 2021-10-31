@@ -147,7 +147,7 @@ if (isset($_GET['id'])) {
                                     <div class="col-12 form-group form-group--lg">
                                         <label class="form-label">Tồn kho</label>
                                         <div class="input-group">
-                                            <input class="input" type="text" value="<?php echo $book['pr_number']; ?>">
+                                            <input disabled class="input" type="text" value="<?php echo $book['pr_number']; ?>">
                                         </div>
                                     </div>
                                     <div class="col-12 form-group form-group--lg">

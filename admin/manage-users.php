@@ -1,12 +1,13 @@
 <?php
 session_start();
-include('config/db_connect.php');
-$sql = "SELECT * FROM users";
-$res = mysqli_query($conn, $sql);
-$users = mysqli_fetch_all($res, MYSQLI_ASSOC);
-
-
-
+if ($_SESSION['level'] == 2) {
+    include('config/db_connect.php');
+    $sql = "SELECT * FROM users";
+    $res = mysqli_query($conn, $sql);
+    $users = mysqli_fetch_all($res, MYSQLI_ASSOC);
+} else {
+    header("Location: 404.php");
+}
 
 ?>
 
@@ -74,7 +75,7 @@ $users = mysqli_fetch_all($res, MYSQLI_ASSOC);
         <?php endif; ?>
         <div class="mb-4">
 
-            <button class="btn btn-primary" data-modal="#addMessage">Thêm admin</button>
+            <button class="btn btn-primary" data-modal="#addMessage">Thêm Admin</button>
         </div>
 
         <div class="toolbox">
@@ -152,7 +153,7 @@ $users = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                         <div class="dropdown-items dropdown-items--right">
                                             <div class="dropdown-items__container">
                                                 <ul class="dropdown-items__list">
-                                                    <li class="dropdown-items__item"><a data-user="<?php echo $user['u_id'] ?>" data-modal="#changePass" class="dropdown-items__link change-pass"><span class="dropdown-items__link-icon">
+                                                    <li class="dropdown-items__item"><a data-user="<?php echo $user['u_id'] ?>" user-name="<?php echo $user['u_name'] ?>" data-modal="#changePass" class="dropdown-items__link change-pass"><span class="dropdown-items__link-icon">
                                                                 <svg class="icon-icon-task">
                                                                     <use xlink:href="#icon-task"></use>
                                                                 </svg></span><span class="button__text">Đổi mật khẩu</span></a>
@@ -292,9 +293,9 @@ $users = mysqli_fetch_all($res, MYSQLI_ASSOC);
                         <form id="form-change-pass" data-user="" class="m-auto" style="max-width: 600px" method="POST">
                             <div class="row">
                                 <div class="col-12 form-group form-group--lg">
-                                    <label class="form-label form-label--sm">User name</label>
+                                    <label class="form-label form-label--sm">Tên đăng nhập</label>
                                     <div class="input-group">
-                                        <input id="username" class="form-control" id="exampleFormControlInput2" name="fullname" type="text" placeholderrequired>
+                                        <input disabled id="username" class="form-control" id="exampleFormControlInput2" type="text" placeholderrequired>
                                     </div>
                                 </div>
                                 <div class="col-12 form-group form-group--lg">

@@ -3,6 +3,7 @@ session_start();
 
 if (isset($_GET['or_id'])) {
     include('config/db_connect.php');
+   
     $or_id = $_GET['or_id'];
     $sl_ors = "SELECT * from orders where or_id = '$or_id'";
     $res_ors = mysqli_query($conn, $sl_ors);
@@ -41,41 +42,19 @@ if (isset($_GET['or_id'])) {
             <div class="order-tabs__list-wrapper swiper-container">
                 <div class="order-tabs__list swiper-wrapper">
                     <div class="order-tabs__item swiper-slide">
-                        <a class="order-tabs__link" href="order-details.php">
+                        <a class="order-tabs__link" href="order-details.php?or_id=<?php echo $or_id ?>">
                             <svg class="icon-icon-details">
                                 <use xlink:href="#icon-details"></use>
                             </svg>Details</a>
                     </div>
-                    <div class="order-tabs__item swiper-slide">
-                        <a class="order-tabs__link" href="order-invoice.php">
-                            <svg class="icon-icon-invoice">
-                                <use xlink:href="#icon-invoice"></use>
-                            </svg>Invoice</a>
-                    </div>
+
                     <div class="order-tabs__item swiper-slide">
                         <a class="order-tabs__link order-tabs__link--active" href="order-status.php">
                             <svg class="icon-icon-status">
                                 <use xlink:href="#icon-status"></use>
                             </svg>Status</a>
                     </div>
-                    <div class="order-tabs__item swiper-slide">
-                        <a class="order-tabs__link" href="order-history.php">
-                            <svg class="icon-icon-back-time">
-                                <use xlink:href="#icon-back-time"></use>
-                            </svg>History</a>
-                    </div>
-                    <div class="order-tabs__item swiper-slide">
-                        <a class="order-tabs__link" href="order-notes.php">
-                            <svg class="icon-icon-task-notes">
-                                <use xlink:href="#icon-task-notes"></use>
-                            </svg>Notes</a>
-                    </div>
-                    <div class="order-tabs__item swiper-slide">
-                        <a class="order-tabs__link" href="order-messages.php">
-                            <svg class="icon-icon-chat-messages">
-                                <use xlink:href="#icon-chat-messages"></use>
-                            </svg>Messages</a>
-                    </div>
+
                 </div>
             </div>
         </nav>
