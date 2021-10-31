@@ -1,11 +1,9 @@
 <?php
-
+session_start();
 include('config/db_connect.php');
 $sql = "SELECT * FROM customers";
 $res = mysqli_query($conn, $sql);
 $customers = mysqli_fetch_all($res, MYSQLI_ASSOC);
-
-
 
 
 ?>
@@ -24,7 +22,7 @@ $customers = mysqli_fetch_all($res, MYSQLI_ASSOC);
             $sql1 = "SELECT count(cus_id) as count from customers";
             $count_cus = mysqli_fetch_assoc(mysqli_query($conn, $sql1));
             ?>
-            <h1 class="page-header__title">Khách hàng <span class="text-grey">(<?php echo $count_cus['count'] ?>)</span></h1>
+            <h1 class="page-header__title"> Khách hàng <span class="text-grey">(<?php echo $count_cus['count'] ?>)</span></h1>
         </div>
         <div class="page-tools">
             <div class="page-tools__breadcrumbs">
@@ -67,7 +65,7 @@ $customers = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                             <use xlink:href="#icon-search"></use>
                                         </svg>
                                     </div>
-                                    <input class="input" type="text" placeholder="Search Customer">
+                                    <input id="search-customers" class="input" type="text" placeholder="Search Customer">
                                 </div>
                             </form>
                         </div>
@@ -110,7 +108,7 @@ $customers = mysqli_fetch_all($res, MYSQLI_ASSOC);
                             <th class="table__actions"></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-customers">
                         <?php foreach ($customers as $i => $customer) :
                             $cus_id = $customer['cus_id'];
                             $status = $customer['status'] == 1 ? "Đã kích hoạt" : "Chưa kích hoạt";
@@ -172,9 +170,8 @@ $customers = mysqli_fetch_all($res, MYSQLI_ASSOC);
             </div>
             <div class="table-wrapper__footer">
                 <div class="row">
-                    <div class="table-wrapper__show-result col text-grey"><span class="d-none d-sm-inline-block">Showing</span> 1 to 10 <span class="d-none d-sm-inline-block">of 50 items</span>
-                    </div>
-                    <div class="table-wrapper__pagination col-auto">
+
+                    <div class="table-wrapper__pagination m-auto col-auto">
                         <ol class="pagination">
                             <li class="pagination__item">
                                 <a class="pagination__arrow pagination__arrow--prev" href="#">

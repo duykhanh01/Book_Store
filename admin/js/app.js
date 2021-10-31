@@ -131,15 +131,13 @@ $(document).ready(function () {
   $(document).on("click", "#update_status", function () {
     var stt = $("#sl_status").find(":selected")[0].value;
     var id_or = $("#id_orders").html();
-    var id_user = $("#id_user").val();
+
     // alert(stt);
     $.ajax({
       url: "core/update_status.php",
       type: "POST",
-      data: { stt: stt, id_or: id_or, id_user: id_user },
-      success: function (data) {
-        location.reload();
-      },
+      data: { stt: stt, id_or: id_or },
+      success: function (data) {},
     });
   });
 
@@ -326,7 +324,9 @@ $(document).ready(function () {
 
   $(".change-pass").click(function () {
     var id = $(this).attr("data-user");
+    var userName = $(this).attr("user-name");
     $("#form-change-pass").attr("data-user", id);
+    $("#username").val(userName);
   });
   $("#submit-pass").click(function () {
     var u_id = $("#form-change-pass").attr("data-user");
@@ -341,6 +341,7 @@ $(document).ready(function () {
   // ====================== Live search products ======================================
   $("#search-products").keyup(function () {
     var pr_key = $("#search-products").val();
+
     // var dataform = new FormData();
     // dataform.append('pr_key', pr_key);
     $.ajax({
@@ -384,6 +385,24 @@ $(document).ready(function () {
       data: { or_key: value },
       success: function (data) {
         $(".table-orders").html(data);
+      },
+    });
+  });
+
+  // ================= live search customers =================================================
+  $("#search-customers").keyup(function () {
+    var pr_key = $("#search-customers").val();
+    // var dataform = new FormData();
+    // dataform.append('pr_key', pr_key);
+    $.ajax({
+      url: "core/search-customers.php",
+      method: "POST",
+
+      // data: dataform,
+      data: { pr_key: pr_key },
+
+      success: function (response) {
+        $(".table-customers").html(response);
       },
     });
   });

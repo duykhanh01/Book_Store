@@ -73,18 +73,7 @@ $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                     </svg></span><span class="button-add__text"></span>
                             </button>
                         </div>
-                        <div class="col col-lg-auto">
-                            <form class="toolbox__search" method="GET">
-                                <div class="input-group input-group--white input-group--prepend">
-                                    <div class="input-group__prepend">
-                                        <svg class="icon-icon-search">
-                                            <use xlink:href="#icon-search"></use>
-                                        </svg>
-                                    </div>
-                                    <input class="input" id="search-products" type="text" placeholder="Tìm kiếm sản phẩm">
-                                </div>
-                            </form>
-                        </div>
+
 
                     </div>
                 </div>

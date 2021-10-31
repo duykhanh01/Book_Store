@@ -3,6 +3,7 @@ session_start();
 
 if (isset($_GET['or_id'])) {
     include('config/db_connect.php');
+   
     $or_id = $_GET['or_id'];
     $sl_ors = "SELECT * from orders where or_id = '$or_id'";
     $res_ors = mysqli_query($conn, $sl_ors);
