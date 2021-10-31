@@ -3,8 +3,6 @@
 session_start();
 
 include("config/db_connect.php");
-
-
 if (!$_SESSION['id']) header("Location: login.php");
 $id = $_SESSION['id'];
 $sql = "SELECT * from  customers where cus_id = '$id'";
