@@ -21,7 +21,7 @@ if (!empty($_POST['pr_name']) and !empty($_POST['pr_code'])  and !empty($_POST['
 
     $sql = "UPDATE `products` SET `pr_name`='$pr_name',`pr_author`='$auth_name',`pr_pub`='$pub_name',
 `pr_status`='$pr_status',`pr_category`='$pr_category',`pr_code`='$pr_code',`pr_number`='$pr_number',`pr_price`='$pr_price',
-`pr_discount`='$pr_discount',`pr_desc`='pr_desc' WHERE pr_id = '$id'";
+`pr_discount`='$pr_discount',`pr_desc`='$pr_desc' WHERE pr_id = '$id'";
     $res = mysqli_query($conn, $sql);
 
     if ($res) {

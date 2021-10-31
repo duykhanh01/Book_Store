@@ -25,6 +25,10 @@
             $od_total = $row_cart['cart_price']*$row_cart['cart_quatity'];
             $insert_orderDetail = "INSERT INTO `orderdetail`(`or_id`, `pr_id`, `od_price`, `od_quatity`, `od_total`) 
             VALUES ('$or_id','$pr_id','$od_price','$od_quatity','$od_total')";
+            //update lại số lượng sản phẩm trong khoản
+
+            $update_quatity = "UPDATE products SET pr_number = (pr_number - $od_quatity) where pr_id = '$pr_id'";
+            mysqli_query($conn, $update_quatity);
             if(mysqli_query($conn,$insert_orderDetail))
             {
                 $del_cart = "DELETE from carts";

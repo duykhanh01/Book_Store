@@ -102,7 +102,7 @@ $row = mysqli_fetch_assoc($res);
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="inputText2" class="col-sm-2 col-form-label">Địa cshỉ</label>
+                        <label for="inputText2" class="col-sm-2 col-form-label">Địa chỉ</label>
                         <div class="col-sm-10">
                             <input type="text" name="address" value="<?php echo $row['cus_add'] ?>" class="form-control" id="inputText2">
                         </div>

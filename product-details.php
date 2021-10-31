@@ -263,12 +263,18 @@ session_start();
         <!--=================================
     RELATED PRODUCTS BOOKS
 ===================================== -->
-<section class="section-margin">
-        <div class="container">
-            <div class="section-title section-title--bordered">
-                <h2>Các sách cùng thể loại</h2>
-            </div>
-            <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
+<?php 
+include('admin/config/db_connect.php');
+$id_pr = $_GET['idsp'];
+$sl_cate = "SELECT * FROM products, category WHERE products.pr_category = category.c_id and products.pr_id = $id_pr";
+$name_cate = mysqli_fetch_assoc(mysqli_query($conn,$sl_cate));
+?>
+    <section class="section-margin">
+            <div class="container">
+                <div class="section-title section-title--bordered">
+                    <h2><?php echo $name_cate['c_name'] ?></h2>
+                </div>
+                <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
                         "autoplay": true,
                         "autoplaySpeed": 8000,
                         "slidesToShow": 5,
@@ -280,59 +286,53 @@ session_start();
                         {"breakpoint":480, "settings": {"slidesToShow": 1} },
                         {"breakpoint":320, "settings": {"slidesToShow": 1} }
                     ]'>
-                <!-- thêm các sách theo loại tình cảm -->
-                <?php
-                $id_pr = $_GET['idsp'];
-                $sl_pr = "SELECT * FROM products where pr_id = '$id_pr'";
-                $res_pr = mysqli_fetch_assoc(mysqli_query($conn,$sl_pr));
-                $category = $res_pr['pr_category'];
-                $sl_romance = "SELECT * from products, category where products.pr_category = category.c_id and products.pr_category = '$category' and pr_id != '$pr_id'  limit 8";
-                $res_romance = mysqli_query($conn, $sl_romance);
-                while ($row_romance = mysqli_fetch_assoc($res_romance)) {
-                //xử lí lấy ảnh ra
-                $name_img = explode(",",$row_romance['pr_img'])[0];
-               
+                        <!-- thêm sản phẩm theo loại -->
+                    <?php
+                    $c_id = $name_cate['c_id'];
+                    $sl_romance = "SELECT * from products, category where products.pr_category = category.c_id and products.pr_category = $c_id and products.pr_id != '$id_pr' limit 8";
+                    $res_romance = mysqli_query($conn, $sl_romance);
+                    while ($row_romance = mysqli_fetch_assoc($res_romance)) {
+                        //xử lí lấy ảnh ra
+                        $name_img = explode(",", $row_romance['pr_img'])[0];
+
                     ?>
 
-                    <div class="single-slide">
-                        <div class="product-card">
-                            
-                            <div class="product-card--body">
-                                <div class="card-image">
-                                    <img src="admin/<?php echo $name_img;?>" class="m-auto" style="width:190px; height:190px;" alt="">
-                                    <div class="hover-contents">
-                                        
-                                        <div class="hover-btns">
-                                            <a href="#" class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
-                                                <i class="fas fa-cart-plus"></i>
-                                            </a>
+                        <div class="single-slide">
+                            <div class="product-card">
 
-                                            <a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>" class="single-btn">
-                                                <i  class="fas fa-eye"></i>
-                                            </a>
+                                <div class="product-card--body">
+                                    <div class="card-image">
+                                        <img src="admin/<?php echo $name_img; ?>" class="m-auto" style="width:190px; height:190px;" alt="">
+                                            <div class="hover-contents">
+                                                <div class="hover-btns">
+                                                    <a class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
+                                                        <i class="fas fa-cart-plus"></i>
+                                                    </a>
+
+                                                    <!-- <a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>" class="single-btn">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a> -->
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="product-header mt-2">
-                                    <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
-                                </div>
-                                <div class="price-block">
-                                    <span class="price"><?php echo $row_romance['pr_price'] - $row_romance['pr_discount']; ?></span>
-                                    <del class="price-old"><?php echo $row_romance['pr_price']; ?></del>
-                                    <span class="price-discount">20%</span>
+                                    <div class="product-header mt-2">
+                                        <h3><a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>"><?php echo $row_romance['pr_name']; ?> </a></h3>
+                                    </div>
+                                    <div class="price-block">
+                                        <span class="price"><?php echo number_format($row_romance['pr_price'] - $row_romance['pr_discount'], 0, ',', '.') . " VNĐ"; ?></span>
+                                        <del class="price-old"><?php echo number_format($row_romance['pr_price'], 0, ',', '.') . " VNĐ"; ?></del>
+                                        <span class="price-discount"><?php echo ceil((($row_romance['pr_discount']) / ($row_romance['pr_price']) * 100)); ?> %</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php
-                }
+                    <?php
+                    }
 
-                ?>
+                    ?>
+                </div>
             </div>
-        </div>
     </section>
-<!--=================================
-    Footer Area
 <?php require_once("templates/footer.php") ?>
 
 
