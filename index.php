@@ -10,7 +10,19 @@ include('config/db_connect.php');
 <html lang="en">
 <?php require_once("templates/header.php") ?>
 <?php include('config/db_connect.php'); ?>
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <img width="20px" src="admin/img/content/checked-success.svg" class="rounded mr-2" alt="...">
+        <strong class="mr-auto">Thông báo</strong>
 
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body">
+        Bạn đã thêm thành công sản phẩm vào giỏ hàng
+    </div>
+</div>
 <div class="site-wrapper" id="top">
 
 
@@ -224,7 +236,7 @@ include('config/db_connect.php');
                         {"breakpoint":480, "settings": {"slidesToShow": 1} },
                         {"breakpoint":320, "settings": {"slidesToShow": 1} }
                     ]'>
-                        <!-- thêm sản phẩm theo loại -->
+                    <!-- thêm sản phẩm theo loại -->
                     <?php
                     $c_id = $row_category['c_id'];
                     $sl_romance = "SELECT * from products, category where products.pr_category = category.c_id and products.pr_category = $c_id  and pr_status !=1 limit 8";
@@ -241,13 +253,13 @@ include('config/db_connect.php');
                                 <div class="product-card--body">
                                     <div class="card-image">
                                         <img src="admin/<?php echo $name_img; ?>" class="m-auto" style="width:190px; height:190px;" alt="">
-                                            <div class="hover-contents">
-                                                <div class="hover-btns">
-                                                    <a class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
-                                                        <i class="fas fa-cart-plus"></i>
-                                                    </a>
+                                        <div class="hover-contents">
+                                            <div class="hover-btns">
+                                                <a class="single-btn add_cart" value="<?php echo $row_romance['pr_id']; ?>">
+                                                    <i class="fas fa-cart-plus"></i>
+                                                </a>
 
-                                                    <!-- <a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>" class="single-btn">
+                                                <!-- <a href="product-details.php?idsp=<?php echo $row_romance['pr_id']; ?>" class="single-btn">
                                                         <i class="fas fa-eye"></i>
                                                     </a> -->
                                             </div>
@@ -466,8 +478,8 @@ include('config/db_connect.php');
 ===================================== -->
 
 
-    <?php require_once("templates/footer.php") ?>
 
 </div>
+<?php require_once("templates/footer.php") ?>
 
 </html>

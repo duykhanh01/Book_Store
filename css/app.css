@@ -1,3 +1,6 @@
+body{
+    position:absolute;
+}
 .collapse .items{
   
     padding: 10px 15px;
@@ -54,6 +57,22 @@
     margin: 5px 0;
     padding: 5px 0;
     border-bottom: 1px solid #e1e1e1;
+}
+.toast-container{
+    position: fixed;
+    min-height: 200px;
+    top: 40px;
+    right: 0;
+    width: 400px;
+    z-index: 9999999;
+}
+.toast{
+    position: fixed;
+    top: 40px;
+    right: 0;
+    width: 400px;
+    z-index: 9999999;
+    background-color: 	#CCFFCC;
 }
 footer{
     border-top: 1px solid #ccc;
