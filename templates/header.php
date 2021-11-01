@@ -1,5 +1,9 @@
 <?php
 ob_start();
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +70,7 @@ ob_start();
         </div>
         <div class="header-middle pt--10 pb--10">
             <div class="container">
-                <div class="row align-items-center">
+                <div class="row search-form">
                     <div class="col-lg-3">
                         <a href="index.php" class="site-brand">
                             <img src="image/logo.png" alt="">
@@ -74,8 +78,26 @@ ob_start();
                     </div>
                     <div class="col-lg-5">
                         <div class="header-search-block">
-                            <input type="text" placeholder="Search entire store here">
-                            <button>Search</button>
+                            <form action="" id="search-form">
+
+                                <input id="search-input" type="text" placeholder="Search entire store here">
+                                <button>Search</button>
+                            </form>
+                            <div class="autocomplete-suggestions search-display d-none">
+                                <div class="autocomplete-suggestion" onclick="window.location=''">
+                                    <table>
+                                        <tbody id="live-search">
+                                            <tr>
+                                                <td style="vertical-align:top"><a href="" width="60" style="margin-right:10px;">
+                                                        <img src="admin/img/8935095625994/DHO369d7.jpg" width="60" height="70" style="margin-right:10px;">
+                                                    </a></td>
+                                                <td style="vertical-align:top; line-height:18px;"><a class="suggest_link" href="">Tranh Truyện Màu Đồng Hành Với Phim Hoạt Hình - Frozen Công Chúa Băng Tuyết</a><br><span class="text-danger mt-2">Giá: </span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4">

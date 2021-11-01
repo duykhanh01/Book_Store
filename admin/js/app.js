@@ -202,6 +202,11 @@ $(document).ready(function () {
             );
           } else {
             $("#body-table").html(data);
+            $(".modal-success__title").text("Thêm sản phẩm thành công");
+            $(".modal-success__icon").attr(
+              "src",
+              "img/content/checked-success.svg"
+            );
             // $("#pr_name").val("");
             // $("#auth_name").val("");
             // $("#pub_name").val("");
@@ -213,77 +218,6 @@ $(document).ready(function () {
             // $("#pr_status").val("");
             // $("#pr_code").val("");
             // $("#pr_number").val("");
-          }
-        },
-      });
-    } else {
-      $(".modal-success__title").text("Vui lòng chọn file PNG, JPEG, JPG");
-      $(".modal-success__icon").attr("src", "img/content/checked-fail.png");
-    }
-  });
-
-  //thêm Khánh
-  $("#add-product").click(function () {
-    var dataform = new FormData();
-
-    var pr_name = $("#pr_name").val();
-    var pr_code = $("#pr_code").val();
-    console.log(pr_code);
-    var auth_name = $("#auth_name").val();
-    var pub_name = $("#pub_name").val();
-    var pr_number = $("#pr_number").val();
-    var pr_desc = $(".pr_desc").val();
-    var pr_category = $("#pr_category").val();
-    var pr_price = $("#pr_price").val();
-    var pr_discount = $("#pr_discount").val();
-    var pr_images = $("#pr_images")[0].files;
-    var pr_status = $("#pr_status").find(":selected")[0].value;
-    var check_file = false;
-    for (var i = 0; i < pr_images.length; i++) {
-      var type = pr_images[i] != null ? pr_images[i].type : null;
-      console.log(type);
-      //Xét kiểu file được upload
-      var match = ["image/gif", "image/png", "image/jpeg"];
-      if (type == match[0] || type == match[1] || type == match[2]) {
-        dataform.append("pr_images[]", pr_images[i]);
-        check_file = true;
-      }
-    }
-
-    //var type = pr_images != null ? pr_images.type : null;
-    //Xét kiểu file được upload
-
-    if (check_file == true) {
-      dataform.append("pr_name", pr_name);
-      dataform.append("pr_code", pr_code);
-      dataform.append("auth_name", auth_name);
-      dataform.append("pub_name", pub_name);
-      dataform.append("pr_number", pr_number);
-      dataform.append("pr_desc", pr_desc);
-      dataform.append("pr_category", pr_category);
-      dataform.append("pr_price", pr_price);
-      dataform.append("pr_discount", pr_discount);
-      dataform.append("pr_images", pr_images);
-      dataform.append("pr_status", pr_status);
-
-      $.ajax({
-        url: "core/add-product.php",
-        type: "POST",
-        data: dataform,
-        dataType: "text",
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function (data) {
-          if (data == "errors") {
-            $(".modal-success__title").text("Vui lòng điền đầy đủ thông tin");
-
-            $(".modal-success__icon").attr(
-              "src",
-              "img/content/checked-fail.png"
-            );
-          } else {
-            $("#body-table").html(data);
           }
         },
       });
