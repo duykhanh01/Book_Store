@@ -9,8 +9,6 @@ session_start();
 
 
 <?php require_once("templates/header.php") ?>
-<<<<<<< HEAD
-=======
 <?php
 include('config/db_connect.php');
 $sl_cus_new = "SELECT COUNT(cus_id) as new_cus FROM `customers` WHERE datediff(curdate(), cus_create)<7 and datediff(curdate(), cus_create) >= 0";
@@ -44,7 +42,6 @@ else
 
 ?>
 
->>>>>>> 6d18e6bd84ef5c9dfa212035932b4e0181a539d4
 <main class="page-content">
     <div class="container">
         <div class="widgets">

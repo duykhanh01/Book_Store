@@ -133,10 +133,13 @@ $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                             <div class="dropdown-items dropdown-items--right">
                                                 <div class="dropdown-items__container">
                                                     <ul class="dropdown-items__list">
-                                                        <li class="dropdown-items__item"><a value="<?php echo $category['c_id'] ?>" class="dropdown-items__link delete-product"><span class="dropdown-items__link-icon">
+                                                        <li class="dropdown-items__item">
+                                                            <a class="dropdown-items__link delete-category" href="core/delete-category.php?idcate=<?php echo $category['c_id'] ?>" >
+                                                                    <span class="dropdown-items__link-icon">
                                                                     <svg class="icon-icon-trash">
                                                                         <use xlink:href="#icon-trash"></use>
-                                                                    </svg></span>Delete</a>
+                                                                    </svg></span>Delete
+                                                            </a>
                                                         </li>
                                                     </ul>
                                                 </div>

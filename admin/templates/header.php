@@ -32,20 +32,7 @@ if (!isset($_SESSION['u_id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/app.css" />
-
-    <link rel="apple-touch-icon" sizes="57x57" href="img/content/favicons/apple-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="img/content/favicons/apple-icon-60x60.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="img/content/favicons/apple-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="img/content/favicons/apple-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="img/content/favicons/apple-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="img/content/favicons/apple-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="img/content/favicons/apple-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="img/content/favicons/apple-icon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="img/content/favicons/apple-icon-180x180.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="img/content/favicons/android-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="img/content/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="img/content/favicons/favicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="img/content/favicons/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="img/logo/title2.png" />
     <!-- <link rel="manifest" href="img/content/favicons/manifest.json" />-->
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
@@ -405,8 +392,7 @@ if (!isset($_SESSION['u_id'])) {
             <div class="sidebar__top">
                 <div class="container container--sm">
                     <a class="sidebar__logo" href="index.php">
-                        <img class="sidebar__logo-icon" src="img/content/logotype.svg" alt="#" width="44" />
-                        <div class="sidebar__logo-text">arion</div>
+                        <img class="sidebar__logo-icon" src="img/logo/logo.png" alt="#" style="width:100%" />
                     </a>
                 </div>
             </div>

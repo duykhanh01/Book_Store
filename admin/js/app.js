@@ -136,8 +136,25 @@ $(document).ready(function () {
     $.ajax({
       url: "core/update_status.php",
       type: "POST",
-      data: { stt: stt, id_or: id_or },
+      data: {
+        stt: stt,
+        id_or: id_or,
+      },
       success: function (data) {},
+    });
+  });
+
+  // --------------------- Delete Product -------------------------------------------------------
+
+  $(document).on("click", ".delete-product", function () {
+    var id = $(this).attr("value");
+    $.ajax({
+      url: "core/delete-product.php",
+      type: "POST",
+      data: { id: id },
+      success: function (data) {
+        $("#body-table").html(data);
+      },
     });
   });
 
@@ -228,23 +245,6 @@ $(document).ready(function () {
   });
 
   // --------------------- Delete Product -------------------------------------------------------
-
-  $(document).on("click", ".delete-product", function () {
-    var id = $(this).attr("value");
-    $.ajax({
-      url: "core/delete-product.php",
-      type: "POST",
-      data: { id: id },
-      success: function (data) {
-        $("#body-table").html(data);
-      },
-    });
-  });
-
-  // ---------------------- Update product ----------------------------------------------------
-  $("#update-product").click(function () {
-    $("#form-update").submit();
-  });
 
   // Update images product
   $("#update-images").click(function () {
@@ -340,4 +340,11 @@ $(document).ready(function () {
       },
     });
   });
+  // Hiếu làm
+  // $(document).on("click", ".delete-category", function() {
+  //     alert("đã vào");
+  //     alert($(this).val());
+  //     alert("1");
+
+  // });
 });

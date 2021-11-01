@@ -6,7 +6,7 @@ if (isset($_POST['stt']) && isset($_POST['id_or'])) {
     $u_id = $_SESSION['u_id'];
     $stt =  $_POST['stt'];
     $id_or = $_POST['id_or'];
-
+    
     echo $stt;
     echo $id_or;
     echo $id_user;
