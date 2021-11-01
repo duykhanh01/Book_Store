@@ -1,5 +1,9 @@
 <?php
 ob_start();
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +70,7 @@ ob_start();
         </div>
         <div class="header-middle pt--10 pb--10">
             <div class="container">
-                <div class="row align-items-center">
+                <div class="row search-form">
                     <div class="col-lg-3">
                         <a href="index.php" class="site-brand">
                             <img src="image/logo.png" alt="">
@@ -74,8 +78,14 @@ ob_start();
                     </div>
                     <div class="col-lg-5">
                         <div class="header-search-block">
-                            <input type="text" placeholder="Search entire store here">
-                            <button>Search</button>
+                            <form action="" id="search-form">
+
+                                <input id="search-input" type="text" autocomplete="off" placeholder="Search entire store here">
+                                <button>Search</button>
+                            </form>
+                            <div class="autocomplete-suggestions search-display d-none">
+
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4">

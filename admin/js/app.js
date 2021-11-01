@@ -284,6 +284,11 @@ $(document).ready(function () {
             );
           } else {
             $("#body-table").html(data);
+            $(".modal-success__title").text("Thêm sản phẩm thành công");
+            $(".modal-success__icon").attr(
+              "src",
+              "img/content/checked-success.svg"
+            );
           }
         },
       });
