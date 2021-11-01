@@ -78,24 +78,13 @@ ob_start();
                     </div>
                     <div class="col-lg-5">
                         <div class="header-search-block">
-                            <form action="" id="search-form">
+                            <form action="search-products.php" id="search-form">
 
-                                <input id="search-input" type="text" placeholder="Search entire store here">
-                                <button>Search</button>
+                                <input id="search-input" name="keyword" type="text" autocomplete="off" placeholder="Search entire store here">
+                                <button type="submit" name="search">Search</button>
                             </form>
                             <div class="autocomplete-suggestions search-display d-none">
-                                <div class="autocomplete-suggestion" onclick="window.location=''">
-                                    <table>
-                                        <tbody id="live-search">
-                                            <tr>
-                                                <td style="vertical-align:top"><a href="" width="60" style="margin-right:10px;">
-                                                        <img src="admin/img/8935095625994/DHO369d7.jpg" width="60" height="70" style="margin-right:10px;">
-                                                    </a></td>
-                                                <td style="vertical-align:top; line-height:18px;"><a class="suggest_link" href="">Tranh Truyện Màu Đồng Hành Với Phim Hoạt Hình - Frozen Công Chúa Băng Tuyết</a><br><span class="text-danger mt-2">Giá: </span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+
 
                             </div>
                         </div>

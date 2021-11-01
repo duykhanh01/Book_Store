@@ -83,7 +83,7 @@ $(document).ready(function () {
           $(".search-display").removeClass("d-block");
           $(".search-display").addClass("d-none");
         } else {
-          $("#live-search").html(response);
+          $(".search-display").html(response);
           $(".search-display").addClass("d-block");
           $(".search-display").removeClass("d-none");
           $(window).click(function () {
