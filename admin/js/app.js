@@ -347,4 +347,9 @@ $(document).ready(function () {
   //     alert("1");
 
   // });
+
+  // =========================== Disable scroll input number ===========================
+  $(document).on("wheel", "input[type=number]", function (e) {
+    $(this).blur();
+  });
 });
