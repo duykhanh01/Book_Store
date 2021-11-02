@@ -18,7 +18,11 @@ $(document).ready(function () {
         if (data == "done") {
           //alert("Đã thêm vào giỏ hàng");
           $(".toast-body").html("Bạn đã thêm thành công sản phẩm vào giỏ hàng");
+<<<<<<< HEAD
           $(".toast").toast({ delay: 3000 });
+=======
+          $(".toast").toast({ delay: 1000 });
+>>>>>>> origin/khanh
           $(".toast").toast("show");
         } else alert("Đăng nhập để thêm");
       },

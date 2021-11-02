@@ -11,6 +11,7 @@ include('config/db_connect.php');
 <?php require_once("templates/header.php") ?>
 <?php include('config/db_connect.php'); ?>
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<<<<<<< HEAD
     <div class="toast-header">
         <img width="20px" src="admin/img/content/checked-success.svg" class="rounded mr-2" alt="...">
         <strong class="mr-auto">Thông báo</strong>
@@ -18,6 +19,9 @@ include('config/db_connect.php');
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
+=======
+
+>>>>>>> origin/khanh
     <div class="toast-body">
         Bạn đã thêm thành công sản phẩm vào giỏ hàng
     </div>

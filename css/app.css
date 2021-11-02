@@ -58,6 +58,7 @@ body{
     padding: 5px 0;
     border-bottom: 1px solid #e1e1e1;
 }
+<<<<<<< HEAD
 .toast-container{
     position: fixed;
     min-height: 200px;
@@ -69,6 +70,12 @@ body{
 .toast, .toast1{
     position: fixed;
     top: 40px;
+=======
+
+.toast, .toast1{
+    position: fixed;
+    top: 100px;
+>>>>>>> origin/khanh
     right: 0;
     width: 400px;
     z-index: 9999999;
