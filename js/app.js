@@ -21,7 +21,7 @@ $(document).ready(function () {
           $(".toast-body").html("Bạn đã thêm thành công sản phẩm vào giỏ hàng");
           $(".toast").toast({ delay: 1000 });
           $(".toast").toast("show");
-        } else alert("Đăng nhập để thêm");
+        }  else alert("Đăng nhập để thêm");
       },
     });
   });
