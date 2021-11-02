@@ -67,6 +67,17 @@ body{
     z-index: 9999999;
     background-color: 	#CCFFCC;
 }
+
+hr{
+    margin-bottom: 0 !important;
+}
+
+.nav-pills li {
+    padding-top:  0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ccc;
+}
+
 footer{
     border-top: 1px solid #ccc;
 }

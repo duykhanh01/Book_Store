@@ -423,6 +423,8 @@ if (!isset($_SESSION['u_id'])) {
 
                                     <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "customers.php") echo "active" ?>" href="customers.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
                                     </li>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "book-request.php") echo "active" ?>" href="book-request.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Yêu cầu sách</span></a>
+                                    </li>
 
                                 </ul>
                             </div>

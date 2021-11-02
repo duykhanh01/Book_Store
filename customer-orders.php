@@ -43,8 +43,8 @@ if (!$res) header("location: 404.php");
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
 
-                <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
-                    <div class="d-flex align-items-center mb-3 mb-md-0 m-auto link-dark text-decoration-none">
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+                    <div class="d-flex align-items-center  mb-md-0 m-auto link-dark text-decoration-none">
                         <span class="fs-4 font-weight-bold"> <?php echo  $_SESSION['name'] ?> </span>
                     </div>
                     <hr>
@@ -64,6 +64,12 @@ if (!$res) header("location: 404.php");
                             <a href="customer-orders.php" class="nav-link active link-dark">
 
                                 Danh sách đơn hàng
+                            </a>
+                        </li>
+                        <li>
+                            <a href="book-request.php" class="nav-link   link-dark">
+
+                                Yêu cầu sách
                             </a>
                         </li>
                         <li>

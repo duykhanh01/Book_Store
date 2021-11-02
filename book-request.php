@@ -48,7 +48,7 @@ if (isset($_POST['change'])) {
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
-                    <li class="breadcrumb-item active">Đổi mật khẩu</li>
+                    <li class="breadcrumb-item active">Yêu cầu sách</li>
                 </ol>
             </nav>
         </div>
@@ -62,35 +62,35 @@ if (isset($_POST['change'])) {
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
 
                 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
-                    <div class="d-flex align-items-center  mb-md-0 m-auto link-dark text-decoration-none">
+                    <div class=" d-flex align-items-center mb-3 mb-md-0 m-auto link-dark text-decoration-none">
                         <span class="fs-4 font-weight-bold"> <?php echo  $_SESSION['name'] ?> </span>
                     </div>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
-                            <a href="profile.php" class="nav-link " aria-current="page">
+                            <a href=" profile.php" class="nav-link " aria-current="page">
                                 Thông tin cá nhân
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="change-password.php" class="nav-link active" aria-current="page">
+                            <a href=" change-password.php" class="nav-link " aria-current="page">
 
                                 Đổi mật khẩu
                             </a>
                         </li>
-                        <li>
-                            <a href="customer-orders.php" class="nav-link  link-dark">
+                        <li> <a href="customer-orders.php" class="nav-link  link-dark">
 
                                 Danh sách đơn hàng
                             </a>
                         </li>
                         <li>
-                            <a href="book-request.php" class="nav-link  link-dark">
+                            <a href="book-request.php" class="nav-link active  link-dark">
 
                                 Yêu cầu sách
                             </a>
                         </li>
-                        <li>
+                        <li class="border-0">
                             <a href="logout.php" class="nav-link link-dark">
 
                                 Đăng xuất
@@ -103,31 +103,35 @@ if (isset($_POST['change'])) {
                 </div>
             </div>
             <div class=" col-xl-9 col-lg-9 col-md-12 col-sm-12">
-                <H4 class="mb-4 font-weight-bold">ĐỔI MẬT KHẨU</H4>
-                <?php if (!empty($errors)) : ?>
+                <H4 class="mb-4 font-weight-bold">YÊU CẦU SÁCH</H4>
+                <?php if (isset($_GET['errors'])) : ?>
                     <div class="alert alert-danger text-center" role="alert">
-                        <?php foreach ($errors as $error) : ?>
-                            <div> <?php echo $error; ?> </div>
-                        <?php endforeach; ?>
+
+                        <div> <?php echo "Gửi yêu cầu thất bại"; ?> </div>
+
                     </div>
                 <?php endif; ?>
-                <form class="mt-2" action="change-password.php" method="post">
-                    <div class="mb-3">
-                        <label for="inputPassword1" class="col-form-label">Mật khẩu hiện tại</label>
-                        <input type="password" name="cpassword" class="form-control" id="inputPassword1">
+                <?php if (isset($_GET['success'])) : ?>
+                    <div class="alert alert-success text-center" role="alert">
+
+                        <div> <?php echo "Đã gửi yêu cầu thành công, cảm ơn bạn đã liên hệ shop"; ?> </div>
+
                     </div>
+                <?php endif; ?>
+                <form class="mt-2" action="core/book-request.php" method="post">
+                    <!-- <div class="mb-5">
+                        <label for="inputPassword1" class="col-form-label">Tên các sách yêu cầu (Không quá 3 sách)</label>
+                        <input type="text" name="book-name" class="form-control" id="inputPassword1">
+                    </div> -->
                     <div class="mb-3">
-                        <label for="inputPassword2" class="col-form-label">Mật khẩu mới</label>
-                        <input type="password" name="password" class="form-control" id="inputPassword2">
+                        <label for="inputMess" class="col-form-label">Tên các sách yêu cầu (Không quá 500 kí tự)</label>
+                        <textarea name="book-name" class="w-100" id="inputMess" rows="5"></textarea>
                     </div>
-                    <div class="mb-3">
-                        <label for="inputPassword3" class="col-form-label">Nhập lại mật khẩu</label>
-                        <input type="password" name="rpassword" class="form-control" id="inputPassword3">
-                    </div>
+
                     <div class="mb-3">
                         <div class="m-auto">
-                            <button type="submit" name="change" class="btn btn-primary">
-                                Lưu thay đổi
+                            <button type="submit" name="request" class="btn btn-primary">
+                                Gửi yêu cầu
                             </button>
                         </div>
                     </div>
