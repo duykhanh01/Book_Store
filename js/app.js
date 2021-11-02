@@ -17,9 +17,13 @@ $(document).ready(function() {
                 // $("#body-table").html(data);
                 if (data == "done") {
                     //alert("Đã thêm vào giỏ hàng");
-                    $(".toast-body").html("Bạn đã thêm thành công sản phẩm vào giỏ hàng");
-                    $(".toast").toast({ delay: 1000 });
-                    $(".toast").toast("show");
+                    // $(".toast-body").html("Bạn đã thêm thành công sản phẩm vào giỏ hàng");
+                    // $(".toast").toast({ delay: 1000 });
+                    // $(".toast").toast("show");
+                    alert("Đã đặt hàng thành công")
+                } else if (data == "erro1") {
+                    alert("Hết hàng");
+
                 } else alert("Đăng nhập để thêm");
             },
         });
@@ -54,7 +58,8 @@ $(document).ready(function() {
             success: function(data) {
                 // $("#body-table").html(data);
                 if (data == "done") {
-                    $(".toast").toast(option);
+                    // $(".toast").toast(option);
+                    alert("Đặt hàng thành công");
                 }
                 // alert("Đăng nhập để thêm");
                 else alert(data);
@@ -73,6 +78,13 @@ $(document).ready(function() {
                 number: number,
             },
             success: function(data) {
+                if (data == "erro1") {
+                    alert("số lượng chọn phải lớn hơn 0");
+                } else if (data == "erro2") {
+                    alert("số lượng trong kho không đủ");
+                } else {
+                    alert("Cập nhật thành công");
+                }
                 location.reload();
             },
         });
