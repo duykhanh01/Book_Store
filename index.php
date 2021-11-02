@@ -10,7 +10,7 @@ include('config/db_connect.php');
 <html lang="en">
 <?php require_once("templates/header.php") ?>
 <?php include('config/db_connect.php'); ?>
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast d-none" role="alert" aria-live="assertive" aria-atomic="true">
 
     <div class="toast-body">
         Bạn đã thêm thành công sản phẩm vào giỏ hàng
