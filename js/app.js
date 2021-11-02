@@ -17,7 +17,7 @@ $(document).ready(function () {
         // $("#body-table").html(data);
         if (data == "done") {
           //alert("Đã thêm vào giỏ hàng");
-
+          $(".toast-body").html("Bạn đã thêm thành công sản phẩm vào giỏ hàng");
           $(".toast").toast({ delay: 3000 });
           $(".toast").toast("show");
         } else alert("Đăng nhập để thêm");
