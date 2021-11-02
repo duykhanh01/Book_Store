@@ -22,7 +22,7 @@ include('config/db_connect.php');
         Bạn đã thêm thành công sản phẩm vào giỏ hàng
     </div>
 </div>
-<div class="toast1" role="alert" aria-live="assertive" aria-atomic="true">
+<!-- <div class="toast1" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
         <img width="20px" src="admin/img/content/checked-success.svg" class="rounded mr-2" alt="...">
         <strong class="mr-auto">Thông báo</strong>
@@ -33,7 +33,7 @@ include('config/db_connect.php');
     <div class="toast-body">
 
     </div>
-</div>
+</div> -->
 <div class="site-wrapper" id="top">
 
 
