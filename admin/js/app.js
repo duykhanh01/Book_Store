@@ -136,8 +136,25 @@ $(document).ready(function () {
     $.ajax({
       url: "core/update_status.php",
       type: "POST",
-      data: { stt: stt, id_or: id_or },
+      data: {
+        stt: stt,
+        id_or: id_or,
+      },
       success: function (data) {},
+    });
+  });
+
+  // --------------------- Delete Product -------------------------------------------------------
+
+  $(document).on("click", ".delete-product", function () {
+    var id = $(this).attr("value");
+    $.ajax({
+      url: "core/delete-product.php",
+      type: "POST",
+      data: { id: id },
+      success: function (data) {
+        $("#body-table").html(data);
+      },
     });
   });
 
@@ -202,6 +219,11 @@ $(document).ready(function () {
             );
           } else {
             $("#body-table").html(data);
+            $(".modal-success__title").text("Thêm sản phẩm thành công");
+            $(".modal-success__icon").attr(
+              "src",
+              "img/content/checked-success.svg"
+            );
             // $("#pr_name").val("");
             // $("#auth_name").val("");
             // $("#pub_name").val("");
@@ -222,100 +244,7 @@ $(document).ready(function () {
     }
   });
 
-  //thêm Khánh
-  $("#add-product").click(function () {
-    var dataform = new FormData();
-
-    var pr_name = $("#pr_name").val();
-    var pr_code = $("#pr_code").val();
-    console.log(pr_code);
-    var auth_name = $("#auth_name").val();
-    var pub_name = $("#pub_name").val();
-    var pr_number = $("#pr_number").val();
-    var pr_desc = $(".pr_desc").val();
-    var pr_category = $("#pr_category").val();
-    var pr_price = $("#pr_price").val();
-    var pr_discount = $("#pr_discount").val();
-    var pr_images = $("#pr_images")[0].files;
-    var pr_status = $("#pr_status").find(":selected")[0].value;
-    var check_file = false;
-    for (var i = 0; i < pr_images.length; i++) {
-      var type = pr_images[i] != null ? pr_images[i].type : null;
-      console.log(type);
-      //Xét kiểu file được upload
-      var match = ["image/gif", "image/png", "image/jpeg"];
-      if (type == match[0] || type == match[1] || type == match[2]) {
-        dataform.append("pr_images[]", pr_images[i]);
-        check_file = true;
-      }
-    }
-
-    //var type = pr_images != null ? pr_images.type : null;
-    //Xét kiểu file được upload
-
-    if (check_file == true) {
-      dataform.append("pr_name", pr_name);
-      dataform.append("pr_code", pr_code);
-      dataform.append("auth_name", auth_name);
-      dataform.append("pub_name", pub_name);
-      dataform.append("pr_number", pr_number);
-      dataform.append("pr_desc", pr_desc);
-      dataform.append("pr_category", pr_category);
-      dataform.append("pr_price", pr_price);
-      dataform.append("pr_discount", pr_discount);
-      dataform.append("pr_images", pr_images);
-      dataform.append("pr_status", pr_status);
-
-      $.ajax({
-        url: "core/add-product.php",
-        type: "POST",
-        data: dataform,
-        dataType: "text",
-        cache: false,
-        contentType: false,
-        processData: false,
-        success: function (data) {
-          if (data == "errors") {
-            $(".modal-success__title").text("Vui lòng điền đầy đủ thông tin");
-
-            $(".modal-success__icon").attr(
-              "src",
-              "img/content/checked-fail.png"
-            );
-          } else {
-            $("#body-table").html(data);
-            $(".modal-success__title").text("Thêm sản phẩm thành công");
-            $(".modal-success__icon").attr(
-              "src",
-              "img/content/checked-success.svg"
-            );
-          }
-        },
-      });
-    } else {
-      $(".modal-success__title").text("Vui lòng chọn file PNG, JPEG, JPG");
-      $(".modal-success__icon").attr("src", "img/content/checked-fail.png");
-    }
-  });
-
   // --------------------- Delete Product -------------------------------------------------------
-
-  $(document).on("click", ".delete-product", function () {
-    var id = $(this).attr("value");
-    $.ajax({
-      url: "core/delete-product.php",
-      type: "POST",
-      data: { id: id },
-      success: function (data) {
-        $("#body-table").html(data);
-      },
-    });
-  });
-
-  // ---------------------- Update product ----------------------------------------------------
-  $("#update-product").click(function () {
-    $("#form-update").submit();
-  });
 
   // Update images product
   $("#update-images").click(function () {
@@ -410,5 +339,17 @@ $(document).ready(function () {
         $(".table-customers").html(response);
       },
     });
+  });
+  // Hiếu làm
+  // $(document).on("click", ".delete-category", function() {
+  //     alert("đã vào");
+  //     alert($(this).val());
+  //     alert("1");
+
+  // });
+
+  // =========================== Disable scroll input number ===========================
+  $(document).on("wheel", "input[type=number]", function (e) {
+    $(this).blur();
   });
 });

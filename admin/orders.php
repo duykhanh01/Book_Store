@@ -205,11 +205,11 @@ require_once("templates/header.php"); ?>
                                                                     <use xlink:href="#icon-trash"></use>
                                                                 </svg></span>Delete</a>
                                                     </li>
-                                                    <li class="dropdown-items__item"><a class="dropdown-items__link" href="order-status.php?or_id=<?php echo $row_or['or_id']; ?>"><span class="dropdown-items__link-icon">
+                                                    <!-- <li class="dropdown-items__item"><a class="dropdown-items__link" href="order-status.php?or_id=<?php echo $row_or['or_id']; ?>"><span class="dropdown-items__link-icon">
                                                                 <svg class="icon-icon-trash">
                                                                     <use xlink:href="#icon-trash"></use>
                                                                 </svg></span>Status</a>
-                                                    </li>
+                                                    </li> -->
                                                 </ul>
                                             </div>
                                         </div>

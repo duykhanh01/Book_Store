@@ -5,10 +5,23 @@ include('../config/db_connect.php');
 if (!isset($_POST['id'])) header('Location: ../404.php');
 
 $id = $_POST['id'];
+//xoá ở orderdetail
+//xoá ở order
+$cr_tb = "create TEMPORARY TABLE temp AS
+(SELECT * FROM orderdetail where pr_id = '$id')";
+mysqli_query($conn, $cr_tb);
+$sl_or = "SELECT * FROM temp";
+$res_or = mysqli_query($conn, $sl_or);
+while($del = mysqli_fetch_assoc($res_or))
+{
+    $or_id = $del['or_id'];
+    mysqli_query($conn, "DELETE FROM `orderdetail` WHERE or_id = '$or_id'");
+    mysqli_query($conn, "DELETE FROM `orders` WHERE or_id = '$or_id'");
+    //sau khi xoá order gửi mail cho user
+}
 $sql = "DELETE FROM products where pr_id = '$id'";
 $res = mysqli_query($conn, $sql);
 if ($res) {
-
     $output = "";
     $query = "SELECT  * from products, category where category.c_id = pr_category";
     $result = mysqli_query($conn, $query);

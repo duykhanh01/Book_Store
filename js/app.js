@@ -1,4 +1,10 @@
 $(document).ready(function () {
+  // huỷ sự kiện tự lên đầu trang của thẻ a
+  $(".add_cart").click(function (event) {
+    event.preventDefault();
+  });
+
+  // ajax thêm vào giỏ hàng
   $(".add_cart").click(function () {
     var values = $(this).attr("value");
     $.ajax({
@@ -9,8 +15,12 @@ $(document).ready(function () {
       },
       success: function (data) {
         // $("#body-table").html(data);
-        if (data == "done") alert("Đã thêm vào giỏ hàng");
-        else alert("Đăng nhập để thêm");
+        if (data == "done") {
+          //alert("Đã thêm vào giỏ hàng");
+          $(".toast-body").html("Bạn đã thêm thành công sản phẩm vào giỏ hàng");
+          $(".toast").toast({ delay: 1000 });
+          $(".toast").toast("show");
+        } else alert("Đăng nhập để thêm");
       },
     });
   });
@@ -43,7 +53,9 @@ $(document).ready(function () {
       },
       success: function (data) {
         // $("#body-table").html(data);
-        if (data == "done") alert("Đã thêm vào giỏ hàng");
+        if (data == "done") {
+          $(".toast").toast(option);
+        }
         // alert("Đăng nhập để thêm");
         else alert(data);
       },

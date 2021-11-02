@@ -23,7 +23,7 @@ function CalendarInline(id) {
     }
 }
 
-CalendarInline.prototype.ready = function (element) {
+CalendarInline.prototype.ready = function(element) {
     const inputYear = element.querySelector('.cur-year');
     const elementYear = document.createElement('div');
 
@@ -32,39 +32,39 @@ CalendarInline.prototype.ready = function (element) {
     inputYear.parentNode.prepend(elementYear);
 };
 
-CalendarInline.prototype.getYear = function (selectedDates, dateStr, instance) {
+CalendarInline.prototype.getYear = function(selectedDates, dateStr, instance) {
     const elementYear = this.calendar.querySelector('.calendar-inline__year');
 
     elementYear.textContent = instance.currentYear;
 };
 
-CalendarInline.prototype.renderWidget = function (date, month, day) {
+CalendarInline.prototype.renderWidget = function(date, month, day) {
     this.widget.querySelector('.calendar-widget__dateday').textContent = date;
     this.widget.querySelector('.calendar-widget__month').textContent = calendarMonth[month];
     this.widget.querySelector('.calendar-widget__weekday').textContent = this.weekDay[day];
 };
 
-CalendarInline.prototype.createEvents = function (dObj, dStr, fp, day) {
+CalendarInline.prototype.createEvents = function(dObj, dStr, fp, day) {
     const dayContainer = day;
     const event = document.createElement('div');
     const eventDate = dayContainer.dateObj;
 
     event.classList = 'event';
 
-    if (new Date().getTime() - 24 * 2 * 3600 * 1000 > eventDate.getTime() - 24 * 1 * 3600 * 1000
-        && new Date().getTime() - 24 * 2 * 3600 * 1000 < eventDate.getTime()) {
+    if (new Date().getTime() - 24 * 2 * 3600 * 1000 > eventDate.getTime() - 24 * 1 * 3600 * 1000 &&
+        new Date().getTime() - 24 * 2 * 3600 * 1000 < eventDate.getTime()) {
         dayContainer.append(event);
     }
 
-    if (new Date().getTime() + 24 * 2 * 3600 * 1000 < eventDate.getTime() + 24 * 1 * 3600 * 1000
-        && new Date().getTime() + 24 * 2 * 3600 * 1000 > eventDate.getTime()) {
+    if (new Date().getTime() + 24 * 2 * 3600 * 1000 < eventDate.getTime() + 24 * 1 * 3600 * 1000 &&
+        new Date().getTime() + 24 * 2 * 3600 * 1000 > eventDate.getTime()) {
         event.classList.add('event--upcoming');
         dayContainer.append(event);
         this.renderWidget(eventDate.getDate(), eventDate.getMonth(), eventDate.getDay());
     }
 
-    if (new Date().getTime() + 24 * 5 * 3600 * 1000 < eventDate.getTime() + 24 * 1 * 3600 * 1000
-        && new Date().getTime() + 24 * 5 * 3600 * 1000 > eventDate.getTime()) {
+    if (new Date().getTime() + 24 * 5 * 3600 * 1000 < eventDate.getTime() + 24 * 1 * 3600 * 1000 &&
+        new Date().getTime() + 24 * 5 * 3600 * 1000 > eventDate.getTime()) {
         event.classList.add('event--upcoming');
         dayContainer.append(event);
     }
@@ -103,15 +103,15 @@ function CalendarFull() {
     }
 }
 
-CalendarFull.prototype.showEvent = function (event) {
+CalendarFull.prototype.showEvent = function(event) {
     const element = event.currentTarget;
     const target = document.querySelector(element.getAttribute('href'));
 
     event.preventDefault();
 
-    if (element.classList.contains('active')
-        || element.classList.contains('c-event--active')
-        || element.classList.contains('c-event--draggable')) {
+    if (element.classList.contains('active') ||
+        element.classList.contains('c-event--active') ||
+        element.classList.contains('c-event--draggable')) {
         return;
     }
 
@@ -132,7 +132,7 @@ CalendarFull.prototype.showEvent = function (event) {
     target.classList.add(this.eventColor);
 };
 
-CalendarFull.prototype.closeAllEvent = function (event) {
+CalendarFull.prototype.closeAllEvent = function(event) {
     if (!event.target.closest('.c-event') && !event.target.closest('.dropdown-c-event')) {
         this.events.forEach(el => {
             const target = document.querySelector(el.getAttribute('href'));
@@ -146,14 +146,14 @@ CalendarFull.prototype.closeAllEvent = function (event) {
     }
 };
 
-CalendarFull.prototype.reminderRemove = function (event) {
+CalendarFull.prototype.reminderRemove = function(event) {
     const element = event.target;
     const target = element.closest('.calendar__reminder');
 
     $(target).slideUp(200);
 };
 
-CalendarFull.prototype.eventRemove = function (event) {
+CalendarFull.prototype.eventRemove = function(event) {
     const element = event.currentTarget;
     const target = element.closest('.c-event');
 
@@ -278,7 +278,7 @@ function Charts(el, options) {
     }
 }
 
-Charts.prototype.init = function (options) {
+Charts.prototype.init = function(options) {
     const chartInstance = new ApexCharts(this.element, options);
 
     chartInstance.render();
@@ -320,7 +320,7 @@ function Echart(el, options) {
     }
 }
 
-Echart.prototype.init = function (options) {
+Echart.prototype.init = function(options) {
     const chartInstance = echarts.init(this.element);
 
     chartInstance.setOption(options);
@@ -366,9 +366,9 @@ Echart.tooltip = formatter => {
             return element;
         },
         position(pos, params, dom, rect, size) {
-            const top = pos[1] <= size.contentSize[1] + 30
-                ? 40
-                : pos[1] - size.contentSize[1] - 10;
+            const top = pos[1] <= size.contentSize[1] + 30 ?
+                40 :
+                pos[1] - size.contentSize[1] - 10;
             const right = size.viewSize[0] - pos[0] <= size.contentSize[0] / 2;
             const left = pos[0] <= size.contentSize[0] / 2;
 
@@ -582,43 +582,38 @@ function chart() {
         toolbox: {
             show: false
         },
-        xAxis: [
-            {
-                type: 'category',
-                offset: 19,
-                axisTick: {
-                    show: false
-                },
-                data: dataSeries('#activityChart')[0],
-                axisLabel: {
-                    fontSize: 12,
-                    fontFamily: themeStyle('--font-family-default'),
-                    color: themeStyle('--text-secondary-color')
-                },
-                axisLine: {
-                    lineStyle: {
-                        color: themeStyle('--border-grey-color')
-                    }
+        xAxis: [{
+            type: 'category',
+            offset: 19,
+            axisTick: {
+                show: false
+            },
+            data: dataSeries('#activityChart')[0],
+            axisLabel: {
+                fontSize: 12,
+                fontFamily: themeStyle('--font-family-default'),
+                color: themeStyle('--text-secondary-color')
+            },
+            axisLine: {
+                lineStyle: {
+                    color: themeStyle('--border-grey-color')
                 }
             }
-        ],
-        yAxis: [
-            {
-                type: 'value',
-                axisLabel: {
-                    fontSize: 12,
-                    fontFamily: themeStyle('--font-family-default'),
-                    color: themeStyle('--text-secondary-color')
-                },
-                splitLine: {
-                    lineStyle: {
-                        color: themeStyle('--border-grey-color')
-                    }
+        }],
+        yAxis: [{
+            type: 'value',
+            axisLabel: {
+                fontSize: 12,
+                fontFamily: themeStyle('--font-family-default'),
+                color: themeStyle('--text-secondary-color')
+            },
+            splitLine: {
+                lineStyle: {
+                    color: themeStyle('--border-grey-color')
                 }
             }
-        ],
-        series: [
-            {
+        }],
+        series: [{
                 name: 'Views',
                 type: 'bar',
                 barGap: 0,
@@ -825,55 +820,50 @@ function chart() {
         toolbox: {
             show: false
         },
-        xAxis: [
-            {
-                type: 'category',
-                offset: 19,
-                axisTick: {
-                    show: false
-                },
-                data: dataSeries('#statisticsBarChart')[0],
-                axisLabel: {
-                    fontSize: 12,
-                    fontFamily: themeStyle('--font-family-default'),
-                    color: themeStyle('--text-secondary-color')
-                },
-                axisLine: {
-                    lineStyle: {
-                        color: themeStyle('--border-grey-color')
-                    }
+        xAxis: [{
+            type: 'category',
+            offset: 19,
+            axisTick: {
+                show: false
+            },
+            data: dataSeries('#statisticsBarChart')[0],
+            axisLabel: {
+                fontSize: 12,
+                fontFamily: themeStyle('--font-family-default'),
+                color: themeStyle('--text-secondary-color')
+            },
+            axisLine: {
+                lineStyle: {
+                    color: themeStyle('--border-grey-color')
                 }
             }
-        ],
-        yAxis: [
-            {
-                type: 'value',
-                axisLabel: {
-                    fontSize: 12,
-                    fontFamily: themeStyle('--font-family-default'),
-                    color: themeStyle('--text-secondary-color'),
-                    margin: 21,
-                    formatter: value => {
-                        if (value === 0) {
-                            return value;
-                        }
-
-                        if (value > 1000) {
-                            return value / 1000 + 'K';
-                        }
-
+        }],
+        yAxis: [{
+            type: 'value',
+            axisLabel: {
+                fontSize: 12,
+                fontFamily: themeStyle('--font-family-default'),
+                color: themeStyle('--text-secondary-color'),
+                margin: 21,
+                formatter: value => {
+                    if (value === 0) {
                         return value;
                     }
-                },
-                splitLine: {
-                    lineStyle: {
-                        color: themeStyle('--border-grey-color')
+
+                    if (value > 1000) {
+                        return value / 1000 + 'K';
                     }
+
+                    return value;
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: themeStyle('--border-grey-color')
                 }
             }
-        ],
-        series: [
-            {
+        }],
+        series: [{
                 name: 'Current',
                 type: 'bar',
                 barGap: 0,
@@ -925,14 +915,14 @@ function Chat() {
     }
 }
 
-Chat.prototype.usersOpen = function (event) {
+Chat.prototype.usersOpen = function(event) {
     const button = event.currentTarget;
 
     button.classList.add('active');
     this.chat.classList.add('chat-grid--show-users');
 };
 
-Chat.prototype.usersClose = function () {
+Chat.prototype.usersClose = function() {
     this.chat.classList.remove('chat-grid--show-users');
 
     setTimeout(() => {
@@ -942,14 +932,14 @@ Chat.prototype.usersClose = function () {
     this.buttonToggleUsers.classList.remove('active');
 };
 
-Chat.prototype.userAddListToggle = function (event) {
+Chat.prototype.userAddListToggle = function(event) {
     const button = event.currentTarget;
 
     button.classList.toggle('active');
     this.chat.classList.toggle('chat-grid--show-users-add');
 };
 
-Chat.prototype.newUserAdd = function (event) {
+Chat.prototype.newUserAdd = function(event) {
     const item = event.currentTarget;
 
     this.usersNew.forEach(el => el.classList.remove('active'));
@@ -958,7 +948,7 @@ Chat.prototype.newUserAdd = function (event) {
     this.chat.classList.remove('chat-grid--show-users-add');
 };
 
-Chat.prototype.userAddChat = function (event) {
+Chat.prototype.userAddChat = function(event) {
     const item = event.currentTarget;
 
     this.users.forEach(el => el.classList.remove('active'));
@@ -967,8 +957,7 @@ Chat.prototype.userAddChat = function (event) {
     this.buttonToggleUsers.classList.remove('active');
 };
 
-Chat.search = () => {
-};
+Chat.search = () => {};
 
 function HeaderSearch() {
     this.toggleButton = document.querySelector('.header__toggle-search');
@@ -994,7 +983,7 @@ function HeaderSearch() {
     });
 }
 
-HeaderSearch.prototype.toggle = function (event) {
+HeaderSearch.prototype.toggle = function(event) {
     event.preventDefault();
 
     const button = event.currentTarget;
@@ -1073,7 +1062,7 @@ function Sidebar() {
     this.backdropDesktop.addEventListener('click', event => this.close(event, true));
 }
 
-Sidebar.prototype.toggle = function (event) {
+Sidebar.prototype.toggle = function(event) {
     const button = event.currentTarget;
     let interval;
 
@@ -1101,7 +1090,7 @@ Sidebar.prototype.toggle = function (event) {
     }
 };
 
-Sidebar.prototype.close = function (event, desktop) {
+Sidebar.prototype.close = function(event, desktop) {
     event.preventDefault();
 
     this.body.classList.remove('sidebar-show');
@@ -1133,7 +1122,7 @@ function SidebarPanel() {
     }
 }
 
-SidebarPanel.prototype.sidebarShow = function (event) {
+SidebarPanel.prototype.sidebarShow = function(event) {
     const button = event.currentTarget;
 
     button.classList.add('active');
@@ -1142,7 +1131,7 @@ SidebarPanel.prototype.sidebarShow = function (event) {
     this.sidebar.classList.add('active');
 };
 
-SidebarPanel.prototype.sidebarClose = function () {
+SidebarPanel.prototype.sidebarClose = function() {
     this.buttonToggleElement.classList.remove('active');
     this.dismissElement.classList.remove('active');
     this.sidebar.classList.remove('active');
@@ -1172,7 +1161,7 @@ function ImageUpload() {
     });
 }
 
-ImageUpload.prototype.dragHover = function (event) {
+ImageUpload.prototype.dragHover = function(event) {
     const inputElement = event.currentTarget;
 
     event.stopPropagation();
@@ -1185,7 +1174,7 @@ ImageUpload.prototype.dragHover = function (event) {
     }
 };
 
-ImageUpload.prototype.selectHandler = function (event) {
+ImageUpload.prototype.selectHandler = function(event) {
     const files = event.target.files || event.dataTransfer.files;
 
     this.dragHover(event);
@@ -1196,7 +1185,7 @@ ImageUpload.prototype.selectHandler = function (event) {
     });
 };
 
-ImageUpload.prototype.parseFile = function (file, input) {
+ImageUpload.prototype.parseFile = function(file, input) {
     const inputElement = input;
     const list = inputElement.closest('.image-upload').querySelector('.image-upload__list');
     const items = inputElement.closest('.image-upload').querySelectorAll('.image-upload__item:not(.is-active)');
@@ -1224,7 +1213,7 @@ ImageUpload.prototype.parseFile = function (file, input) {
     items[0].classList.add('is-active');
 };
 
-ImageUpload.prototype.uploadFile = function (file) {
+ImageUpload.prototype.uploadFile = function(file) {
     const xhr = new XMLHttpRequest();
     const fileSizeLimit = 1024;
 
@@ -1282,7 +1271,7 @@ function ProfileUpload() {
     });
 }
 
-ProfileUpload.prototype.dragHover = function (event) {
+ProfileUpload.prototype.dragHover = function(event) {
     const inputElement = event.currentTarget;
 
     event.stopPropagation();
@@ -1295,7 +1284,7 @@ ProfileUpload.prototype.dragHover = function (event) {
     }
 };
 
-ProfileUpload.prototype.selectHandler = function (event) {
+ProfileUpload.prototype.selectHandler = function(event) {
     const input = event.currentTarget;
     const files = event.target.files || event.dataTransfer.files;
     const previewElement = input.querySelector('.profile-upload__image');
@@ -1305,11 +1294,11 @@ ProfileUpload.prototype.selectHandler = function (event) {
     if (files && files[0]) {
         const reader = new FileReader();
 
-        reader.onload = function (e) {
+        reader.onload = function(e) {
             previewElement.setAttribute('xlink:href', `${e.target.result}`);
         };
 
-        reader.onloadend = function (e) {
+        reader.onloadend = function(e) {
             input.classList.add('is-animate');
 
             setTimeout(() => {
@@ -1342,7 +1331,7 @@ function Inbox() {
     }
 }
 
-Inbox.prototype.detailsOpen = function (event) {
+Inbox.prototype.detailsOpen = function(event) {
     const item = event.currentTarget;
 
     this.mailItems.forEach(el => el.classList.remove('active'));
@@ -1351,12 +1340,11 @@ Inbox.prototype.detailsOpen = function (event) {
     this.inbox.classList.add('inbox-grid--show-details');
 };
 
-Inbox.prototype.detailsClose = function () {
+Inbox.prototype.detailsClose = function() {
     this.inbox.classList.remove('inbox-grid--show-details');
 };
 
-Inbox.search = () => {
-};
+Inbox.search = () => {};
 
 function map() {
     const countryMap = document.querySelector('#mapCountry');
@@ -1396,7 +1384,7 @@ function Modal() {
     this.events();
 }
 
-Modal.prototype.events = function () {
+Modal.prototype.events = function() {
     this.toggle.forEach(el => {
         el.addEventListener('click', event => Modal.show(event));
     });
@@ -1512,7 +1500,7 @@ function Checkboxes() {
     }
 }
 
-Checkboxes.prototype.events = function () {
+Checkboxes.prototype.events = function() {
     const checkboxes = [];
 
     this.element.forEach((el) => {
@@ -1532,7 +1520,7 @@ Checkboxes.prototype.events = function () {
     });
 };
 
-Checkboxes.prototype.checkedAll = function (event) {
+Checkboxes.prototype.checkedAll = function(event) {
     const checkbox = event.currentTarget;
     const inputs = document.querySelectorAll(`[data-checkbox="${checkbox.getAttribute('data-checkbox-all')}"]`);
     const inputsChecked = [];
@@ -1560,7 +1548,7 @@ Checkboxes.prototype.checkedAll = function (event) {
     }
 };
 
-Checkboxes.prototype.checkedInput = function (event) {
+Checkboxes.prototype.checkedInput = function(event) {
     const input = event.currentTarget;
     const checkboxAll = document.querySelector(`[data-checkbox-all="${input.getAttribute('data-checkbox')}"]`);
     const inputs = document.querySelectorAll(`[data-checkbox="${checkboxAll.getAttribute('data-checkbox-all')}"]`);
@@ -1593,7 +1581,7 @@ function Timeline() {
     this.elements = document.querySelectorAll('.page-timeline__items');
 }
 
-Timeline.prototype.init = function () {
+Timeline.prototype.init = function() {
     if (this.elements[0]) {
         this.elements.forEach(el => {
             const element = el;
@@ -1606,7 +1594,7 @@ Timeline.prototype.init = function () {
     }
 };
 
-Timeline.prototype.resize = function () {
+Timeline.prototype.resize = function() {
     if (this.elements[0]) {
         this.elements.forEach(el => {
             new Masonry(el, this.options);
@@ -1626,7 +1614,7 @@ function Todo() {
     }
 }
 
-Todo.prototype.checked = function (event) {
+Todo.prototype.checked = function(event) {
     const checkboxElement = event.currentTarget;
     const panel = checkboxElement.closest('.todo-panel');
 
@@ -1661,7 +1649,7 @@ SwitcherGroup.getWidth = (element, activeButton) => {
     });
 };
 
-SwitcherGroup.prototype.floatElementPosition = function () {
+SwitcherGroup.prototype.floatElementPosition = function() {
     this.floatElement.forEach(el => {
         const element = el;
         const switcher = element.closest('.switcher-button');
@@ -1671,13 +1659,13 @@ SwitcherGroup.prototype.floatElementPosition = function () {
     });
 };
 
-SwitcherGroup.prototype.toggle = function (event) {
+SwitcherGroup.prototype.toggle = function(event) {
     const element = event.target;
     const switcher = element.closest('.switcher-button');
     const floatElement = switcher.querySelector('.switcher-button__float');
 
-    if (element.parentNode.classList.contains('active')
-        || element.classList.contains('switcher-button__items')) {
+    if (element.parentNode.classList.contains('active') ||
+        element.classList.contains('switcher-button__items')) {
         return;
     }
 
@@ -1759,10 +1747,8 @@ function form() {
             useFullStars: true,
             minRating: 1,
             readOnly,
-            onHover(currentIndex, currentRating, $el) {
-            },
-            onLeave(currentIndex, currentRating, $el) {
-            }
+            onHover(currentIndex, currentRating, $el) {},
+            onLeave(currentIndex, currentRating, $el) {}
         });
     };
 
@@ -1842,7 +1828,7 @@ function Pagination() {
     });
 }
 
-Pagination.prototype.toggleItem = function (event) {
+Pagination.prototype.toggleItem = function(event) {
     const link = event.currentTarget;
     const linkActive = link.closest('.pagination').querySelector('.active');
 
@@ -1893,7 +1879,7 @@ ScrollTo.scrollDetect = element => {
     }
 };
 
-ScrollTo.prototype.scrollTo = function () {
+ScrollTo.prototype.scrollTo = function() {
     const h = document.documentElement.scrollTop || document.body.scrollTop;
 
     if (!this.button.classList.contains('btn-scroll-page--down')) {
@@ -1942,22 +1928,22 @@ function InputSelects(select) {
     this.init();
 }
 
-InputSelects.prototype.scrollbar = function (event) {
+InputSelects.prototype.scrollbar = function(event) {
     const dropdown = event.currentTarget.parentNode.querySelector('.select2-results__options');
 
     dropdown.classList.add('scrollbar-thin', 'scrollbar-visible');
     dropdown.setAttribute('data-simplebar', true);
 };
 
-InputSelects.prototype.init = function () {
+InputSelects.prototype.init = function() {
     this.inputs.forEach(el => {
         const element = el;
 
         $(element).select2({
-            minimumResultsForSearch: -1,
-            placeholder: $(element.getAttribute('data-placeholder')),
-            dropdownParent: $(element.parentNode)
-        })
+                minimumResultsForSearch: -1,
+                placeholder: $(element.getAttribute('data-placeholder')),
+                dropdownParent: $(element.parentNode)
+            })
             .on('select2:open', event => this.scrollbar(event));
     });
 };
@@ -1969,21 +1955,21 @@ function InputTags(select) {
 InputTags.prototype = Object.create(InputSelects.prototype);
 InputTags.prototype.constructor = InputTags;
 
-InputTags.prototype.init = function () {
+InputTags.prototype.init = function() {
     this.inputs.forEach(el => {
         const element = el;
 
         $(element).select2({
-            width: '100%',
-            tags: true,
-            tokenSeparators: [','],
-            minimumResultsForSearch: -1,
-            templateSelection: data => {
-                return $(`<span>${data.text}<span class="select2-selection__choice__remove"><svg class="icon-icon-cross"><use xlink:href="#icon-cross"></use></svg></span></span>`);
-            },
-            placeholder: $(element.getAttribute('data-placeholder')),
-            dropdownParent: $(element.parentNode)
-        })
+                width: '100%',
+                tags: true,
+                tokenSeparators: [','],
+                minimumResultsForSearch: -1,
+                templateSelection: data => {
+                    return $(`<span>${data.text}<span class="select2-selection__choice__remove"><svg class="icon-icon-cross"><use xlink:href="#icon-cross"></use></svg></span></span>`);
+                },
+                placeholder: $(element.getAttribute('data-placeholder')),
+                dropdownParent: $(element.parentNode)
+            })
             .on('select2:open', event => this.scrollbar(event));
     });
 };
@@ -2003,7 +1989,7 @@ function DropdownSelect(dropdownElement) {
     });
 }
 
-DropdownSelect.prototype.selected = function (event) {
+DropdownSelect.prototype.selected = function(event) {
     const element = event.currentTarget;
     const elementValue = element.getAttribute('data-value');
 

@@ -8,7 +8,7 @@ if (!isset($_POST['pr_key'])) {
 }
 
 $word = $_POST['pr_key'];
-$sql = "SELECT  * from products, category where category.c_id = pr_category and pr_name like '%$word%' or pr_code like '%$word%'";
+$sql = "SELECT  * from products, category where pr_name like '%$word%' or pr_code like '%$word%' having category.c_id = pr_category";
 $res = mysqli_query($conn, $sql);
 $books = mysqli_fetch_all($res, MYSQLI_ASSOC);
 

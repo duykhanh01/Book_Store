@@ -1,3 +1,6 @@
+body{
+    position:absolute;
+}
 .collapse .items{
   
     padding: 10px 15px;
@@ -30,17 +33,24 @@
 
 .product-header
 {
-    height: 80px;
+    height: 65px;
 }
-
+.header-search-block{
+    position: relative;
+}
 .autocomplete-suggestions {
-  
+    /* display: none; */
     background-color: #fff;
     padding: 10px;
     overflow-y: scroll;
     height: 300px;
+   
     -webkit-box-shadow: 2px 1px 6px 0 #000;
     box-shadow: 2px 1px 6px 0 #000;
+    position: absolute;
+    top: 55px;
+    z-index: 9999;
+    width: 100%;
 }
 
 .autocomplete-suggestions .autocomplete-suggestion {
@@ -49,6 +59,14 @@
     border-bottom: 1px solid #e1e1e1;
 }
 
+.toast, .toast1{
+    position: fixed;
+    top: 100px;
+    right: 0;
+    width: 400px;
+    z-index: 9999999;
+    background-color: 	#CCFFCC;
+}
 footer{
     border-top: 1px solid #ccc;
 }

@@ -5,12 +5,26 @@ if (isset($_GET['or_id'])) {
     include('config/db_connect.php');
    
     $or_id = $_GET['or_id'];
-    $sl_ors = "SELECT * from orders where or_id = '$or_id'";
+    $sl_ors = "SELECT * from orders where or_id = '$or_id' ";
     $res_ors = mysqli_query($conn, $sl_ors);
     if (mysqli_num_rows($res_ors) == 0) {
         header('location: orders.php');
+        exit;
     }
-    $row_or = mysqli_fetch_assoc($res_ors);
+    $row_ors = mysqli_fetch_assoc($res_ors);
+    
+    if($row_ors['or_status']==0)
+    {
+        $sl_info_order = "SELECT * from orders, users where or_id = '$or_id' and orders.u_id= 0";
+        $row_or = mysqli_fetch_assoc(mysqli_query($conn, $sl_info_order));
+        $name_people_process = "Chưa có ai xử lí";
+    }
+    else
+    {
+        $sl_info_order = "SELECT * from orders, users where or_id = '$or_id' and (users.u_id = orders.u_id)";
+        $row_or = mysqli_fetch_assoc(mysqli_query($conn, $sl_info_order));
+        $name_people_process = $row_or['u_fullname'];
+    }
 } else {
     header('location: orders.php');
 }
@@ -155,7 +169,7 @@ if (isset($_GET['or_id'])) {
                                             echo $stt ?></span>
                                     </div>
                                 </td>
-                                <td class="table__td text-center"><span><input id="id_user" value="1" class="d-none">Tên người xử lí</span></td>
+                                <td class="table__td text-center"><span><input id="id_user" value="1" class="d-none"><?php echo $name_people_process; ?></span></td>
                             </tr>
                         </tbody>
                     </table>

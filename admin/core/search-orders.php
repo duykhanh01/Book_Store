@@ -7,10 +7,10 @@ if (!isset($_POST['pr_key'])) {
 }
 
 $word = $_POST['pr_key'];
-$sql = "SELECT * FROM orders, customers where orders.cus_id = customers.cus_id and cus_name like '%$word%' or or_id like '%$word%'";
+$sql = "SELECT * FROM orders, customers where cus_name like '%$word%' or or_id like '$word' having orders.cus_id = customers.cus_id";
 $res = mysqli_query($conn, $sql);
 $categories = mysqli_fetch_all($res, MYSQLI_ASSOC);
-
+echo mysqli_num_rows($res);
 if (mysqli_num_rows($res) > 0) {
     $ouput = "";
     foreach ($categories as $i => $category) {
