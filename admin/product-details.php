@@ -47,17 +47,17 @@ if (isset($_GET['id'])) {
                                     </svg>
                                 </a>
                             </li>
-                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>E-commerce</span>
+                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>Quản lý</span>
                                     <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg></a>
                             </li>
-                            <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="products.html"><span>Products</span>
+                            <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="products.php"><span>Sản phẩm</span>
                                     <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg></a>
                             </li>
-                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Product Details</span>
+                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Chi tiết sản phẩm</span>
                             </li>
                         </ol>
                     </div>
