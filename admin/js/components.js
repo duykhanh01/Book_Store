@@ -1956,6 +1956,23 @@ function form() {
   });
 }
 
+function Pagination() {
+  this.pagination = document.querySelectorAll(".pagination");
+
+  if (!this.pagination[0]) {
+    return;
+  }
+
+  this.pagination.forEach((el) => {
+    const pagination = el;
+    const links = pagination.querySelectorAll(".pagination__link");
+
+    links.forEach((elementLink) => {
+      elementLink.addEventListener("click", (event) => this.toggleItem(event));
+    });
+  });
+}
+
 function ScrollTo() {
   this.button = document.querySelector(".btn-scroll-page");
 

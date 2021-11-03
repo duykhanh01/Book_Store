@@ -56,7 +56,7 @@ $excel->getActiveSheet()->setCellValue('C1', 'Tên sách');
 $excel->getActiveSheet()->setCellValue('D1', 'Thể loại');
 $excel->getActiveSheet()->setCellValue('E1', 'Tác giả');
 $excel->getActiveSheet()->setCellValue('F1', 'NXB');
-$excel->getActiveSheet()->setCellValue('G1', 'Mổ tả');
+$excel->getActiveSheet()->setCellValue('G1', 'Mô tả');
 $excel->getActiveSheet()->setCellValue('H1', 'Tồn kho');
 $excel->getActiveSheet()->setCellValue('I1', 'Ngày đăng');
 $excel->getActiveSheet()->setCellValue('J1', 'Trạng thái');
@@ -93,10 +93,9 @@ foreach ($products as $i => $product) {
 }
 // Khởi tạo đối tượng PHPExcel_IOFactory để thực hiện ghi file
 // ở đây mình lưu file dưới dạng excel2007
-$filename = 'avc.xlsx';
+$filename = 'products.xlsx';
 
 header('Content-Type: application/vnd.ms-excel');
 header('Content-Disposition: attachment;filename=' . $filename);
 header('Cache-Control: max-age=0');
 $Excel_writer->save('php://output');
-header("location: products.php");

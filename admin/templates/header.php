@@ -415,8 +415,11 @@ if (!isset($_SESSION['u_id'])) {
                                 <ul class="sidebar__collapse-menu">
                                     <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "products.php") echo "active" ?>" href="products.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Products</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "categories.php") echo "active" ?>" href="categories.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Thể loại</span></a>
 
+                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "categories.php") echo "active" ?>" href="categories.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Thể loại</span></a>
+                                    </li>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "add-banners.php") echo "active" ?>" href="add-banners.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Banner</span></a>
+                                    </li>
                                     <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "orders.php") echo "active" ?>" href="orders.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Orders</span></a>
                                     </li>
 
