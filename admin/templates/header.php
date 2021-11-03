@@ -431,9 +431,6 @@ if (!isset($_SESSION['u_id'])) {
                         </li>
 
 
-
-
-
                         <li class="sidebar__menu-item"><a class="sidebar__link" href="#" data-toggle="collapse" data-target="#Auth" aria-expanded="false"><span class="sidebar__link-icon">
                                     <svg class="icon-icon-password">
                                         <use xlink:href="#icon-password"></use>
