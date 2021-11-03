@@ -303,7 +303,6 @@ Charts.tooltip = () => {
             return `
                 <div class="chart-tooltip-custom">
                     <div class="chart-tooltip-custom__items">${elementRows}</div>
-                    <div class="chart-tooltip-custom__title">Jan ${w.globals.labels[dataPointIndex]}</div>
                 </div>
             `;
         }
@@ -387,6 +386,8 @@ Echart.tooltip = formatter => {
 };
 
 function chart() {
+
+    var name_lb = ($("#getdata").val().split(";"));
     const dataSeries = el => {
         const element = document.querySelector(el);
 
@@ -447,7 +448,7 @@ function chart() {
             show: false
         },
         xaxis: {
-            categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan'],
+            categories: name_lb,
             tooltip: false,
             labels: {
                 offsetY: 5,
@@ -739,7 +740,7 @@ function chart() {
             strokeOpacity: 1
         },
         xaxis: {
-            categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan'],
+            categories: name_lb,
             tooltip: false,
             labels: {
                 offsetY: 5,
@@ -771,7 +772,7 @@ function chart() {
         },
         yaxis: {
             labels: {
-                offsetY: 50,
+                offsetY: 10,
                 style: {
                     colors: themeStyle('--text-secondary-color'),
                     fontWeight: 400,

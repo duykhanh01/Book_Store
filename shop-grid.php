@@ -20,11 +20,14 @@ else
 		$page = $_GET['page'];
 		if($page<=0 || $page>ceil($numpr1/8))
 		{
-			header('location: 404.php');
+			//header('location: 404.php');
+			$page = 1;
+			$start = 0;
+			
 		}
 		else
 		{
-			$start = 8*($_GET['page']-1)+1;
+			$start = 8*($_GET['page']-1);
 		}
 		
 	}

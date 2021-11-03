@@ -179,11 +179,11 @@ if (isset($_GET['or_id'])) {
                         </colgroup>
                         <thead class="table__header">
                             <tr class="table__header-row">
-                                <th><span class="text-nowrap">PRODUCT</span>
+                                <th><span class="text-nowrap">Sản phẩm</span>
                                 </th>
-                                <th class="text-center"><span>PRICE</span>
+                                <th class="text-center"><span>Giá</span>
                                 </th>
-                                <th class="text-center"><span>QUANTITY</span>
+                                <th class="text-center"><span>Số lượng</span>
                                 </th>
                                 <th><span>TOTAL</span>
                             </tr>
@@ -201,14 +201,14 @@ if (isset($_GET['or_id'])) {
                                     <td class="table__td text-center text-dark-theme">
                                         <div class="d-inline-block">
                                             <div class="input-group input-group--prepend-xs">
-                                                $<?php echo $row_od['od_price']; ?>
+                                                <?php echo number_format($row_od['od_price'], 0, ',', '.') . " VNĐ"; ?>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="table__td text-center">
                                         <?php echo $row_od['od_quatity']; ?>
                                     </td>
-                                    <td class="table__td text-nowrap text-dark-theme"><?php echo $row_od['od_total']; ?></td>
+                                    <td class="table__td text-nowrap text-dark-theme"><?php echo number_format($row_od['od_total'], 0, ',', '.') . " VNĐ"; ?></td>
                                 </tr>
                             <?php    }
                             ?>
@@ -223,16 +223,16 @@ if (isset($_GET['or_id'])) {
                             <div class="col-auto">
                                 <ul class="card-order__total">
                                     <li class="card-order__total-item card-order__total-footer">
-                                        <div class="card-order__total-title">Sub total:</div>
-                                        <div class="card-order__total-value">$<?php echo $sub_total['sub_total']; ?> </div>
+                                        <div class="card-order__total-title" style="width: 300px;">Tổng tiền hàng:</div>
+                                        <div class="card-order__total-value"><?php echo number_format($sub_total['sub_total'], 0, ',', '.') . " VNĐ"; ?> </div>
                                     </li>
                                     <li class="card-order__total-item card-order__total-footer">
-                                        <div class="card-order__total-title">Ship:</div>
-                                        <div class="card-order__total-value">$<?php echo $res_order['or_ship']; ?> </div>
+                                        <div class="card-order__total-title">Phí vận chuyển:</div>
+                                        <div class="card-order__total-value"><?php echo number_format($res_order['or_ship'], 0, ',', '.') . " VNĐ"; ?> </div>
                                     </li>
                                     <li class="card-order__total-item card-order__total-footer">
-                                        <div class="card-order__total-title">total:</div>
-                                        <div class="card-order__total-value">$<?php echo $or_total; ?> </div>
+                                        <div class="card-order__total-title">Tổng thanh toán:</div>
+                                        <div class="card-order__total-value"><?php echo number_format($or_total, 0, ',', '.') . " VNĐ"; ?> </div>
                                     </li>
                                 </ul>
                             </div>
