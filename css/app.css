@@ -1,13 +1,13 @@
-body{
-    position:absolute;
+body {
+    position: absolute;
 }
-.collapse .items{
-  
+
+.collapse .items {
     padding: 10px 15px;
     border-top: 1px solid #ebebeb;
 }
 
-.collapse .items .image{
+.collapse .items .image {
     width: 10%;
     position: relative;
     -webkit-box-flex: 0;
@@ -23,28 +23,28 @@ body{
     padding-right: 15px;
     width: 70%;
 }
-.collapse .items .quantity {
 
+.collapse .items .quantity {
     display: block;
     width: 100%;
     font-weight: 400;
     color: gray;
 }
 
-.product-header
-{
+.product-header {
     height: 65px;
 }
-.header-search-block{
+
+.header-search-block {
     position: relative;
 }
+
 .autocomplete-suggestions {
     /* display: none; */
     background-color: #fff;
     padding: 10px;
     overflow-y: scroll;
     height: 300px;
-   
     -webkit-box-shadow: 2px 1px 6px 0 #000;
     box-shadow: 2px 1px 6px 0 #000;
     position: absolute;
@@ -58,7 +58,8 @@ body{
     padding: 5px 0;
     border-bottom: 1px solid #e1e1e1;
 }
-<<<<<<< HEAD
+
+
 .toast-container{
     position: fixed;
     min-height: 200px;
@@ -70,19 +71,19 @@ body{
 .toast, .toast1{
     position: fixed;
     top: 40px;
-=======
+}
 
-.toast, .toast1{
+.toast,
+.toast1 {
     position: fixed;
     top: 100px;
->>>>>>> khanh
+
     right: 0;
     width: 400px;
     z-index: 9999999;
-    background-color: 	#CCFFCC;
+    background-color: #CCFFCC;
 }
-<<<<<<< HEAD
-=======
+
 
 hr{
     margin-bottom: 0 !important;
@@ -94,7 +95,9 @@ hr{
     border-bottom: 1px solid #ccc;
 }
 
->>>>>>> khanh
-footer{
+
+
+footer {
+
     border-top: 1px solid #ccc;
 }
