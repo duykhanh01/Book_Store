@@ -2,6 +2,39 @@
 include('../config/db_connect.php');
 session_start();
 
+
+// BƯỚC 2: TÌM TỔNG SỐ RECORDS
+$result = mysqli_query($conn, 'select count(pr_id) as total from products');
+$row = mysqli_fetch_assoc($result);
+$total_records = $row['total'];
+
+// BƯỚC 3: TÌM LIMIT VÀ CURRENT_PAGE
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+$limit = 10;
+
+// BƯỚC 4: TÍNH TOÁN TOTAL_PAGE VÀ START
+// tổng số trang
+$total_page = ceil($total_records / $limit);
+
+// Giới hạn current_page trong khoảng 1 đến total_page
+if ($current_page > $total_page) {
+    $current_page = $total_page;
+} else if ($current_page < 1) {
+    $current_page = 1;
+}
+
+// Tìm Start
+$start = ($current_page - 1) * $limit;
+
+// BƯỚC 5: TRUY VẤN LẤY DANH SÁCH TIN TỨC
+// Có limit và start rồi thì truy vấn CSDL lấy danh sách tin tức
+$result = mysqli_query($conn, "SELECT * FROM products, category where products.pr_category = category.c_id LIMIT $start, $limit");
+// echo '<pre>';
+// var_dump(mysqli_fetch_all($result));
+// echo '</pre>';
+$products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$count = $start + 1;
+
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en" data-theme="light">
@@ -38,15 +71,8 @@ session_start();
             </div>
             <div class="page-tools__right">
                 <div class="page-tools__right-row">
-                    <div class="page-tools__right-item"><a class="button-icon" href="#"><span class="button-icon__icon">
-                                <svg class="icon-icon-print">
-                                    <use xlink:href="#icon-print"></use>
-                                </svg></span></a>
-                    </div>
-                    <div class="page-tools__right-item"><a class="button-icon" href="#"><span class="button-icon__icon">
-                                <svg class="icon-icon-import">
-                                    <use xlink:href="#icon-import"></use>
-                                </svg></span></a>
+                    <div class="page-tools__right-item"><a class="button-icon" href="core/export-products.php">
+                            <i class="fas fa-file-export"></i></a>
                     </div>
                 </div>
             </div>
@@ -173,30 +199,31 @@ session_start();
 
                         <tbody id="body-table">
                             <?php
-                            $sl_product = "SELECT * FROM products, category where products.pr_category = category.c_id limit 10";
-                            $res_product = mysqli_query($conn, $sl_product);
-                            $count = 1;
-                            while ($row = mysqli_fetch_assoc($res_product)) {
+                            // $sl_product = "SELECT * FROM products, category where products.pr_category = category.c_id limit 10";
+                            // $res_product = mysqli_query($conn, $sl_product);
+                            // $count = 1;
+                            foreach ($products as $i => $product) :
                             ?>
                                 <tr class="table__row">
 
 
                                     <td class="table__td">
-                                        <?php echo $count; ?>
+                                        <?php echo $count;
+                                        $count++ ?>
                                     </td>
-                                    <td class="d-lg-table-cell table__td"><?php echo $row['pr_code']; ?><span class="text-grey"></span>
+                                    <td class="d-lg-table-cell table__td"><?php echo $product['pr_code']; ?><span class="text-grey"></span>
                                     </td>
-                                    <td class="table__td"><?php echo $row['pr_name']; ?></td>
-                                    <td class="table__td"><span class="text-grey"><?php echo $row['c_name']; ?></span>
+                                    <td class="table__td"><?php echo $product['pr_name']; ?></td>
+                                    <td class="table__td"><span class="text-grey"><?php echo $product['c_name']; ?></span>
                                     </td>
-                                    <td class="table__td"><span><?php echo $row['pr_price'] - $row['pr_discount']; ?></span>
+                                    <td class="table__td"><span><?php echo $product['pr_price'] - $product['pr_discount']; ?></span>
                                     </td>
-                                    <td class="d-lg-table-cell table__td"><span class="text-grey"><?php echo $row['pr_number']; ?></span>
+                                    <td class="d-lg-table-cell table__td"><span class="text-grey"><?php echo $product['pr_number']; ?></span>
                                     </td>
                                     <td class="d-sm-table-cell table__td">
-                                        <div class="table__status"><span class="table__status-icon <?php if ($row['pr_status'] == 1)  echo "color-red";
+                                        <div class="table__status"><span class="table__status-icon <?php if ($product['pr_status'] == 1)  echo "color-red";
                                                                                                     else echo "color-green" ?>"></span>
-                                            <?php if ($row['pr_status'] == 1)  echo "Private";
+                                            <?php if ($product['pr_status'] == 1)  echo "Private";
                                             else echo "Public" ?></div>
                                     </td>
                                     <td class="table__td table__actions">
@@ -209,12 +236,12 @@ session_start();
                                             <div class="dropdown-items dropdown-items--right">
                                                 <div class="dropdown-items__container">
                                                     <ul class="dropdown-items__list">
-                                                        <li class="dropdown-items__item"><a href="product-details.php?id=<?php echo $row['pr_id'] ?>" class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                                        <li class="dropdown-items__item"><a href="product-details.php?id=<?php echo $product['pr_id'] ?>" class="dropdown-items__link"><span class="dropdown-items__link-icon">
                                                                     <svg class="icon-icon-view">
                                                                         <use xlink:href="#icon-view"></use>
                                                                     </svg></span>Details</a>
                                                         </li>
-                                                        <li class="dropdown-items__item"><a value="<?php echo $row['pr_id'] ?>" class="dropdown-items__link delete-product"><span class="dropdown-items__link-icon">
+                                                        <li class="dropdown-items__item"><a value="<?php echo $product['pr_id'] ?>" class="dropdown-items__link delete-product"><span class="dropdown-items__link-icon">
                                                                     <svg class="icon-icon-trash">
                                                                         <use xlink:href="#icon-trash"></use>
                                                                     </svg></span>Delete</a>
@@ -226,10 +253,7 @@ session_start();
                                     </td>
 
                                 </tr>
-                            <?php
-                                $count++;
-                            }
-                            ?>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -240,23 +264,18 @@ session_start();
                     <div class="table-wrapper__pagination m-auto col-auto">
                         <ol class="pagination">
                             <li class="pagination__item">
-                                <a class="pagination__arrow pagination__arrow--prev" href="#">
+                                <a class="pagination__arrow pagination__arrow--prev" href="products.php?page=<?php echo $current_page - 1 ?>">
                                     <svg class="icon-icon-keyboard-left">
                                         <use xlink:href="#icon-keyboard-left"></use>
                                     </svg>
                                 </a>
                             </li>
-                            <li class="pagination__item active"><a class="pagination__link" href="#">1</a>
-                            </li>
-                            <li class="pagination__item"><a class="pagination__link" href="#">2</a>
-                            </li>
-                            <li class="pagination__item"><a class="pagination__link" href="#">3</a>
-                            </li>
-                            <li class="pagination__item pagination__item--dots">...</li>
-                            <li class="pagination__item"><a class="pagination__link" href="#">10</a>
-                            </li>
+                            <?php for ($i = 1; $i <= $total_page; $i++) : ?>
+                                <li class="pagination__item <?php if ($current_page == $i) echo 'active' ?>"><a class="pagination__link" href="products.php?page=<?php echo $i ?>"><?php echo $i ?></a>
+                                </li>
+                            <?php endfor; ?>
                             <li class="pagination__item">
-                                <a class="pagination__arrow pagination__arrow--next" href="#">
+                                <a class="pagination__arrow pagination__arrow--next" href="products.php?page=<?php echo $current_page  + 1 ?>">
                                     <svg class="icon-icon-keyboard-right">
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg>

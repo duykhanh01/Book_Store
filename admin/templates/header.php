@@ -415,21 +415,23 @@ if (!isset($_SESSION['u_id'])) {
                                 <ul class="sidebar__collapse-menu">
                                     <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "products.php") echo "active" ?>" href="products.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Products</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "categories.php") echo "active" ?>" href="categories.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Thể loại</span></a>
 
+                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "categories.php") echo "active" ?>" href="categories.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Thể loại</span></a>
+                                    </li>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "add-banners.php") echo "active" ?>" href="add-banners.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Banner</span></a>
+                                    </li>
                                     <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "orders.php") echo "active" ?>" href="orders.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Orders</span></a>
                                     </li>
 
 
                                     <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "customers.php") echo "active" ?>" href="customers.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
                                     </li>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "book-request.php") echo "active" ?>" href="book-request.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Yêu cầu sách</span></a>
+                                    </li>
 
                                 </ul>
                             </div>
                         </li>
-
-
-
 
 
                         <li class="sidebar__menu-item"><a class="sidebar__link" href="#" data-toggle="collapse" data-target="#Auth" aria-expanded="false"><span class="sidebar__link-icon">

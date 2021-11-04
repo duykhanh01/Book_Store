@@ -24,7 +24,6 @@ if (isset($_POST['submit-login'])) {
 
 				$_SESSION['email'] = $user_logged['cus_mail'];
 				$_SESSION['name'] = $user_logged['cus_name'];
-
 				$_SESSION['id'] = $user_logged['cus_id'];
 				header('Location: index.php');
 			} else {

@@ -61,8 +61,8 @@ if (isset($_POST['change'])) {
         <div class="row ">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
 
-                <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
-                    <div class="d-flex align-items-center mb-3 mb-md-0 m-auto link-dark text-decoration-none">
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+                    <div class="d-flex align-items-center  mb-md-0 m-auto link-dark text-decoration-none">
                         <span class="fs-4 font-weight-bold"> <?php echo  $_SESSION['name'] ?> </span>
                     </div>
                     <hr>
@@ -85,6 +85,12 @@ if (isset($_POST['change'])) {
                             </a>
                         </li>
                         <li>
+                            <a href="book-request.php" class="nav-link  link-dark">
+
+                                Yêu cầu sách
+                            </a>
+                        </li>
+                        <li>
                             <a href="logout.php" class="nav-link link-dark">
 
                                 Đăng xuất
@@ -97,7 +103,7 @@ if (isset($_POST['change'])) {
                 </div>
             </div>
             <div class=" col-xl-9 col-lg-9 col-md-12 col-sm-12">
-                <H5 class="ml-5">ĐỔI MẬT KHẨU</H5>
+                <H4 class="mb-4 font-weight-bold">ĐỔI MẬT KHẨU</H4>
                 <?php if (!empty($errors)) : ?>
                     <div class="alert alert-danger text-center" role="alert">
                         <?php foreach ($errors as $error) : ?>
@@ -105,7 +111,7 @@ if (isset($_POST['change'])) {
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
-                <form class="ml-5 mt-2" action="change-password.php" method="post">
+                <form class="mt-2" action="change-password.php" method="post">
                     <div class="mb-3">
                         <label for="inputPassword1" class="col-form-label">Mật khẩu hiện tại</label>
                         <input type="password" name="cpassword" class="form-control" id="inputPassword1">

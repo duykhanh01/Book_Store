@@ -10,16 +10,10 @@ include('config/db_connect.php');
 <html lang="en">
 <?php require_once("templates/header.php") ?>
 <?php include('config/db_connect.php'); ?>
-<div class="toast" aut role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-        <img width="20px" src="admin/img/content/checked-success.svg" class="rounded mr-2" alt="...">
-        <strong class="mr-auto">Thông báo</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="toast-body">
+<div class="toast d-none" role="alert" aria-live="assertive" aria-atomic="true">
 
+    <div class="toast-body">
+        Bạn đã thêm thành công sản phẩm vào giỏ hàng
     </div>
 </div>
 <!-- <div class="toast1" role="alert" aria-live="assertive" aria-atomic="true">
@@ -51,41 +45,34 @@ include('config/db_connect.php');
 
             <!-- --------------------------------------------- Banner ---------------------------------------------------------------------------------- -->
 
-            <div class="single-slide bg-image" data-bg="image/bg-images/banner3.png">
-                <div class="container">
-                    <div class="home-content text-center">
-                        <div class="row justify-content-end">
-                            <div class="col-lg-6">
-                                <h1>Beautifully Designed</h1>
-                                <h2>Cover up front of book and
-                                    <br>leave summary
-                                </h2>
-                                <a href="shop-grid.php" class="btn btn--yellow">
-                                    Shop Now
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php $sql = "SELECT * FROM banners";
+            $res = mysqli_query($conn, $sql);
+            $banners = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
-            <div class="single-slide bg-image" data-bg="image/bg-images/banner2.png">
-                <div class="container">
-                    <div class="home-content pl--30">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <h1>I Love This Idea!</h1>
-                                <h2>Cover up front of book and
-                                    <br>leave summary
-                                </h2>
-                                <a href="shop-grid.php" class="btn btn--yellow">
-                                    Shop Now
-                                </a>
+            ?>
+            <?php
+            foreach ($banners as $banner) :
+            ?>
+
+                <div class="single-slide bg-image" data-bg="admin/<?php echo $banner['ba_image'] ?>">
+                    <div class="container">
+                        <div class="home-content text-center">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6">
+                                    <!-- <h1 class="text-primary"><?php echo $banner['ba_title'] ?></h1> -->
+
+                                    <a href="<?php echo $banner['ba_link'] ?>" class="btn btn--yellow">
+                                        Shop Now
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            <?php endforeach; ?>
+
+
 
         </div>
     </section>

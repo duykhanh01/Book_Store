@@ -3,7 +3,7 @@ $(document).ready(function () {
   $(".add_cart").click(function (event) {
     event.preventDefault();
   });
-
+  // $(".toast").hide();
   // ajax thêm vào giỏ hàng
   $(".add_cart").click(function () {
     var values = $(this).attr("value");
@@ -17,14 +17,11 @@ $(document).ready(function () {
         // $("#body-table").html(data);
         if (data == "done") {
           //alert("Đã thêm vào giỏ hàng");
-          // $(".toast").removeClass("d-none");
-          // $(".toast").addClass("d-block");
-          // $(".toast").removeClass("d-none");
-
+          $(".toast").removeClass("d-none");
           $(".toast-body").html("Bạn đã thêm thành công sản phẩm vào giỏ hàng");
-          $(".toast").toast({ delay: 3000 });
+          $(".toast").toast({ delay: 1000 });
           $(".toast").toast("show");
-        } else alert("Đăng nhập để thêm");
+        }  else alert("Đăng nhập để thêm");
       },
     });
   });

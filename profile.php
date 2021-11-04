@@ -39,8 +39,8 @@ $row = mysqli_fetch_assoc($res);
         <div class="row ">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
 
-                <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
-                    <div class="d-flex align-items-center mb-3 mb-md-0 m-auto link-dark text-decoration-none">
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+                    <div class="d-flex align-items-center  mb-md-0 m-auto link-dark text-decoration-none">
                         <span class="fs-4 font-weight-bold"> <?php echo  $_SESSION['name'] ?> </span>
                     </div>
                     <hr>
@@ -63,6 +63,12 @@ $row = mysqli_fetch_assoc($res);
                             </a>
                         </li>
                         <li>
+                            <a href="book-request.php" class="nav-link  link-dark">
+
+                                Yêu cầu sách
+                            </a>
+                        </li>
+                        <li>
                             <a href="logout.php" class="nav-link link-dark">
 
                                 Đăng xuất
@@ -75,13 +81,13 @@ $row = mysqli_fetch_assoc($res);
                 </div>
             </div>
             <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
-                <H4 class="mb-4 ml-4">THÔNG TIN TÀI KHOẢN</H4>
+                <H4 class="mb-4 font-weight-bold">THÔNG TIN TÀI KHOẢN</H4>
                 <?php if (isset($_GET['errors'])) : ?>
                     <div class="alert alert-danger text-center" role="alert">
                         <div> <?php echo "Vui lòng điền đầy đủ thông tin" ?> </div>
                     </div>
                 <?php endif; ?>
-                <form class="ml-4" action="core/update-profile.php?id=<?php echo $id ?>" method="post">
+                <form class="" action="core/update-profile.php?id=<?php echo $id ?>" method="post">
                     <div class="mb-3 row">
                         <label for="inputname" class="col-sm-2 col-form-label">Họ và tên</label>
                         <div class="col-sm-10">
