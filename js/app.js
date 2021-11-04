@@ -29,8 +29,8 @@ $(document).ready(function() {
         });
     });
     $("#orders").click(function() {
-        var sum_money = $("#sum_money").html();
-        var money_ship = $("#money_ship").html();
+        var sum_money = ($("#sum_money").html().split(" "))[0].replace('.', '');
+        var money_ship = ($("#money_ship").html().split(" "))[0].replace('.', '');
         $.ajax({
             url: "core/process_orders.php",
             type: "POST",

@@ -51,12 +51,12 @@
 
             $update_quatity = "UPDATE products SET pr_number = (pr_number - $od_quatity) where pr_id = '$pr_id'";
             mysqli_query($conn, $update_quatity);
-            if(mysqli_query($conn,$insert_orderDetail))
-            {
-                $del_cart = "DELETE from carts";
-                mysqli_query($conn, $del_cart);
-            }
+            mysqli_query($conn,$insert_orderDetail);
+            
         }
+            $del_cart = "DELETE from carts where carts.cus_id = '$cus_id'"; 
+            //thêm hết sản phẩm từ cart vào order xong xoá các sản phẩm trong cart của cus hiện tại
+            mysqli_query($conn, $del_cart);
         echo "Đã đặt hàng thành công";
     }
     else

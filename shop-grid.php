@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
-<?php include("templates/header.php");
+<?php 
+session_start();
+include("templates/header.php");
 include('admin/config/db_connect.php');
 if(!isset($_GET['cid']))
 {

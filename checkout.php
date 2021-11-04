@@ -108,9 +108,9 @@ include("templates/header.php") ?>
                                             <?php
 
                                             ?>
-                                            <p>Tổng tiền hàng <span><?php echo number_format($sum, 0, ',', '.') . " VNĐ"; ?></span></p>
-                                            <p>Phí vận chuyển <span id="money_ship"><?php echo number_format($money_ship, 0, ',', '.') . " VNĐ"; ?> </span></p>
-                                            <h4>Tổng thanh toán <span class = "text-danger" id="sum_money"><?php echo number_format($sum + $money_ship, 0, ',', '.') . " VNĐ"; ?> </span></h4>
+                                            <p>Tổng tiền hàng <span><?php echo number_format($sum, 0, ',', '.');?> VNĐ</span</p>
+                                            <p>Phí vận chuyển <span id="money_ship"><?php echo number_format($money_ship, 0, ',', '.'); ?> VNĐ</span></p>
+                                            <h4>Tổng thanh toán <span class = "text-danger" id="sum_money"><?php echo number_format($sum + $money_ship, 0, ',', '.'); ?> VNĐ</span></h4>
 
 
                                             <button class="place-order w-100 mt-5" id="orders">Đặt hàng</button>
