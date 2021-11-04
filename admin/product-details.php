@@ -47,17 +47,17 @@ if (isset($_GET['id'])) {
                                     </svg>
                                 </a>
                             </li>
-                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>E-commerce</span>
+                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>Quản lí</span>
                                     <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg></a>
                             </li>
-                            <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="products.html"><span>Products</span>
+                            <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="products.html"><span>Sản phẩm</span>
                                     <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg></a>
                             </li>
-                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Product Details</span>
+                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Chi tiết sản phẩm</span>
                             </li>
                         </ol>
                     </div>
@@ -190,17 +190,17 @@ if (isset($_GET['id'])) {
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6 form-group form-group--lg">
-                                        <label class="form-label">Giá</label>
+                                        <label class="form-label">Giá (VNĐ)</label>
                                         <div class="input-group input-group--prepend">
-                                            <div class="input-group__prepend"><span class="input-group__symbol">$</span>
+                                            <div class="input-group__prepend"><span class="input-group__symbol"></span>
                                             </div>
                                             <input disabled class="input" type="number" min="0" max="999999999" placeholder="" value="<?php echo $book['pr_price']; ?>" required>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6 form-group form-group--lg">
-                                        <label class="form-label">Discount</label>
+                                        <label class="form-label">Giảm giá (VNĐ)</label>
                                         <div class="input-group input-group--prepend">
-                                            <div class="input-group__prepend"><span class="input-group__symbol">%</span>
+                                            <div class="input-group__prepend"><span class="input-group__symbol"></span>
                                             </div>
                                             <input disabled class="input" type="number" min="0" max="100" placeholder="" value="<?php echo $book['pr_discount']; ?>" required>
                                         </div>
@@ -393,7 +393,7 @@ if (isset($_GET['id'])) {
                                             <div class="image-upload__drop-text">
                                                 <svg class="icon-icon-upload">
                                                     <use xlink:href="#icon-upload"></use>
-                                                </svg> <span>Drag and Drop or </span> <span class="image-upload__drop-action text-blue">Browse</span> <span>to upload</span>
+                                                </svg> <span>Kéo và thả hoặc </span> <span class="image-upload__drop-action text-blue">duyệt</span> <span>để tải ảnh lên</span>
                                             </div>
                                         </div>
                                         <ul class="image-upload__list">

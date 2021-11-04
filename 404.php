@@ -1,3 +1,3 @@
 <?php
-    echo "đưa về trang chủ";
+    echo "đưa về trang chủ";    
 ?>

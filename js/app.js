@@ -16,18 +16,25 @@ $(document).ready(function() {
             success: function(data) {
                 // $("#body-table").html(data);
                 if (data == "done") {
-                    //alert("Đã thêm vào giỏ hàng");
-                    // $(".toast-body").html("Bạn đã thêm thành công sản phẩm vào giỏ hàng");
-                    // $(".toast").toast({ delay: 1000 });
-                    // $(".toast").toast("show");
-                    alert("Đã đặt hàng thành công")
-                } else if (data == "erro1") {
-                    alert("Hết hàng");
 
-                } else alert("Đăng nhập để thêm");
+                    $("#toast-success").removeClass("d-none");
+                    $("#success-body").html("Bạn đã thêm thành công sản phẩm vào giỏ hàng!");
+                    $("#toast-success").toast({ delay: 1500 });
+                    $("#toast-success").toast("show");
+
+                } else if (data == "erro1") {
+                    $("#toast-danger").removeClass("d-none");
+                    $("#danger-body").html("Sản phẩm này tạm thời đã hết hàng!");
+                    $("#toast-danger").toast({ delay: 1500 });
+                    $("#toast-danger").toast("show");
+
+                } else {
+                    window.location.assign("login.php");
+                }
             },
         });
     });
+    var timeout;
     $("#orders").click(function() {
         var sum_money = ($("#sum_money").html().split(" "))[0].replace('.', '');
         var money_ship = ($("#money_ship").html().split(" "))[0].replace('.', '');
@@ -39,12 +46,22 @@ $(document).ready(function() {
                 money_ship: money_ship,
             },
             success: function(data) {
-                // $("#body-table").html(data);
+
+                //$("#body-table").html(data);
+
+                // $("#toast-success").removeClass("d-none");
+                // $("#success-body").html(data);
+                // $("#toast-success").toast({ delay: 5000 });
+                // $("#toast-success").toast("show");
+                // timeout = setInterval(window.location.assign("login.php"), 10000);
+
+                //setTimeout(location.reload(), 5000);
                 alert(data);
                 location.reload();
             },
         });
     });
+    clearInterval(timeout);
     $("#add_to_cart").click(function() {
         var values = $(this).attr("value");
         var number = $("#get_number").val();
@@ -59,10 +76,18 @@ $(document).ready(function() {
                 // $("#body-table").html(data);
                 if (data == "done") {
                     // $(".toast").toast(option);
-                    alert("Đặt hàng thành công");
+                    $("#toast-success").removeClass("d-none");
+                    $("#success-body").html("Bạn đã thêm thành công sản phẩm vào giỏ hàng!");
+                    $("#toast-success").toast({ delay: 1500 });
+                    $("#toast-success").toast("show");
                 }
                 // alert("Đăng nhập để thêm");
-                else alert(data);
+                else {
+                    $("#toast-danger").removeClass("d-none");
+                    $("#danger-body").html(data);
+                    $("#toast-danger").toast({ delay: 1500 });
+                    $("#toast-danger").toast("show");
+                };
             },
         });
     });
@@ -80,10 +105,23 @@ $(document).ready(function() {
             success: function(data) {
                 if (data == "erro1") {
                     alert("số lượng chọn phải lớn hơn 0");
+                    // $("#toast-danger").removeClass("d-none");
+                    // $("#danger-body").html("Số lượng chọn phải lớn hơn 0!");
+                    // $("#toast-danger").toast({ delay: 1500 });
+                    // $("#toast-danger").toast("show");
                 } else if (data == "erro2") {
                     alert("số lượng trong kho không đủ");
+                    // $("#toast-danger").removeClass("d-none");
+                    // $("#danger-body").html("Số lượng trong kho không đủ!");
+                    // $("#toast-danger").toast({ delay: 1500 });
+                    // $("#toast-danger").toast("show");
                 } else {
+
                     alert("Cập nhật thành công");
+                    // $("#toast-success").removeClass("d-none");
+                    // $("#success-body").html("Cập nhật thành công!");
+                    // $("#toast-success").toast({ delay: 1500 });
+                    // $("#toast-success").toast("show");
                 }
                 location.reload();
             },

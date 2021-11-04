@@ -17,7 +17,7 @@ $banners = mysqli_fetch_all($res, MYSQLI_ASSOC);
     <div class="container">
         <div class="page-header">
 
-            <h1 class="page-header__title"> Yêu cầu sách </h1>
+            <h1 class="page-header__title"> Banner </h1>
         </div>
         <div class="page-tools">
             <div class="page-tools__breadcrumbs">
@@ -39,7 +39,7 @@ $banners = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg></a>
                             </li>
-                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Yêu cầu sách</span>
+                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Banner</span>
                             </li>
                         </ol>
                     </div>
@@ -191,7 +191,7 @@ $banners = mysqli_fetch_all($res, MYSQLI_ASSOC);
                 </button>
                 <div class="modal__header">
                     <div class="modal__container">
-                        <h2 class="modal__title">Thêm thể loại</h2>
+                        <h2 class="modal__title">Thêm banner</h2>
                     </div>
                 </div>
                 <div class="modal__body">
