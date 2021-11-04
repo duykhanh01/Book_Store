@@ -1829,19 +1829,6 @@ function Pagination() {
     });
 }
 
-Pagination.prototype.toggleItem = function(event) {
-    const link = event.currentTarget;
-    const linkActive = link.closest('.pagination').querySelector('.active');
-
-    event.preventDefault();
-
-    if (link.parentNode.classList.contains('active')) {
-        return;
-    }
-
-    linkActive.classList.remove('active');
-    link.parentNode.classList.add('active');
-};
 
 function ScrollTo() {
     this.button = document.querySelector('.btn-scroll-page');

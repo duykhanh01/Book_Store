@@ -12,13 +12,13 @@ include("templates/header.php");
 <div class="site-wrapper" id="top">
 
 	<section class="breadcrumb-section">
-		<h2 class="sr-only">Site Breadcrumb</h2>
+		<h2 class="sr-only"></h2>
 		<div class="container">
 			<div class="breadcrumb-contents">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="index.php">Home</a></li>
-						<li class="breadcrumb-item active">Cart</li>
+						<li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+						<li class="breadcrumb-item active">Giỏ hàng</li>
 					</ol>
 				</nav>
 			</div>
@@ -29,7 +29,7 @@ include("templates/header.php");
 		<div class="cart_area cart-area-padding  ">
 			<div class="container">
 				<div class="page-section-title">
-					<h1>Shopping Cart</h1>
+					<h1>Giỏ hàng</h1>
 				</div>
 				<div class="row">
 					<div class="col-12">
@@ -41,7 +41,7 @@ include("templates/header.php");
 									<thead>
 										<tr>
 											<th class="pro-remove"></th>
-											<th class="pro-thumbnail">Image</th>
+											<th class="pro-thumbnail">Ảnh</th>
 											<th class="pro-title">Tên</th>
 											<th class="pro-price">Giá</th>
 											<th class="pro-quantity">Số lượng</th>

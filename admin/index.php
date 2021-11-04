@@ -53,21 +53,20 @@ else
                         <div class="widget__wrapper">
                             <div class="widget__row">
                                 <div class="widget__left">
-                                    <h3 class="widget__title">New customers</h3>
-                                    <div class="widget__status-title text-grey">Total visits today</div>
+                                    <h3 class="widget__title">Khách hàng mới</h3>
+                                    <div class="widget__status-title text-grey">Số lượng đăng ký hôm nay</div>
                                     <div class="widget__trade"><span class="widget__trade-count"><?php echo $number_cus_new; ?></span><span class="trade-icon trade-icon--up">
                                             <svg class="icon-icon-trade-up">
                                                 <use xlink:href="#icon-trade-up"></use>
                                             </svg></span><span class="badge badge--sm badge--green"><?php echo $percent_customer; ?>%</span>
                                     </div>
-                                    <div class="widget__details"><a class="link-under text-grey" href="#">Detail</a>
-                                    </div>
+                                    
                                 </div>
                                 <div class="widget__chart">
                                     <div class="widget__chart-inner">
                                         <div class="widget__chart-percentage"><?php echo $percent_customer; ?><small>%</small>
                                         </div>
-                                        <div class="widget__chart-caption">New Visits</div>
+                                        <div class="widget__chart-caption">Chỉ tiêu</div>
                                     </div>
                                     <div class="widget__chart-canvas js-progress-circle" data-value="<?php echo $percent_customer/100; ?>" data-color="#22CCE2"></div>
                                 </div>
@@ -80,21 +79,20 @@ else
                         <div class="widget__wrapper">
                             <div class="widget__row">
                                 <div class="widget__left">
-                                    <h3 class="widget__title">Orders</h3>
-                                    <div class="widget__status-title text-grey">Total visits today</div>
+                                    <h3 class="widget__title">Đơn hàng</h3>
+                                    <div class="widget__status-title text-grey">Số lượng đơn hàng hôm nay</div>
                                     <div class="widget__trade"><span class="widget__trade-count"><?php echo $number_order_new; ?></span><span class="trade-icon trade-icon--down">
                                             <svg class="icon-icon-trade-down">
                                                 <use xlink:href="#icon-trade-down"></use>
                                             </svg></span><span class="badge badge--sm badge--red"><?php echo $percent_order; ?>%</span>
                                     </div>
-                                    <div class="widget__details"><a class="link-under text-grey" href="#">Detail</a>
-                                    </div>
+                                    
                                 </div>
                                 <div class="widget__chart">
                                     <div class="widget__chart-inner">
                                         <div class="widget__chart-percentage"><?php  echo $percent_order;?><small>%</small>
                                         </div>
-                                        <div class="widget__chart-caption">New Orders</div>
+                                        <div class="widget__chart-caption">Chỉ tiêu</div>
                                     </div>
                                     <div class="widget__chart-canvas js-progress-circle" data-value="<?php echo $percent_order/100;?>" data-color="#FDBF5E"></div>
                                 </div>
@@ -107,21 +105,20 @@ else
                         <div class="widget__wrapper">
                             <div class="widget__row">
                                 <div class="widget__left">
-                                    <h3 class="widget__title">Sales</h3>
-                                    <div class="widget__status-title text-grey">Total visits today</div>
-                                    <div class="widget__trade"><span class="widget__trade-count">$500</span><span class="trade-icon trade-icon--up">
+                                    <h3 class="widget__title">Doanh thu</h3>
+                                    <div class="widget__status-title text-grey">Tổng doanh thu hôm nay</div>
+                                    <div class="widget__trade"><span class="widget__trade-count">500,000 VNĐ</span><span class="trade-icon trade-icon--up">
                                             <svg class="icon-icon-trade-up">
                                                 <use xlink:href="#icon-trade-up"></use>
                                             </svg></span><span class="badge badge--sm badge--green">9%</span>
                                     </div>
-                                    <div class="widget__details"><a class="link-under text-grey" href="#">Detail</a>
-                                    </div>
+                                    
                                 </div>
                                 <div class="widget__chart">
                                     <div class="widget__chart-inner">
                                         <div class="widget__chart-percentage">80<small>%</small>
                                         </div>
-                                        <div class="widget__chart-caption">New Sales</div>
+                                        <div class="widget__chart-caption">Chỉ tiêu</div>
                                     </div>
                                     <div class="widget__chart-canvas js-progress-circle" data-value="0.8" data-color="#FF3D57"></div>
                                 </div>
@@ -152,7 +149,7 @@ else
                                         <div class="card__widgets-row gutter-bottom-sm">
                                             <div class="card-widget">
                                                 <h4 class="card-widget__title">Tuần này</h4>
-                                                <div class="card-widget__trade"><span class="card-widget__count text-red">$180</span><span class="trade-icon trade-icon--up">
+                                                <div class="card-widget__trade"><span class="card-widget__count text-red">1,200,000 VNĐ</span><span class="trade-icon trade-icon--up">
                                                         <svg class="icon-icon-trade-up">
                                                             <use xlink:href="#icon-trade-up"></use>
                                                         </svg></span><span class="badge badge--green badge--sm">5%</span>
@@ -160,7 +157,7 @@ else
                                             </div>
                                             <div class="card-widget">
                                                 <h4 class="card-widget__title">Tuần trước</h4>
-                                                <div class="card-widget__trade"><span class="card-widget__count text-grey">$52.30</span><span class="trade-icon trade-icon--down">
+                                                <div class="card-widget__trade"><span class="card-widget__count text-grey">500,000 VNĐ</span><span class="trade-icon trade-icon--down">
                                                         <svg class="icon-icon-trade-down">
                                                             <use xlink:href="#icon-trade-down"></use>
                                                         </svg></span><span class="badge badge--red badge--sm">2%</span>

@@ -377,7 +377,7 @@ if (isset($_POST['submit-login'])) {
                         </div>
                         <form class="auth-card__right" action="login.php" method="POST">
                             <div class="auth-card__top">
-                                <h1 class="auth-card__title">Welcome</h1>
+                                <h1 class="auth-card__title">Chào mừng</h1>
                                 <p class="auth-card__text">Xin chào, vui lòng đăng nhập
                                     <br>vào tài khoản nếu bạn là admin.
                                 </p>

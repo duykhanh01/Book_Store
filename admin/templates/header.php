@@ -378,7 +378,7 @@ if (!isset($_SESSION['u_id'])) {
                             <div class="profile-dropdown dropdown-menu dropdown-menu--right"><a href="logout.php" class="profile-dropdown__item dropdown-menu__item" tabindex="0"><span class="profile-dropdown__icon">
                                         <svg class="icon-icon-logout">
                                             <use xlink:href="#icon-logout"></use>
-                                        </svg></span><span>Logout</span></a>
+                                        </svg></span><span>Đăng xuất</span></a>
                             </div>
                         </div>
                     </div>
@@ -407,29 +407,31 @@ if (!isset($_SESSION['u_id'])) {
                         <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "products.php") echo "active" ?>"" href=" products.php" data-toggle="collapse" data-target="#E-Commerce" aria-expanded="true"><span class="sidebar__link-icon">
                                     <svg class="icon-icon-cart">
                                         <use xlink:href="#icon-cart"></use>
-                                    </svg></span><span class="sidebar__link-text">E-Commerce</span><span class="sidebar__link-arrow">
+                                    </svg></span><span class="sidebar__link-text">Quản lý</span><span class="sidebar__link-arrow">
                                     <svg class="icon-icon-keyboard-down">
                                         <use xlink:href="#icon-keyboard-down"></use>
                                     </svg></span></a>
                             <div class="collapse show" id="E-Commerce">
                                 <ul class="sidebar__collapse-menu">
-                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "products.php") echo "active" ?>" href="products.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Products</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "products.php") echo "active" ?>" href="products.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Sản phẩm</span></a>
                                     </li>
+
                                     <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "categories.php") echo "active" ?>" href="categories.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Thể loại</span></a>
-
-                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "orders.php") echo "active" ?>" href="orders.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Orders</span></a>
+                                    </li>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "add-banners.php") echo "active" ?>" href="add-banners.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Banner</span></a>
+                                    </li>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "orders.php") echo "active" ?>" href="orders.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Đơn hàng</span></a>
                                     </li>
 
 
-                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "customers.php") echo "active" ?>" href="customers.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "customers.php") echo "active" ?>" href="customers.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Khách hàng</span></a>
+                                    </li>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "book-request.php") echo "active" ?>" href="book-request.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Yêu cầu sách</span></a>
                                     </li>
 
                                 </ul>
                             </div>
                         </li>
-
-
-
 
 
                         <li class="sidebar__menu-item"><a class="sidebar__link" href="#" data-toggle="collapse" data-target="#Auth" aria-expanded="false"><span class="sidebar__link-icon">
@@ -444,7 +446,7 @@ if (!isset($_SESSION['u_id'])) {
                                     <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "change-pass.php") echo "active" ?>" href="change-pass.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Đổi mật khẩu</span></a>
                                     </li>
                                     <?php if ($_SESSION['level'] == 2) : ?>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "manage-users.php") echo "active" ?>" href="manage-users.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Tài khoản admin</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link <?php if (basename($_SERVER['PHP_SELF']) == "manage-users.php") echo "active" ?>" href="manage-users.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Quản trị viên</span></a>
                                         </li>
                                     <?php endif; ?>
                                     <li class="sidebar__menu-item"><a class="sidebar__link" href="logout.php"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Đăng xuất</span></a>

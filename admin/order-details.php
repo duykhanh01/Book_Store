@@ -21,7 +21,7 @@ if (isset($_GET['or_id'])) {
 
 <div class="order-tabs">
     <div class="order-tabs__container">
-        <h3 class="order-tabs__title">Order Details</h3>
+        <h3 class="order-tabs__title"></h3>
         <nav class="order-tabs__nav">
             <div class="order-tabs__nav-prev">
                 <a class="order-tabs__arrow order-tabs__arrow--prev" href="#">
@@ -43,14 +43,14 @@ if (isset($_GET['or_id'])) {
                         <a class="order-tabs__link order-tabs__link--active" href="order-details.php">
                             <svg class="icon-icon-details">
                                 <use xlink:href="#icon-details"></use>
-                            </svg>Details</a>
+                            </svg>Chi tiết đơn hàng</a>
                     </div>
 
                     <div class="order-tabs__item swiper-slide">
                         <a class="order-tabs__link" href="order-status.php?or_id=<?php echo $or_id ?>">
                             <svg class="icon-icon-status">
                                 <use xlink:href="#icon-status"></use>
-                            </svg>Status</a>
+                            </svg>Trạng thái</a>
                     </div>
 
                 </div>
@@ -62,8 +62,8 @@ if (isset($_GET['or_id'])) {
 <main class="page-content page-content--order-header">
     <div class="container">
         <div class="page-header">
-            <h3 class="page-header__subtitle d-lg-none">Order Details</h3>
-            <h1 class="page-header__title">Orders <span class="text-grey">#<?php echo $or_id; ?></span></h1>
+            <h3 class="page-header__subtitle d-lg-none">Chi tiết đơn hàng</h3>
+            <h1 class="page-header__title">Đơn hàng <span class="text-grey">#<?php echo $or_id; ?></span></h1>
         </div>
         <div class="page-tools">
             <div class="page-tools__breadcrumbs">
@@ -80,17 +80,17 @@ if (isset($_GET['or_id'])) {
                                     </svg>
                                 </a>
                             </li>
-                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>E-commerce</span>
+                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>Quản lí</span>
                                     <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg></a>
                             </li>
-                            <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="orders.php"><span>Orders</span>
+                            <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="orders.php"><span>Đơn hàng</span>
                                     <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg></a>
                             </li>
-                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Details</span>
+                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Chi tiết</span>
                             </li>
                         </ol>
                     </div>
@@ -113,7 +113,7 @@ if (isset($_GET['or_id'])) {
                         <div class="card__header">
                             <div class="row gutter-bottom-xs justify-content-between flex-grow-1">
                                 <div class="col">
-                                    <h3 class="card__title">Customer</h3>
+                                    <h3 class="card__title">Khách hàng</h3>
                                 </div>
                                 <?php
                                 //lấy thông tin của customer
@@ -135,12 +135,12 @@ if (isset($_GET['or_id'])) {
                             <li class="card-order__customer-item">
                                 <svg class="icon-icon-user">
                                     <use xlink:href="#icon-user"></use>
-                                </svg> <b>Name:</b> <span><?php echo $res_customer['cus_name']; ?></span>
+                                </svg> <b>Họ và Tên:</b> <span><?php echo $res_customer['cus_name']; ?></span>
                             </li>
                             <li class="card-order__customer-item">
                                 <svg class="icon-icon-phone">
                                     <use xlink:href="#icon-phone"></use>
-                                </svg> <b>Phone:</b> <a href="tel:0701234567"><?php echo $res_customer['cus_tel']; ?></a>
+                                </svg> <b>Số điện thoại:</b> <a href="tel:0701234567"><?php echo $res_customer['cus_tel']; ?></a>
                             </li>
                             <li class="card-order__customer-item">
                                 <svg class="icon-icon-email">
@@ -155,12 +155,12 @@ if (isset($_GET['or_id'])) {
                     <div class="card__container">
                         <div class="row gutter-bottom-sm">
                             <div class="col">
-                                <h3>Shipping address</h3>
+                                <h3>Địa chỉ giao hàng</h3>
                                 <address class="card-order__address">
                                     <ul class="card-order__list">
                                         <li><b>Họ và tên:</b> <?php echo $res_customer['cus_name']; ?></li>
-                                        <li><b>Address:</b> <?php echo $res_customer['cus_add']; ?></li>
-                                        <li><b>Phone: </b><?php echo $res_customer['cus_tel']; ?></li>
+                                        <li><b>Địa chỉ:</b> <?php echo $res_customer['cus_add']; ?></li>
+                                        <li><b>Số điện thoại: </b><?php echo $res_customer['cus_tel']; ?></li>
                                     </ul>
                                 </address>
                             </div>
@@ -185,7 +185,7 @@ if (isset($_GET['or_id'])) {
                                 </th>
                                 <th class="text-center"><span>Số lượng</span>
                                 </th>
-                                <th><span>TOTAL</span>
+                                <th><span>Tổng tiền</span>
                             </tr>
                         </thead>
                         <tbody>
