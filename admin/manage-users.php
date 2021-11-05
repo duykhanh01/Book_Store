@@ -42,12 +42,12 @@ if ($_SESSION['level'] == 2) {
                                     </svg>
                                 </a>
                             </li>
-                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>E-commerce</span>
+                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>Quản lý</span>
                                     <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg></a>
                             </li>
-                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Customers</span>
+                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Nhân viên</span>
                             </li>
                         </ol>
                     </div>
@@ -156,7 +156,7 @@ if ($_SESSION['level'] == 2) {
                                                     <li class="dropdown-items__item"><a data-user="<?php echo $user['u_id'] ?>" user-name="<?php echo $user['u_name'] ?>" data-modal="#changePass" class="dropdown-items__link change-pass"><span class="dropdown-items__link-icon">
                                                                 <svg class="icon-icon-task">
                                                                     <use xlink:href="#icon-task"></use>
-                                                                </svg></span><span class="button__text">Đổi mật khẩu</span></a>
+                                                                </svg></span><span class="button__text">Đặt lại mật khẩu</span></a>
                                                     </li>
                                                     <li class="dropdown-items__item"><a href="core/delete-user.php?id=<?php echo $user['u_id'] ?>" class="dropdown-items__link"><span class="dropdown-items__link-icon">
                                                                 <svg class="icon-icon-trash">
@@ -285,7 +285,7 @@ if ($_SESSION['level'] == 2) {
                 </button>
                 <div class="modal__header">
                     <div class="modal__container">
-                        <h2 class="modal__title">Đổi mật khẩu</h2>
+                        <h2 class="modal__title">Đặt lại mật khẩu</h2>
                     </div>
                 </div>
                 <div class="modal__body">

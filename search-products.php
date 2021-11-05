@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('admin/config/db_connect.php');
 if (!isset($_GET['search'])) {
     header('location: index.php');
