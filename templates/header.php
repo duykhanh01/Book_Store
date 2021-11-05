@@ -354,6 +354,11 @@ ob_start();
     <div class="toast d-none" role="alert" aria-live="assertive" aria-atomic="true">
 
         <div class="toast-body">
-            Bạn đã thêm thành công sản phẩm vào giỏ hàng
+
+        </div>
+    </div>
+    <div class="toast  d-none" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+
         </div>
     </div>
