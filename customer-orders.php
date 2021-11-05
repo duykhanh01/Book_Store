@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION['id'])) header('Location: login.php');
 include("config/db_connect.php");
 $id = $_SESSION['id'];
-$sql = "SELECT * from orders, orderdetail where  orders.or_id  = orderdetail.or_id and orders.cus_id = '$id' group by orders.or_id";
+$sql = "SELECT * from orders, orderdetail where  orders.or_id  = orderdetail.or_id and orders.cus_id = '$id' group by orders.or_id order by or_date DESC";
 $res = mysqli_query($conn, $sql);
 $rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
 if (!$res) header("location: 404.php");
@@ -115,7 +115,7 @@ if (!$res) header("location: 404.php");
                                 <th scope="row"><?php echo $i + 1 ?></th>
                                 <td> <?php echo $row['or_id'] ?> </td>
                                 <td><?php echo $stt; ?> </td>
-                                <th class="text-danger"><?php echo number_format($row['or_total'], 0, ',', '.'); ?>đ</th>
+                                <th class="text-danger"><?php echo number_format($row['or_total'], 0, ',', '.'); ?> VNĐ</th>
                                 <td><?php echo $row['or_date']; ?> </td>
 
                                 <td><button class="text-primary" data-toggle="collapse" data-target="#demo<?php echo $i + 1 ?>">Xem chi tiết</button>
@@ -149,7 +149,7 @@ if (!$res) header("location: 404.php");
                                                     <span class="quantity">x<?php echo $product[16] ?></span>
                                                 </div>
                                                 <div class="price text-danger">
-                                                    <?php echo number_format($product[17], 0, ',', '.'); ?>đ
+                                                    <?php echo number_format($product[17], 0, ',', '.'); ?> VNĐ
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>

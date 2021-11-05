@@ -75,28 +75,28 @@ if (isset($_POST['submit-login'])) {
 												<div class="row">
 													<div class="col-md-12 col-12 mb--15">
 														<label for="email">Email</label>
-														<input class="mb-0 form-control" name="email" type="email" id="email1" placeholder="Enter you email address here...">
+														<input class="mb-0 form-control" name="email" type="email" id="email1" placeholder="Nhập email tại đây...">
 													</div>
 													<div class="col-12 mb--20">
 														<label for="password">Password</label>
-														<input class="mb-0 form-control" name="password" type="password" id="login-password" placeholder="Enter your password">
+														<input class="mb-0 form-control" name="password" type="password" id="login-password" placeholder="Nhập mật khẩu">
 													</div>
 
 												</div>
 
-												<a class="text-muted" href="#!">Forgot password?</a>
-												<p class="font-weight-bold">Don't have an account? <a href="register.php" class="link-info text-primary">Register here</a></p>
+												
+												<p class="font-weight-bold">Bạn chưa có tài khoản? <a href="register.php" class="link-info text-primary">Đăng ký tại đây</a></p>
 
 												<div class="pt-1 mb-4 ">
-													<button class="btn btn-dark btn-lg w-100" name="submit-login" type="submit">Log in</button>
+													<button class="btn btn-dark btn-lg w-100" name="submit-login" type="submit">Đăng nhập</button>
 												</div>
 
 												<div class="divider d-flex text-center align-items-center my-4">
-													<p class="text-center fw-bold mx-3 mb-0 text-muted m-auto">OR</p>
+													<p class="text-center fw-bold mx-3 mb-0 text-muted m-auto">Hoặc</p>
 												</div>
 
-												<button class="btn btn-outline-danger w-100 mb-3" type="button"><i class="fab fa-google mx-2 me-2"></i> Sign in with google</button>
-												<button class="btn btn-outline-primary w-100" type="button"><i class="fab fa-facebook-f mx-2 me-2"></i>Sign in with facebook</button>
+												<button class="btn btn-outline-danger w-100 mb-3" type="button"><i class="fab fa-google mx-2 me-2"></i>Đăng nhập với google</button>
+												<button class="btn btn-outline-primary w-100" type="button"><i class="fab fa-facebook-f mx-2 me-2"></i>Đăng nhập với facebook</button>
 
 											</form>
 

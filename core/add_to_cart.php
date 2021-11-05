@@ -12,6 +12,11 @@ session_start();
             $res_pr = mysqli_fetch_assoc(mysqli_query($conn, $sl_pr));
             $pr_id = $res_pr['pr_id'];
             $pr_quantity = $res_pr['pr_number'];
+            if($cart_quatity==0)
+            {
+                echo "Số lượng đặt phải lớn hơn 0";
+                exit;
+            }
             if($pr_quantity==0)
             {
                 echo "Sản phẩm đã hết hàng";
@@ -29,9 +34,18 @@ session_start();
             }
             $cart_price = $res_pr['pr_price'] - $res_pr['pr_discount'];
             $insert_cart = "INSERT INTO `carts`(`pr_id`, `cus_id`, `cart_price` , `cart_quatity`) VALUES ('$pr_id','$cus_id','$cart_price', '$cart_quatity')";
-            mysqli_query($conn, $insert_cart);
+            if(mysqli_query($conn, $insert_cart))
+            {
+                echo "done";
+                exit;
+            }
+            else
+            {
+                echo "sản phẩm đã có trong giỏ hàng";
+                exit;
+            }
         }
-        echo "done";
+       
     }
     else
     {

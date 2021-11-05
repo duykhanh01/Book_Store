@@ -56,7 +56,6 @@ if (isset($_POST['register'])) {
             $activationCode = md5($strRandom);
             $sql = "INSERT INTO `customers`(`cus_name`, `cus_password`, `cus_mail`, `cus_tel`,  `cus_add`, `activation_code`) VALUES ('$name','$pass_hash','$email','$phone','$location','$activationCode')";
             $result = mysqli_query($conn, $sql);
-
             if ($result) {
                 // echo "<script> alert('Đăng ký thành công'); </script>";
                 include 'core/sendmail.php';
@@ -102,7 +101,7 @@ if (isset($_POST['register'])) {
 
                                         <div class="row">
                                             <div class="col-md-12 col-12 mb--15">
-                                                <label for="email">Full Name</label>
+                                                <label for="email">Họ và tên</label>
                                                 <input Required class="mb-0 form-control" value="<?php echo htmlspecialchars($name) ?>" name="name" type="text" id="name" placeholder="Họ và tên">
 
                                             </div>
@@ -119,15 +118,15 @@ if (isset($_POST['register'])) {
                                                 <input Required class="mb-0 form-control" value="<?php echo htmlspecialchars($location) ?>" name="location" type="text" id="name" placeholder="Địa chỉ">
                                             </div>
                                             <div class="col-lg-6 mb--20">
-                                                <label for="password">Password</label>
+                                                <label for="password">Mật khẩu</label>
                                                 <input Required class="mb-0 form-control" value="<?php echo htmlspecialchars($pass) ?>" name="password" type="password" id="password" placeholder="Mật khẩu">
                                             </div>
                                             <div class="col-lg-6 mb--20">
-                                                <label for="password">Repeat Password</label>
+                                                <label for="password">Nhập lại mật khẩu</label>
                                                 <input Required class="mb-0 form-control" name="cpassword" type="password" value="<?php echo htmlspecialchars($cpass) ?>" id="repeat-password" placeholder="Nhập lại mật khẩu">
                                             </div>
                                             <div class="col-md-12">
-                                                <button name="register" class="btn btn-success">Register</button>
+                                                <button name="register" class="btn btn-success">Đăng ký</button>
                                             </div>
                                         </div>
                                     </form>

@@ -61,9 +61,9 @@ ob_start();
                                 </a>
                             <?php endif; ?>
                         </li>
-                        <li><a href=""><i class="icons-left fas fa-phone"></i> Contact</a>
+                        <li><a href=""><i class="icons-left fas fa-phone"></i> Liên hệ</a>
                         </li>
-                        <li><a href=""><i class="icons-left fas fa-share"></i> Checkout</a>
+                        <li><a href=""><i class="icons-left fas fa-share"></i> Đặt hàng</a>
                         </li>
                     </ul>
                 </div>
@@ -81,8 +81,8 @@ ob_start();
                         <div class="header-search-block">
                             <form action="search-products.php" id="search-form">
 
-                                <input id="search-input" name="keyword" type="text" autocomplete="off" placeholder="Search entire store here">
-                                <button type="submit" name="search">Search</button>
+                                <input id="search-input" name="keyword" type="text" autocomplete="off" placeholder="Tìm kiếm sách">
+                                <button type="submit" name="search">Tìm kiếm</button>
                             </form>
                             <div class="autocomplete-suggestions search-display d-none">
 
@@ -96,8 +96,8 @@ ob_start();
                                 <?php if (!isset($_SESSION['name'])) : ?>
 
                                     <div class="login-block">
-                                        <a href="login.php" class="font-weight-bold">Login</a> <br>
-                                        <span>or</span><a href="register.php">Register</a>
+                                        <a href="login.php" class="font-weight-bold">Đăng nhập</a> <br>
+                                        <span>or</span><a href="register.php">Đăng ký</a>
                                     </div>
                                 <?php endif; ?>
                                 <div class="cart-block">
@@ -194,8 +194,8 @@ ob_start();
                                 <i class="fas fa-headphones-alt"></i>
                             </div>
                             <div class="text">
-                                <p>Free Support 24/7</p>
-                                <p class="font-weight-bold number">+01-202-555-0181</p>
+                                <p>Hỗ trợ miễn phí 24/7</p>
+                                <p class="font-weight-bold number">0964536644</p>
                             </div>
                         </div>
                     </div>
@@ -350,15 +350,15 @@ ob_start();
             </div>
         </aside>
         <!--Off Canvas Navigation End-->
-    </div>
-    <div class="toast d-none" role="alert" aria-live="assertive" aria-atomic="true">
+    </div> 
+    <div class="toast d-none" id = "toast-success" role="alert" aria-live="assertive" aria-atomic="true">
 
-        <div class="toast-body">
-
+        <div class="toast-body" id = "success-body">
+            
         </div>
-    </div>
-    <div class="toast  d-none" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-body">
+    </div>  <div class="toast d-none" id = "toast-danger" role="alert" aria-live="assertive" aria-atomic="true">
 
+        <div class="toast-body" id = "danger-body">
+            
         </div>
     </div>

@@ -37,7 +37,7 @@ if (isset($_GET['or_id'])) {
 <?php require_once("templates/header.php") ?>
 <div class="order-tabs">
     <div class="order-tabs__container">
-        <h3 class="order-tabs__title">Order Details</h3>
+        <h3 class="order-tabs__title"></h3>
         <nav class="order-tabs__nav">
             <div class="order-tabs__nav-prev">
                 <a class="order-tabs__arrow order-tabs__arrow--prev" href="#">
@@ -59,14 +59,14 @@ if (isset($_GET['or_id'])) {
                         <a class="order-tabs__link" href="order-details.php?or_id=<?php echo $or_id ?>">
                             <svg class="icon-icon-details">
                                 <use xlink:href="#icon-details"></use>
-                            </svg>Details</a>
+                            </svg>Chi tiết</a>
                     </div>
 
                     <div class="order-tabs__item swiper-slide">
                         <a class="order-tabs__link order-tabs__link--active" href="order-status.php">
                             <svg class="icon-icon-status">
                                 <use xlink:href="#icon-status"></use>
-                            </svg>Status</a>
+                            </svg>Trạng thái</a>
                     </div>
 
                 </div>
@@ -78,8 +78,8 @@ if (isset($_GET['or_id'])) {
 <main class="page-content page-content--order-header">
     <div class="container">
         <div class="page-header">
-            <h3 class="page-header__subtitle d-lg-none">Order Details</h3>
-            <h1 class="page-header__title">Orders <span class="text-grey">#<span id="id_orders"><?php echo $or_id; ?></span></span></h1>
+            <h3 class="page-header__subtitle d-lg-none">Chi tiết đơn hàng</h3>
+            <h1 class="page-header__title">Đơn hàng <span class="text-grey">#<span id="id_orders"><?php echo $or_id; ?></span></span></h1>
         </div>
         <div class="page-tools">
             <div class="page-tools__breadcrumbs">
@@ -96,17 +96,17 @@ if (isset($_GET['or_id'])) {
                                     </svg>
                                 </a>
                             </li>
-                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>E-commerce</span>
+                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>Quản lí</span>
                                     <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg></a>
                             </li>
-                            <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="orders.php"><span>Orders</span>
+                            <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="orders.php"><span>Đơn hàng</span>
                                     <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg></a>
                             </li>
-                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Status</span>
+                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Trạng thái</span>
                             </li>
                         </ol>
                     </div>
@@ -179,7 +179,7 @@ if (isset($_GET['or_id'])) {
                         <div class="row gutter-bottom-xl">
                             <div class="col-12">
                                 <div class="order-status__form-group form-group form-group--inline">
-                                    <label class="form-label">Order Status:</label>
+                                    <label class="form-label">Trạng thái đơn hàng:</label>
                                     <div class="input-group input-group--append">
                                         <select class="input js-input-select input--fluid" id="sl_status" data-placeholder="">
                                             <option value="0" selected="selected">Đang xử lý

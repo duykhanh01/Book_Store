@@ -43,7 +43,7 @@ $count = $start + 1;
 <main class="page-content">
     <div class="container">
         <div class="page-header">
-            <h1 class="page-header__title">Products</h1>
+            <h1 class="page-header__title">Sản phẩm</h1>
         </div>
         <div class="page-tools">
             <div class="breadcrumbs">
@@ -402,7 +402,7 @@ $count = $start + 1;
                                             <div class="image-upload__drop-text">
                                                 <svg class="icon-icon-upload">
                                                     <use xlink:href="#icon-upload"></use>
-                                                </svg> <span>Drag and Drop or </span> <span class="image-upload__drop-action text-blue">Browse</span> <span>to upload</span>
+                                                </svg> <span>Kéo và thả hoặc </span> <span class="image-upload__drop-action text-blue">Duyệt</span> <span> để tải lên</span>
                                             </div>
                                         </div>
                                         <ul class="image-upload__list">

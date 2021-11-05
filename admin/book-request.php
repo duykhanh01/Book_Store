@@ -4,8 +4,6 @@ include('config/db_connect.php');
 $sql = "SELECT * FROM request,customers where request.cus_id = customers.cus_id";
 $res = mysqli_query($conn, $sql);
 $requests = mysqli_fetch_all($res, MYSQLI_ASSOC);
-
-
 ?>
 
 

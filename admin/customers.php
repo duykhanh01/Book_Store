@@ -39,12 +39,12 @@ $customers = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                     </svg>
                                 </a>
                             </li>
-                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>E-commerce</span>
+                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>Quản lý</span>
                                     <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg></a>
                             </li>
-                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Customers</span>
+                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Khách hàng</span>
                             </li>
                         </ol>
                     </div>
@@ -65,7 +65,7 @@ $customers = mysqli_fetch_all($res, MYSQLI_ASSOC);
                                             <use xlink:href="#icon-search"></use>
                                         </svg>
                                     </div>
-                                    <input id="search-customers" class="input" type="text" placeholder="Search Customer">
+                                    <input id="search-customers" class="input" type="text" placeholder="Tìm kiếm khách hàng">
                                 </div>
                             </form>
                         </div>

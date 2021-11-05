@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('admin/config/db_connect.php');
 if (!isset($_GET['search'])) {
     header('location: index.php');
@@ -30,7 +30,7 @@ if (!isset($_GET['search'])) {
         <div class="breadcrumb-contents">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
                     <li class="breadcrumb-item active">Tìm kiếm "<?php echo $key ?>"</li>
                 </ol>
             </nav>
@@ -76,7 +76,7 @@ if (!isset($_GET['search'])) {
                         </div>
                     </div>
                 </div>
-            <?php endforeach; ?> ?>
+            <?php endforeach; ?>
         </div>
         <!-- //stt -->
         <div class="row pt--30">

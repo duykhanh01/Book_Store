@@ -10,24 +10,7 @@ include('config/db_connect.php');
 <html lang="en">
 <?php require_once("templates/header.php") ?>
 <?php include('config/db_connect.php'); ?>
-<div class="toast d-none" role="alert" aria-live="assertive" aria-atomic="true">
 
-    <div class="toast-body">
-        Bạn đã thêm thành công sản phẩm vào giỏ hàng
-    </div>
-</div>
-<!-- <div class="toast1" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-        <img width="20px" src="admin/img/content/checked-success.svg" class="rounded mr-2" alt="...">
-        <strong class="mr-auto">Thông báo</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="toast-body">
-
-    </div>
-</div> -->
 <div class="site-wrapper" id="top">
 
 
@@ -62,7 +45,7 @@ include('config/db_connect.php');
                                     <!-- <h1 class="text-primary"><?php echo $banner['ba_title'] ?></h1> -->
 
                                     <a href="<?php echo $banner['ba_link'] ?>" class="btn btn--yellow">
-                                        Shop Now
+                                        Mua ngay
                                     </a>
                                 </div>
                             </div>
@@ -299,8 +282,7 @@ include('config/db_connect.php');
                             <i class="fas fa-shipping-fast"></i>
                         </div>
                         <div class="text">
-                            <h5>Free Shipping Item</h5>
-                            <p> Orders over $500</p>
+                            <h5>Free ship</h5><p>đơn hàng lớn hơn 500k</p>
                         </div>
                     </div>
                 </div>
@@ -310,8 +292,7 @@ include('config/db_connect.php');
                             <i class="fas fa-redo-alt"></i>
                         </div>
                         <div class="text">
-                            <h5>Money Back Guarantee</h5>
-                            <p>100% money back</p>
+                            <h5>Đảm bảo hoàn tiền Hoàn lại 100% tiền</p>
                         </div>
                     </div>
                 </div>
@@ -321,8 +302,8 @@ include('config/db_connect.php');
                             <i class="fas fa-piggy-bank"></i>
                         </div>
                         <div class="text">
-                            <h5>Cash On Delivery</h5>
-                            <p>Lorem ipsum dolor amet</p>
+                            <h5>Thanh toán khi nhận hàng</h5>
+                            
                         </div>
                     </div>
                 </div>
@@ -332,8 +313,8 @@ include('config/db_connect.php');
                             <i class="fas fa-life-ring"></i>
                         </div>
                         <div class="text">
-                            <h5>Help & Support</h5>
-                            <p>Call us : + 0123.4567.89</p>
+                            <h5>Hỗ trợ miễn phí</h5>
+                            <p>Gọi ngay: +8494724822</p>
                         </div>
                     </div>
                 </div>
@@ -343,130 +324,6 @@ include('config/db_connect.php');
     <!--=================================
         Promotion Section One
     ===================================== -->
-    <section class="section-margin">
-        <h1 class="sr-only">Promotion Section</h1>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <a href="" class="promo-image promo-overlay">
-                        <img src="image/bg-images/promo-banner-with-text.jpg" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <a href="" class="promo-image promo-overlay">
-                        <img src="image/bg-images/promo-banner-with-text-2.jpg" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--=================================
-        Home Two Column Section
-    ===================================== -->
-
-    <!--=================================
-        CLIENT TESTIMONIALS
-    ===================================== -->
-    <section class="section-margin">
-        <div class="container">
-            <div class="section-title section-title--bordered mb-lg--60">
-                <h2>CLIENT TESTIMONIALS</h2>
-            </div>
-            <div class="sb-slick-slider testimonial-slider" data-slick-setting='{
-                "autoplay": true,
-                "autoplaySpeed": 8000,
-                "slidesToShow":3,
-                "dots":true
-            }' data-slick-responsive='[
-                {"breakpoint":1200, "settings": {"slidesToShow": 2} },
-                {"breakpoint":992, "settings": {"slidesToShow": 1} },
-                {"breakpoint":768, "settings": {"slidesToShow": 1} },
-                {"breakpoint":490, "settings": {"slidesToShow": 1} }
-            ]'>
-                <div class="single-slide">
-                    <div class="testimonial-card">
-                        <div class="testimonial-image">
-                            <img src="image/others/client-1.png" alt="">
-                        </div>
-                        <div class="testimonial-body">
-                            <article>
-                                <h2 class="sr-only">Testimonial Article</h2>
-                                <p>version This is Photoshops of Lorem Ipsum. Proin gravida nibh vel velit.Lorem
-                                    ipsum dolor sit amet, consectetur
-                                    adipiscing elit. In molestie augue magna. Pell..</p>
-                                <span class="d-block client-name">Rebecka Filson</span>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="testimonial-card">
-                        <div class="testimonial-image">
-                            <img src="image/others/client-2.png" alt="">
-                        </div>
-                        <div class="testimonial-body">
-                            <article>
-                                <h2 class="sr-only">Testimonial Article</h2>
-                                <p>In molestie augue magna.This is Photoshops version of Lorem Ipsum. Proin gravida
-                                    nibh vel velit.Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit. Pell..</p>
-                                <span class="d-block client-name">Rebecka Filson</span>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="testimonial-card">
-                        <div class="testimonial-image">
-                            <img src="image/others/client-3.png" alt="">
-                        </div>
-                        <div class="testimonial-body">
-                            <article>
-                                <h2 class="sr-only">Testimonial Article</h2>
-                                <p>Lorem Ipsum This is Photoshops version of . Proin gravida nibh vel velit.Lorem
-                                    ipsum dolor sit amet, consectetur
-                                    adipiscing elit. In molestie augue magna. Pell..</p>
-                                <span class="d-block client-name">Rebecka Filson</span>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="testimonial-card">
-                        <div class="testimonial-image">
-                            <img src="image/others/client-4.png" alt="">
-                        </div>
-                        <div class="testimonial-body">
-                            <article>
-                                <h2 class="sr-only">Testimonial Article</h2>
-                                <p>elit. In molestie This is Photoshops version of Lorem Ipsum. Proin gravida nibh
-                                    vel velit.Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing augue magna. Pell..</p>
-                                <span class="d-block client-name">Rebecka Filson</span>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="testimonial-card">
-                        <div class="testimonial-image">
-                            <img src="image/others/client-5.png" alt="">
-                        </div>
-                        <div class="testimonial-body">
-                            <article>
-                                <h2 class="sr-only">Testimonial Article</h2>
-                                <p>Pell Photoshops version of Lorem Ipsum. Proin gravida nibh vel velit.Lorem ipsum
-                                    dolor sit amet, consectetur
-                                    adipiscing elit. In molestie augue magna. This is..</p>
-                                <span class="d-block client-name">Rebecka Filson</span>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!--=================================
     Footer
 ===================================== -->

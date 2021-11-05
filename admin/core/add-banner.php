@@ -22,8 +22,8 @@ if (isset($_POST)) {
         if ($ext == 'jpg' or $ext == 'jpeg' or $ext == 'png' or $ext == 'gif') {
             $string = randomString(8);
 
-            $imagePath .= 'banner/' . $string . '.' . $image['name'];
-            $imagePathTemp = '../banner/' . $string . '.' . $image['name'];
+            $imagePath .= 'img/banner/' . $string . '/' . $image['name'];
+            $imagePathTemp = '../img/banner/' . $string . '/' . $image['name'];
             mkdir(dirname($imagePathTemp));
             move_uploaded_file($image['tmp_name'], $imagePathTemp);
         } else {

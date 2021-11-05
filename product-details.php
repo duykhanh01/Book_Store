@@ -24,13 +24,13 @@ if (isset($_GET['idsp'])) {
 
 
     <section class="breadcrumb-section">
-        <h2 class="sr-only">Site Breadcrumb</h2>
+        <h2 class="sr-only"></h2>
         <div class="container">
             <div class="breadcrumb-contents">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active">Product Details</li>
+                        <li class="breadcrumb-item"><a href="index.php">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">Chi tiết sản phẩm</li>
                     </ol>
                 </nav>
             </div>
@@ -145,7 +145,7 @@ $name_cate = mysqli_fetch_assoc(mysqli_query($conn,$sl_cate));
     <section class="section-margin">
             <div class="container">
                 <div class="section-title section-title--bordered">
-                    <h2><?php echo $name_cate['c_name'] ?></h2>
+                    <h2>Các sách cùng thể loại</h2>
                 </div>
                 <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
                         "autoplay": true,

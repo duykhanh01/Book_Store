@@ -3,6 +3,10 @@
 
 <?php
 session_start();
+if(!isset($_SESSION['id']))
+{
+    header('Location: index.php');
+}
 include("templates/header.php") ?>
 
 <div class="site-wrapper" id="top">
@@ -33,93 +37,42 @@ include("templates/header.php") ?>
                             </div>
                             <div class="col-lg-7 mb--20">
                                 <!-- Billing Address -->
+                                <?php
+                                $id = $_SESSION['id'];
+                                $sl_cus = "SELECT * FROM customers where cus_id = '$id'";
+                                $res_cus = mysqli_fetch_assoc(mysqli_query($conn,$sl_cus));
+                                ?>
                                 <div id="billing-form" class="mb-40">
-                                    <h4 class="checkout-title mt-4">Billing Address</h4>
+                                    <h4 class="checkout-title mt-4">Thông tin người đặt</h4>
                                     <div class="row">
-                                        <div class="col-md-6 col-12 mb--20">
-                                            <label>First Name*</label>
-                                            <input type="text" placeholder="First Name">
+                                        <div class="col-12 mb--20">
+                                            <label>Họ và Tên</label>
+                                            <input disabled type="text" placeholder="Vui lòng bổ xung trong trang cá nhân" value="<?php echo $res_cus['cus_name'] ?>">
                                         </div>
                                         <div class="col-md-6 col-12 mb--20">
-                                            <label>Last Name*</label>
-                                            <input type="text" placeholder="Last Name">
+                                            <label>Địa chỉ Email</label>
+                                            <input disabled type="email" placeholder="Vui lòng bổ xung trong trang cá nhân" value="<?php echo $res_cus['cus_mail'] ?>">
+                                        </div>
+                                        <div class="col-md-6 col-12 mb--20">
+                                            <label>Số điện thoại</label>
+                                            <input disabled type="text" placeholder="Vui lòng bổ xung trong trang cá nhân" value="<?php echo $res_cus['cus_tel'] ?>">
                                         </div>
                                         <div class="col-12 mb--20">
-                                            <label>Company Name</label>
-                                            <input type="text" placeholder="Company Name">
+                                            <label>Địa chỉ giao hàng</label>
+                                            <input disabled type="text" placeholder="Vui lòng bổ xung trong trang cá nhân" value="<?php echo $res_cus['cus_add'] ?>">
                                         </div>
-                                        <div class="col-12 col-12 mb--20">
-                                            <label>Country*</label>
-                                            <select class="nice-select">
-                                                <option>Bangladesh</option>
-                                                <option>China</option>
-                                                <option>country</option>
-                                                <option>India</option>
-                                                <option>Japan</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6 col-12 mb--20">
-                                            <label>Email Address*</label>
-                                            <input type="email" placeholder="Email Address">
-                                        </div>
-                                        <div class="col-md-6 col-12 mb--20">
-                                            <label>Phone no*</label>
-                                            <input type="text" placeholder="Phone number">
-                                        </div>
-                                        <div class="col-12 mb--20">
-                                            <label>Address*</label>
-                                            <input type="text" placeholder="Address">
-                                        </div>
-
-
-
                                     </div>
                                 </div>
                                 <!-- Shipping Address -->
-                                <div id="shipping-form" class="mb--40">
-                                    <h4 class="checkout-title">Shipping Address</h4>
-                                    <div class="row">
-                                        <div class="col-md-6 col-12 mb--20">
-                                            <label>First Name*</label>
-                                            <input type="text" placeholder="First Name">
-                                        </div>
-                                        <div class="col-md-6 col-12 mb--20">
-                                            <label>Last Name*</label>
-                                            <input type="text" placeholder="Last Name">
-                                        </div>
-                                        <div class="col-md-6 col-12 mb--20">
-                                            <label>Email Address*</label>
-                                            <input type="email" placeholder="Email Address">
-                                        </div>
-                                        <div class="col-md-6 col-12 mb--20">
-                                            <label>Phone no*</label>
-                                            <input type="text" placeholder="Phone number">
-                                        </div>
-                                        <div class="col-12 mb--20">
-                                            <label>Company Name</label>
-                                            <input type="text" placeholder="Company Name">
-                                        </div>
-                                        <div class="col-12 mb--20">
-                                            <label>Address*</label>
-                                            <input type="text" placeholder="Address">
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                <div class="order-note-block mt--20">
-                                    <label for="order-note">Order notes</label>
-                                    <textarea id="order-note" cols="30" rows="10" class="order-note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
-                                </div>
                             </div>
                             <div class="col-lg-5">
                                 <div class="row">
                                     <!-- Cart Total -->
                                     <div class="col-12">
                                         <div class="checkout-cart-total">
-                                            <h2 class="checkout-title">YOUR ORDER</h2>
+                                            <h2 class="checkout-title">Đơn hàng của bạn</h2>
 
-                                            <h4>Product <span>Total</span></h4>
+                                            <h4>Sản phẩm <span>Tổng</span></h4>
                                             <ul>
 
                                                 <?php
@@ -137,16 +90,16 @@ include("templates/header.php") ?>
                                                     foreach ($res as $i) {
                                                         $sum += $i['cart_price'] * $i['cart_quatity'];
                                                 ?>
-                                                        <li><span class="left"><?php echo $i['pr_name']; ?> X
+                                                        <li><span class="left text-success"><?php echo $i['pr_name']; ?> X
                                                                 <?php echo $i['cart_quatity']; ?></span>
-                                                            <span class="right"><?php echo $i['cart_price'] * $i['cart_quatity']; ?></span>
+                                                            <span class="right "><?php echo number_format($i['cart_price'] * $i['cart_quatity'], 0, ',', '.') . " VNĐ"; ?></span>
                                                         </li>
 
                                                 <?php
                                                     }
                                                 }
                                                 if ($check != 0)
-                                                    $money_ship = 20;
+                                                    $money_ship = 20000;
                                                 else
                                                     $money_ship = 0;
 
@@ -155,13 +108,12 @@ include("templates/header.php") ?>
                                             <?php
 
                                             ?>
-                                            <p>Sub Total <span><?php echo $sum; ?></span></p>
-                                            <p>Shipping Fee <span id="money_ship"><?php echo $money_ship; ?> </span></p>
-                                            <h4>Grand Total <span id="sum_money"><?php echo $sum + $money_ship; ?> </span></h4>
+                                            <p>Tổng tiền hàng <span><?php echo number_format($sum, 0, ',', '.');?> VNĐ</span</p>
+                                            <p>Phí vận chuyển <span id="money_ship"><?php echo number_format($money_ship, 0, ',', '.'); ?> VNĐ</span></p>
+                                            <h4>Tổng thanh toán <span class = "text-danger" id="sum_money"><?php echo number_format($sum + $money_ship, 0, ',', '.'); ?> VNĐ</span></h4>
 
 
-                                            <button class="place-order w-100 mt-5" id="orders">Place
-                                                order</button>
+                                            <button class="place-order w-100 mt-5" id="orders">Đặt hàng</button>
                                         </div>
                                     </div>
                                 </div>

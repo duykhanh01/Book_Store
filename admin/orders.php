@@ -12,7 +12,7 @@ require_once("templates/header.php"); ?>
 <main class="page-content">
     <div class="container">
         <div class="page-header">
-            <h1 class="page-header__title">Orders</h1>
+            <h1 class="page-header__title">Đơn hàng</h1>
         </div>
         <div class="page-tools">
             <div class="page-tools__breadcrumbs">
@@ -29,12 +29,12 @@ require_once("templates/header.php"); ?>
                                     </svg>
                                 </a>
                             </li>
-                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>E-commerce</span>
+                            <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>Quản lí</span>
                                     <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                         <use xlink:href="#icon-keyboard-right"></use>
                                     </svg></a>
                             </li>
-                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Orders</span>
+                            <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Đơn hàng</span>
                             </li>
                         </ol>
                     </div>
@@ -115,18 +115,17 @@ require_once("templates/header.php"); ?>
                             <th>
                                 #
                             </th>
-                            <th class="d-none d-lg-table-cell"><span>Order ID</span>
+                            <th class="d-none d-lg-table-cell"><span>Mã đơn</span>
                             </th>
-                            <th class="table__th-sort"><span class="align-middle">Customer Name</span>
+                            <th class="table__th-sort"><span class="align-middle">Tên khách hàng</span>
                             </th>
-                            <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Payment
-                                    Type</span>
+                            <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Phương thức giao hàng</span>
                             </th>
-                            <th class="table__th-sort"><span class="align-middle">Total</span>
+                            <th class="table__th-sort"><span class="align-middle">Tổng tiền</span>
                             </th>
-                            <th class="table__th-sort"><span class="align-middle">Date</span>
+                            <th class="table__th-sort"><span class="align-middle">Ngày đặt</span>
                             </th>
-                            <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Status</span>
+                            <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Trạng thái</span>
                             </th>
                             <th class="table__actions"></th>
                         </tr>
