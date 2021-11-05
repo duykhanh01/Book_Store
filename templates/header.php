@@ -57,7 +57,7 @@ ob_start();
                                 </ul>
                             <?php else : ?>
                                 <a href="login.php"><i class="icons-left fas fa-user"></i>
-                                    My Account
+                                    Tài khoản của tôi
                                 </a>
                             <?php endif; ?>
                         </li>
@@ -325,7 +325,7 @@ ob_start();
 
                             <?php else : ?>
                                 <a href="login.php"><i class="icons-left fas fa-user"></i>
-                                    My Account
+                                    Tài khoản của tôi
                                 </a>
                             <?php endif; ?>
 

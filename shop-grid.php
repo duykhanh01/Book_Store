@@ -94,15 +94,16 @@ else
 											</div>
 										</div>
 									</div>
-									<div class="price-block">
+									
+								</div>
+								<div class="product-header mt-2">
+									<h3><a href="product-details.php?idsp=<?php echo $row_pr['pr_id']; ?>"><?php echo $row_pr['pr_name'] ?></a></h3>
+								</div>
+								<div class="price-block">
 										<span class="price"><?php echo number_format($row_pr['pr_price']-$row_pr['pr_discount'], 0, ',', '.'). " VNĐ";?></span>
 										<del class="price-old"><?php echo number_format($row_pr['pr_price'], 0, ',', '.'). "VNĐ";?> </del>
 										<span class="price-discount"><?php echo ceil((($row_pr['pr_discount'])/($row_pr['pr_price'])*100));?> %</span>
 									</div>
-								</div>
-								<div class="product-header">
-									<h3><a href="product-details.php?idsp=<?php echo $row_pr['pr_id']; ?>"><?php echo $row_pr['pr_name'] ?></a></h3>
-								</div>
 							</div>
 						</div>
 					</div>

@@ -5,7 +5,7 @@ if (!isset($_GET['search'])) {
     header('location: index.php');
 } else {
     $key = $_GET['keyword'];
-    $sql = "SELECT * FROM products where pr_name like '%$key%' or pr_code like '%$key%' or pr_author like '%$key%' or pr_pub like '%$key%'";
+    $sql = "SELECT * FROM products where pr_status = 2 and pr_name like '%$key%' or pr_code like '%$key%' or pr_author like '%$key%' or pr_pub like '%$key%'";
     $res = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
     if (mysqli_num_rows($res) == 0) {
@@ -13,15 +13,12 @@ if (!isset($_GET['search'])) {
     }
 }
 
-
 ?>
 
 <!DOCTYPE html>
 <html lang="zxx">
 
 <?php include("templates/header.php");
-
-
 
 ?>
 <section class="breadcrumb-section">
@@ -59,9 +56,7 @@ if (!isset($_GET['search'])) {
                                             <i class="fas fa-cart-plus"></i>
                                         </a>
 
-                                        <a data-toggle="modal" data-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -103,12 +98,6 @@ if (!isset($_GET['search'])) {
 
 </main>
 </div>
-<!--=================================
-  Brands Slider
-===================================== -->
 
-<!--=================================
-    Footer Area
-===================================== -->
 <?php
 include('templates/footer.php'); ?>

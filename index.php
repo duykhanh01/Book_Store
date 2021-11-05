@@ -37,20 +37,9 @@ include('config/db_connect.php');
             foreach ($banners as $banner) :
             ?>
 
-                <div class="single-slide bg-image" data-bg="admin/<?php echo $banner['ba_image'] ?>">
-                    <div class="container">
-                        <div class="home-content text-center">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-6">
-                                    <!-- <h1 class="text-primary"><?php echo $banner['ba_title'] ?></h1> -->
-
-                                    <a href="<?php echo $banner['ba_link'] ?>" class="btn btn--yellow">
-                                        Mua ngay
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="single-slide bg-image img-fluid" data-bg="">
+                <a href="<?php echo $banner['ba_link'] ?>"><img src="admin/<?php echo $banner['ba_image'] ?>" style="width:100%" alt="#"></a>
+                    
                 </div>
 
             <?php endforeach; ?>

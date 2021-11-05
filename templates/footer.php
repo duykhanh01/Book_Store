@@ -20,11 +20,11 @@
                           <h3>Thông tin</h3>
                       </div>
                       <ul class="footer-list normal-list">
-                          <li><a href="">Giá sản phẩm</a></li>
-                          <li><a href="">Sản phẩm mới</a></li>
-                          <li><a href="">Sản phẩm bán chạy</a></li>
-                          <li><a href="">Liên hệ</a></li>
-                          <li><a href="">Bản đồ</a></li>
+                          <li><a href="#">Giá sản phẩm</a></li>
+                          <li><a href="#">Sản phẩm mới</a></li>
+                          <li><a href="#">Sản phẩm bán chạy</a></li>
+                          <li><a href="#">Liên hệ</a></li>
+                          <li><a href="#">Bản đồ</a></li>
                       </ul>
                   </div>
               </div>
@@ -34,11 +34,11 @@
                           <h3>Đặc biệt</h3>
                       </div>
                       <ul class="footer-list normal-list">
-                          <li><a href="">Vận chuyển</a></li>
-                          <li><a href="">Về chúng tôi</a></li>
-                          <li><a href="">Cửa hàng</a></li>
-                          <li><a href="">Liên hệ</a></li>
-                          <li><a href="">Bản đồ</a></li>
+                          <li><a href="#">Vận chuyển</a></li>
+                          <li><a href="#">Về chúng tôi</a></li>
+                          <li><a href="#">Cửa hàng</a></li>
+                          <li><a href="#">Liên hệ</a></li>
+                          <li><a href="#">Bản đồ</a></li>
                       </ul>
                   </div>
               </div>
@@ -47,7 +47,7 @@
                       <h3>Đăng kí nhận khuyến mãi</h3>
                   </div>
                   <div class="newsletter-form mb--30">
-                      <form action="./php/mail.php">
+                      <form>
                           <input type="email" class="form-control" placeholder="Nhập email của bạn...">
                           <button class="btn btn--primary w-100">Đăng ký</button>
                       </form>
