@@ -12,7 +12,7 @@ if (empty($word)) {
     echo "none";
     exit;
 }
-$sql = "SELECT  * from products where pr_name like '%$word%' or pr_code like '%$word%' or pr_author like '%$word%' or pr_pub like '%$word%'";
+$sql = "SELECT  * from products where pr_status = 2 and pr_name like '%$word%' or pr_code like '%$word%' or pr_author like '%$word%' or pr_pub like '%$word%' ";
 $res = mysqli_query($conn, $sql);
 $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
